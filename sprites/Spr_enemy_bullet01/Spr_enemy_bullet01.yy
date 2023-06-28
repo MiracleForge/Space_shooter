@@ -2,9 +2,9 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "Spr_enemy_bullet01",
-  "bbox_bottom": 1,
+  "bbox_bottom": 0,
   "bbox_left": 0,
-  "bbox_right": 0,
+  "bbox_right": 1,
   "bbox_top": 0,
   "bboxMode": 0,
   "collisionKind": 1,
@@ -17,7 +17,7 @@
   ],
   "gridX": 0,
   "gridY": 0,
-  "height": 2,
+  "height": 1,
   "HTile": false,
   "layers": [
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"c4b6d38b-c639-4f60-a970-40fdb8671d4e","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
@@ -25,8 +25,8 @@
   "nineSlice": null,
   "origin": 0,
   "parent": {
-    "name": "enemys",
-    "path": "folders/Sprites/enemys.yy",
+    "name": "bullets",
+    "path": "folders/Sprites/enemys/bullets.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
@@ -70,5 +70,5 @@
   },
   "type": 0,
   "VTile": false,
-  "width": 1,
+  "width": 2,
 }

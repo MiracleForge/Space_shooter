@@ -13,4 +13,4 @@ if alarm[2] >0 {
 		image_alpha = 1;
 		}
 		
-draw_text(0,0,global.pause);
+draw_text(0,0,O_spaw.alarm[0]);

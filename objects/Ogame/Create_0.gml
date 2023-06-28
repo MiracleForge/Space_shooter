@@ -13,3 +13,5 @@ score = 0;
 
 Pyframe_icon = 0;
 paused_surf = -1;
+
+lenght_shieldBar = 0;

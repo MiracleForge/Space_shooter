@@ -42,11 +42,12 @@ if (alarm[0] == -1) {
 		
 			
 	} if enemy_type == 3 {
-		
+		if instance_exists(_ship)
+		{
 	     instance_create_layer(_ship.x, _ship.y, "Instances", O_enemy_lazer);
 		       
 	    alarm[0] = 480;
-	
+		}
 
 		}
 
@@ -117,6 +118,8 @@ if direction == 1{
 	
 		var dir_to_player = point_direction(x, y, dest_x, dest_y);
 		image_angle = dir_to_player;
+		
+		
 		
 	}
 

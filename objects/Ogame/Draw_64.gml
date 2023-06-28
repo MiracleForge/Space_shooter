@@ -61,7 +61,7 @@ draw_sprite_ext(spr_HUI_lifebar, 0, 150, 80, _scale, _scale, 0, c, 1);
 
 
 if instance_exists(_ship_pai){
-	var pos_x = 160
+	var pos_x = 160;
 	for (var i = 0; i < _ship_pai.life_ship ; i++) {
 	    draw_sprite_ext(Spr_hUI_heart, 0, pos_x, 25, _scale, _scale, 0, c, 1);
 		pos_x += 35;
@@ -73,14 +73,18 @@ if instance_exists(_ship_pai){
 	var barShield = (current_shield / max_shield) * _scale
 
 	draw_sprite_ext(spr_HUI_lifebar, 1, 150, 80, barShield,_scale , 0, c, 1);
-	var pos_x = 150
+	var pos_x = 150;
+	draw_sprite_ext(spr_HUI_lifebar, 0, 150, 80, lenght_shieldBar/2, _scale, 0, c, 1);
 	for (var i = 0; i < _ship_pai.shield; i++) {
 	    draw_sprite_ext(spr_HUI_lifebar, 2, pos_x, 80, _scale,_scale , 0, c, 1);
-		pos_x += 10
+		pos_x += 10;
+		lenght_shieldBar = i;
 	}
 
 }
-draw_sprite_ext(Spr_HUI_shield, 0, 270, 75, _scale *1.2, _scale *1.2 , 0, c, 1);
+/*
+draw_sprite_ext(Spr_HUI_shield, 0, 430 + (lenght_shieldBar /10) , 75, _scale *1.2, _scale *1.2 , 0, c, 1);
+*/
 #endregion
 
 #endregion ////END UI

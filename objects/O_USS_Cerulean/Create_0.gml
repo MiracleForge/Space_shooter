@@ -8,5 +8,6 @@ move_speed = 3;
 heat = 0;
 maxHeat = 120;
 
-
+shield = 15;
+max_shield = 15;
 shoot_on = false

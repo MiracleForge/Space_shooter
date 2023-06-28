@@ -15,12 +15,23 @@ for (i = 0; i < max_lenght; i++) {
     yEnd = y + lengthdir_y(i, direction);
     
     lenght_lazer = i;
-    if collision_point(xEnd, yEnd , O_ship_parent, 1, 0) {
+	if _ship.shield >=10 {
+	if collision_point(xEnd, yEnd , Oshield, 1, 0) {
+		/*
         part_particles_create(O_particle_setup.particleSytem, xEnd, yEnd, O_particle_setup.particleTypehit, 1);
         part_particles_create(O_particle_setup.particleSytem, xEnd, yEnd, O_particle_setup.particleTypespark, 10);
-       
+       */
         break;
     }
+	}else{
+    if collision_point(xEnd, yEnd , O_ship_parent, 1, 0) {
+		/*
+        part_particles_create(O_particle_setup.particleSytem, xEnd, yEnd, O_particle_setup.particleTypehit, 1);
+        part_particles_create(O_particle_setup.particleSytem, xEnd, yEnd, O_particle_setup.particleTypespark, 10);
+       */
+        break;
+    }
+	}
 }
 
 if instance_exists(O_enemy_parent){	
@@ -32,6 +43,7 @@ if instance_exists(O_enemy_parent){
 		    _list [| k].life = _list[| k].life = -5
 		}
 		ds_list_destroy(_list);
+		effect_create_above(ef_explosion,x,y,0.1,c_orange);	
 	}
 	}
 

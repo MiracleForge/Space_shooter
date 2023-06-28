@@ -52,7 +52,7 @@ if keyboard_check(vk_left){
 if keyboard_check(vk_right){	
 	direction -=3;
 	}
-move_wrap(true,true,0)
+move_wrap(true,false,0)
 
 var _inst; // Declare _inst variable
 var heat_countDown = 0
@@ -138,7 +138,10 @@ if (keyboard_check_pressed(vk_space) && Shooting_button.alarm[0] == -1 || shoot_
     }
 }
 
-
+if mouse_check_button_pressed(mb_left){	
+	//scr_create_light(mouse_x,mouse_y,make_color_hsv(random(255),255,255),1,1,1);
+	
+	}
 
 if heat >= 85 {
     overheat = true;
