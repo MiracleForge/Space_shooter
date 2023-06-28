@@ -1,0 +1,46 @@
+{
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "O_USS_Emberstrike",
+  "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+  ],
+  "managed": true,
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"O_ship_parent","path":"objects/O_ship_parent/O_ship_parent.yy",},"propertyId":{"name":"current_ship","path":"objects/O_ship_parent/O_ship_parent.yy",},"value":"2",},
+  ],
+  "parent": {
+    "name": "Players",
+    "path": "folders/Objetos/Players.yy",
+  },
+  "parentObjectId": {
+    "name": "O_ship_parent",
+    "path": "objects/O_ship_parent/O_ship_parent.yy",
+  },
+  "persistent": false,
+  "physicsAngularDamping": 0.1,
+  "physicsDensity": 0.5,
+  "physicsFriction": 0.2,
+  "physicsGroup": 1,
+  "physicsKinematic": false,
+  "physicsLinearDamping": 0.1,
+  "physicsObject": false,
+  "physicsRestitution": 0.1,
+  "physicsSensor": false,
+  "physicsShape": 1,
+  "physicsShapePoints": [
+    {"x":0.0,"y":0.0,},
+    {"x":16.0,"y":0.0,},
+    {"x":16.0,"y":16.0,},
+    {"x":0.0,"y":16.0,},
+  ],
+  "physicsStartAwake": true,
+  "properties": [],
+  "solid": false,
+  "spriteId": {
+    "name": "spr_USS_Emberstrike",
+    "path": "sprites/spr_USS_Emberstrike/spr_USS_Emberstrike.yy",
+  },
+  "spriteMaskId": null,
+  "visible": true,
+}

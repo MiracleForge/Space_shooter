@@ -1,0 +1,14 @@
+- Upgrades: Mercenário/Companheiro: Cria um Mercenário que te ajuda a atirar
+Mercenários: Após pegar 2 upgrades de Mercenário ele chega: Tem 20% de chance 
+de chamar um mercenário de qualidade "Alta", pode chegar de 1 a 5 mercenários de qualidades 
+diferentes.
+
+Movimento Mercenário: Ele possui uma área de atuação proxima ao player
+porém é livre para se movimentar e atirar em qualquer direção independente de
+seu movimento.
+
+Armas: Possuem Armas Fixas: Vão vir com base na nave que apareceu
+
+Aparição Mercenário Nivel Alta: Primeiro aparece o Chefe: Nave Grande/Principal
+saindo do Hiper Drive "Chama a sua tropa através de um dialogo"
+As naves de niveis diferentes irão aparecer atrás do "Líder" e agir com base no movimento dele

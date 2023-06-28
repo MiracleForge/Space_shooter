@@ -1,0 +1,14 @@
+Manejamento do super aquecimento
+
+total da fase : 5 min
+Toda fase ter hordas de bichos 1.5 min  - horda básica
+- As vezes vem um bicho maior
+
+> 1.5 min horda Grande 
+- Guardar  o super aquecimento para essa horda
+- Esfriamento acontece quando passa 25 segundos
+- Fica 25 segundos sem poder super aquecer
+- repete as hordas dificeis no limite de 25 segundos após horda basica
+- Super Aquecimento: Atira até super Aquece. Ao super aquecer
+ganha "Ataque modificado" por 25 segundos, após esse tempo limite
+esfria e fica 25 segundos sem subir medidor de aquecimento

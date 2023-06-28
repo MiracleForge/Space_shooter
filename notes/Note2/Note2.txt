@@ -1,0 +1,16 @@
+- Ao derrotar o boss de cada fase ganha uma peça extra
+podendo ter multiplas peças se derrotar multiplas vezes. As vezes consecutivas
+serão Realidade Aumentada. A fase + Boss fight
+
+- Companheiro Space Drop?: De tempos aleatórios ira aparecer um "Companheiro: Terá dialogo.
+Ele aparecerá e jogará um item de "Cura", "Super Aquecimento Forçado"
+"Escudo"
+
+- Upgrades: Mercenário/Minions: Cria um Mercenário que te ajuda a atirar de
+5 em 5 seg. "Você pode escolhar adicionar certos upgrades só em seu
+Mercenário. Mercenários: Após pegar 2 upgrades de Mercenário ele chega: Tem 20% de chance 
+de chamar um mercenário de qualidade "Alta", pode chegar de 1 a
+
+-Liberar personagens: Ao derrotar uma fase, Comprando com moeda,
+Cumprindo algum objetivo "Oculto"/Achievement.
+
