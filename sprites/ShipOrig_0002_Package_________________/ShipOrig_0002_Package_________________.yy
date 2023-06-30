@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "ShipOrig_0003_Package_________________",
+  "name": "ShipOrig_0002_Package_________________",
   "bbox_bottom": 170,
   "bbox_left": 0,
   "bbox_right": 165,
@@ -13,17 +13,17 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"d78ab60e-e675-4e53-9154-4bba8e30cee2",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"515c03f0-bc3a-43b6-9dce-35b8a392a493",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 171,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"1d0be6c7-f9bc-4032-abcf-dbed9fe63e0a","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"8fad3d91-874e-4820-9b70-c175f2b35344","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
-  "origin": 4,
+  "origin": 9,
   "parent": {
     "name": "enemys",
     "path": "folders/Sprites/enemys.yy",
@@ -32,7 +32,7 @@
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "ShipOrig_0003_Package_________________",
+    "name": "ShipOrig_0002_Package_________________",
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
@@ -54,12 +54,12 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"d78ab60e-e675-4e53-9154-4bba8e30cee2","path":"sprites/ShipOrig_0003_Package_________________/ShipOrig_0003_Package_________________.yy",},},},"Disabled":false,"id":"15ba91df-523b-4dd3-8c3e-8888bf0bfa37","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"515c03f0-bc3a-43b6-9dce-35b8a392a493","path":"sprites/ShipOrig_0002_Package_________________/ShipOrig_0002_Package_________________.yy",},},},"Disabled":false,"id":"d94b4a1c-55bc-4ec4-8bdd-1c5991c55733","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
     "volume": 1.0,
-    "xorigin": 83,
+    "xorigin": 130,
     "yorigin": 85,
   },
   "swatchColours": null,

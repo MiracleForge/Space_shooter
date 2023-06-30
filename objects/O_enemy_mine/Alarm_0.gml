@@ -1,13 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-if (instance_exists(target))
+if speed >=0.1
 {
-	x = target.x;
-	y = target.y;
+speed --;	
 }
-else
-{
-	
-		instance_destroy();
-	
-}
+speed  = 0;
+alarm[1] = 380;

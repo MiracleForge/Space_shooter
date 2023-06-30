@@ -2,7 +2,9 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "O_enemy_stalker",
-  "eventList": [],
+  "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","eventNum":0,"eventType":4,"isDnD":false,},
+  ],
   "managed": true,
   "overriddenProperties": [
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"O_enemy_parent","path":"objects/O_enemy_parent/O_enemy_parent.yy",},"propertyId":{"name":"enemy_type","path":"objects/O_enemy_parent/O_enemy_parent.yy",},"value":"2",},

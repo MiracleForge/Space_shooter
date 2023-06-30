@@ -1,20 +1,20 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "Olight_render",
+  "name": "O_enemy_assault",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":77,"eventType":8,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":73,"eventType":8,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "lights",
-    "path": "folders/Objetos/Controls/lights.yy",
+    "name": "Enemys",
+    "path": "folders/Objetos/Enemys.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "O_enemy_parent",
+    "path": "objects/O_enemy_parent/O_enemy_parent.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -30,7 +30,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "ShipOrig_0002_Package_________________",
+    "path": "sprites/ShipOrig_0002_Package_________________/ShipOrig_0002_Package_________________.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

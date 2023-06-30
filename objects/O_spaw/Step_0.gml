@@ -2,33 +2,37 @@
 // Você pode escrever seu código neste editor
 
 if (!Ogame.pick_ship) {
-	if alarm[0] == -1 {	
-		alarm[0] =18000;
-		}
-	if O_spaw_conter_atk.counter_attack == false {
-	    var spawnEnemy01 = (alarm[0] % 40 - global.level) == 0;
-	    var spawnEnemystalker = (alarm[0] % 1000 - global.level) == 0;
-		var spawnEnemysniper = (alarm[0] % 3000 - global.level) == 0;
-    
-	    if (spawnEnemy01) {
-	        var randomX01 = irandom_range(0, 710);
-	        var randomY01 = irandom_range(0, -20);
-	        instance_create_layer(randomX01, randomY01, layer, O_enemy_01);
-		
-	    }
-    
-	    if (spawnEnemystalker) {
-	        var randomXClose = irandom_range(0, 720);
-	        var randomYClose = irandom_range(0, -20);
-	        instance_create_layer(randomXClose, randomYClose, layer, O_enemy_stalker);
-			
-		
-	    }
-		
-		if (spawnEnemysniper) {
-		if !instance_exists(O_enemy_sniper){	
-				instance_create_layer(randomXClose, randomYClose, layer, O_enemy_sniper);
-				}	
-		}
-	}
+    if (alarm[0] == -1) {	
+        alarm[0] = 18000;
+    }
+    if (!O_spaw_conter_atk.counter_attack) {
+        var spawnIntervals = [
+            [40, O_enemy_01, irandom_range(1, 1), [0, 720, 0, -20]],
+            [380, O_enemy_stalker, irandom_range(1, global.level), [0, 720, 0, -20]],
+            [3000, O_enemy_sniper, 1, [0, 720, 0, -20]],
+            [800, O_enemy_assault, irandom_range(3, 3 + global.level), [choose(0,-20), choose(720,740), 176, 776]]
+        ];
+
+        for (var i = 0; i < array_length(spawnIntervals); i++) {
+            var spawnInterval = spawnIntervals[i][0] - global.level;
+            var enemyType = spawnIntervals[i][1];
+            var spawnAmount = spawnIntervals[i][2];
+            var spawnCoordinates = spawnIntervals[i][3];
+
+            if (alarm[0] % spawnInterval == 0) {
+                for (var j = 0; j < spawnAmount; j++) {
+                    var randomX = irandom_range(spawnCoordinates[0], spawnCoordinates[1]);
+                    var randomY = irandom_range(spawnCoordinates[2], spawnCoordinates[3]);
+
+                    instance_create_layer(randomX, randomY, layer, enemyType);
+                }
+            }
+        }
+    }
 }
+
+
+
+
+
+

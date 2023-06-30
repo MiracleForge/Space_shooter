@@ -3,6 +3,9 @@
 var _start_att = Ocollision.ship_counter_attack;
 if (!Ogame.pick_ship) 
 {
+	if alarm[0] == -1 {	
+		alarm[0] =18000;
+		}
 	if counter_attack 
 	{
 		

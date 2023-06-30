@@ -10,48 +10,43 @@ if life <= 0
 	score +=1;
 }
 
-if (alarm[0] == -1) {
-		if enemy_type == 1  {
-	    var _miss = instance_create_layer(x + 35, y +10, "Instances", O_enemy_machine_gun);
-        if enemy_direction
-		{ _miss.speed = -6 
-		}else{	
-	    _miss.speed = 6;
-		}
-	    _miss.direction = direction;
-	    _miss.image_angle = direction;
-
-	    var randomPitch = random_range(0.8, 10);
-	    audio_sound_pitch(snd_missile_launcher, randomPitch);
-	    audio_play_sound(snd_missile_launcher, 0, false);
+if (instance_exists(_ship)) {
+    if (alarm[0] == -1) {
+        if (enemy_type == 1) {
+            var _miss = instance_create_layer(x + 35, y + 10, "Instances", O_enemy_machine_gun);
+            if (instance_exists(_miss)) {
+                _miss.speed = (enemy_direction) ? -6 : 6;
+                _miss.direction = direction;
+                _miss.image_angle = direction;
+        
+                var randomPitch = random_range(0.8, 10);
+                audio_sound_pitch(snd_missile_launcher, randomPitch);
+                audio_play_sound(snd_missile_launcher, 0, false);
+        
+                alarm[0] = 280;
+            }
+        } else if (enemy_type == 2) {
+            var _miss = instance_create_layer(x + 35, y + 10, "Instances", O_enemy_machine_gun);
+            if (instance_exists(_miss)) {
+                _miss.speed = 6;
+                _miss.direction = image_angle;
+                _miss.image_angle = direction;
     
-	    alarm[0] = 280;
-	}else if enemy_type == 2{	
-			
-				 var _miss = instance_create_layer(x + 35, y +10, "Instances", O_enemy_machine_gun);
+                var randomPitch = random_range(0.8, 10);
+                audio_sound_pitch(snd_missile_launcher, randomPitch);
+                audio_play_sound(snd_missile_launcher, 0, false);
     
-			    _miss.speed = 6;
-			    _miss.direction = image_angle;
-			    _miss.image_angle = direction;
-
-			    var randomPitch = random_range(0.8, 10);
-			    audio_sound_pitch(snd_missile_launcher, randomPitch);
-			    audio_play_sound(snd_missile_launcher, 0, false);
-    
-			    alarm[0] = 280;
-		
-			
-	} if enemy_type == 3 {
-		if instance_exists(_ship)
-		{
-	     instance_create_layer(_ship.x, _ship.y, "Instances", O_enemy_lazer);
-		       
-	    alarm[0] = 480;
+                alarm[0] = 280;
+            }
+        } else if (enemy_type == 3) {
+            alarm[0] = 480;
+        }else if (enemy_type == 4) {
+			alarm[0] = 	60
 		}
-
-		}
-
+    }
 }
+
+
 
 
 
@@ -118,9 +113,28 @@ if direction == 1{
 	
 		var dir_to_player = point_direction(x, y, dest_x, dest_y);
 		image_angle = dir_to_player;
-		
-		
-		
+	
 	}
+	
+	if enemy_type == 4 
+{
+
+var dir_to_player = point_direction(x, y, dest_x, dest_y);
+image_angle = dir_to_player;
+direction = image_angle;
+
+ if enemy_direction == false {
+speed = 1.8; // Velocidade da nave
+hspeed = 2.4;
+ }else {	
+	 speed = 1.8; // Velocidade da nave
+hspeed = -2.4;
+	 }
+
+ 	    var new_x = x + lengthdir_x(speed, image_angle);
+		var new_y = y + lengthdir_y(speed, -image_angle);
+		x = new_x;
+		y = new_y;
+}
 
 }
