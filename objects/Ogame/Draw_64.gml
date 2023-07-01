@@ -58,7 +58,8 @@ draw_sprite_ext(spr_HUI_porttrait, 0, 15, 15, _scale *1.2, _scale *1.2 , 0, c, 1
 #region Life bars and Shield bars
 
 draw_sprite_ext(spr_HUI_lifebar, 0, 150, 80, _scale, _scale, 0, c, 1);
-
+    draw_text_transformed_colour(200, 186, score, 2, 2, 0,cA, cA, cA, cA, 1);
+    draw_text_transformed_colour(90, 185, "Score", 2, 2, 0,cA, cA, cA, cA, 1);
 
 if instance_exists(_ship_pai){
 	var pos_x = 160;

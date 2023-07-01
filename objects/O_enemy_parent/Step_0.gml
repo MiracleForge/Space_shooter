@@ -2,20 +2,17 @@
 // Você pode escrever seu código neste editor
 
 var _ship = O_ship_parent;
+	
+	
 
 
-if life <= 0
-{	
-	instance_destroy();
-	score +=1;
-}
 
 if (instance_exists(_ship)) {
     if (alarm[0] == -1) {
         if (enemy_type == 1) {
             var _miss = instance_create_layer(x + 35, y + 10, "Instances", O_enemy_machine_gun);
             if (instance_exists(_miss)) {
-                _miss.speed = (enemy_direction) ? -6 : 6;
+                _miss.speed = (enemy_direction) ? -6 : 6; // change direction if payback respaw true
                 _miss.direction = direction;
                 _miss.image_angle = direction;
         
@@ -41,7 +38,7 @@ if (instance_exists(_ship)) {
         } else if (enemy_type == 3) {
             alarm[0] = 480;
         }else if (enemy_type == 4) {
-			alarm[0] = 	60
+			alarm[0] = 	120
 		}
     }
 }
@@ -54,6 +51,7 @@ if instance_exists(_ship){
     var dist = 30; // Distância desejada do jogador
 	var dest_x = _ship.x;
 	var dest_y = _ship.y;
+
 	
 	if (enemy_type == 2) {
 		if distance_to_object(_ship) >= dist 
@@ -64,6 +62,7 @@ if instance_exists(_ship){
 	
 	    var new_x = dest_x
 	    var new_y = dest_y 
+		
     
 	    var dir_to_player = point_direction(x, y, new_x, new_y);
     

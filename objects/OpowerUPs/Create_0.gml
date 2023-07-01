@@ -1,3 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-effect_create_above(ef_explosion,x,y,0.1,c_orange);	
+image_xscale = 3.6;
+image_yscale = 3.6;
+vspeed = 0.3;
+spark = false;

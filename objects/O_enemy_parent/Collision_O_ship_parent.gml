@@ -3,7 +3,7 @@
 with(O_ship_parent){
 if (take_damage == true) {
         
-	        alarm[2] = 100;   
+	        alarm[2] = 200;   
 	        take_damage = false;
 	        life_ship -= 1;
  

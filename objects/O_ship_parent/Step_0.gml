@@ -17,8 +17,6 @@ if shield == 0 and alarm[3] == -1{
 	audio_play_sound(snd_shield_broken,0,false);
 	}
 
-
-
 var _move_x = 0;
 var _move_y = 0;
 
@@ -56,6 +54,7 @@ move_wrap(true,false,0)
 
 var _inst; // Declare _inst variable
 var heat_countDown = 0
+
 if (keyboard_check_pressed(vk_space) && Shooting_button.alarm[0] == -1 || shoot_on)
 {
     var _instY = -10;
@@ -158,30 +157,5 @@ if heat >= maxHeat and alarm[0] == -1 and overheat or heat_countDown ==1 and !ov
 
 
 
-/*
-#region Emberstrike attack code
-var _instY = -10;
-if keyboard_check_pressed(vk_space) and heat <= maxHeat and current_ship ==2
-or shoot_on and current_ship ==2 and heat <= maxHeat
-{
-heat += 1;
-alarm[0] = 180;
-repeat (ammo) {
-    var _inst = instance_create_layer(x - _instY, y - 1, "Instances", Omachinegun);
-    _inst.speed = -6;
-    _inst.direction = direction;
-    _inst.image_angle = direction;
-    _instY += 10;
 
-    if (heat >= 85) {	
-        _inst.image_blend = c_red;	
-    }
-}
-	var randomPitch = random_range(0.8, 1.2); // Gera um valor aleatório entre 0.8 e 1.2
-	audio_play_sound(snd_bullet01, 0, false);
-	audio_sound_pitch(snd_bullet01, randomPitch); // Define o pitch do som aleatório	
-	shoot_on = false;
-
-
-#endregion
 

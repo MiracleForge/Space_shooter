@@ -9,3 +9,4 @@ scr_create_light(x ,y ,c_red,2,2,2,id);
 
 alarm[0] = irandom(60);
 detonation_distance = 20;
+explosion_range = false;

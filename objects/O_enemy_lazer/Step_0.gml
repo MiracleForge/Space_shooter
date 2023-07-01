@@ -1,6 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-draw_text(x,y, alarm[0])
+
 var _ship = O_ship_parent;
 var _sniper = O_enemy_sniper;
 if instance_exists(_ship) and instance_exists(_sniper){
@@ -16,11 +16,11 @@ for (i = 0; i < max_lenght; i++) {
     
     lenght_lazer = i;
 	if _ship.shield >=10 {
-	if collision_point(xEnd, yEnd , Oshield, 1, 0) {
-		/*
+	if collision_point(xEnd, yEnd, Oshield, 1, 0) and _ship.shield >=10 {
+	/*
         part_particles_create(O_particle_setup.particleSytem, xEnd, yEnd, O_particle_setup.particleTypehit, 1);
         part_particles_create(O_particle_setup.particleSytem, xEnd, yEnd, O_particle_setup.particleTypespark, 10);
-       */
+      */
         break;
     }
 	}else{

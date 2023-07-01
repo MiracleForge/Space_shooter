@@ -8,7 +8,9 @@ ammo = 2;
 move_speed = 2;
 heat = 0;
 maxHeat = 140;
-life_ship = 4;
+max_life = 4;
+life_ship = max_life;
+
 shield = 10;
 max_shield = 10;
 overheat = false;
