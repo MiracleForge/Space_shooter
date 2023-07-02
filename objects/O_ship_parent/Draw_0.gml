@@ -1,7 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 draw_self();
-//draw
+//draw alpha after hit
 if alarm[2] >0 {	
 	if image_alpha >= 1{		
 		damage_alpha = -0.05; 

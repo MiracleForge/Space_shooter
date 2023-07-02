@@ -24,7 +24,8 @@ if (!Ogame.pick_ship) {
 	    timeSinceLastCheck = 0;
 	}
 	// enemy_ships spawner
-    if (!O_spaw_conter_atk.counter_attack) {
+    if (!O_spaw_conter_atk.counter_attack) and !instance_exists(O_boss_beholder) 
+	{
         var spawnIntervals = [
             [40, O_enemy_01, irandom_range(1, 1), [0, 720, 0, -20]],
             [380, O_enemy_stalker, irandom_range(1, global.level), [0, 720, 0, -20]],
@@ -32,14 +33,16 @@ if (!Ogame.pick_ship) {
             [1000, O_enemy_assault, irandom_range(3, 3 + global.level), [choose(0,-20), choose(720,740), 176, 776]]
         ];
 
-        for (var i = 0; i < array_length(spawnIntervals); i++) {
+        for (var i = 0; i < array_length(spawnIntervals); i++)
+		{
             var spawnInterval = spawnIntervals[i][0] - global.level;
             var enemyType = spawnIntervals[i][1];
             var spawnAmount = spawnIntervals[i][2];
             var spawnCoordinates = spawnIntervals[i][3];
 
             if (alarm[0] % spawnInterval == 0) {
-                for (var j = 0; j < spawnAmount; j++) {
+                for (var j = 0; j < spawnAmount; j++) 
+				{
                     var randomX = irandom_range(spawnCoordinates[0], spawnCoordinates[1]);
                     var randomY = irandom_range(spawnCoordinates[2], spawnCoordinates[3]);
 
@@ -48,6 +51,8 @@ if (!Ogame.pick_ship) {
             }
         }
     }
+	
+	
 }
 
 

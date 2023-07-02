@@ -5,6 +5,7 @@ image_xscale = 3.6;
 image_yscale = 3.6;
 
 move_speed = 3;
+max_movespeed = 3;
 heat = 0;
 maxHeat = 120;
 

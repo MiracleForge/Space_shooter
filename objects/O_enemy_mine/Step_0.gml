@@ -5,3 +5,4 @@ if distance_to_object(O_ship_parent) <= detonation_distance{
 	explosion_range = true;
 	
 }
+

@@ -1,17 +1,17 @@
 /// @description Inserir descrição aqui
 // engine creation after select ship
-
+// player ship destroi
 if life_ship <= 0 {	
 	audio_play_sound(snd_Game_over_ship,0,false);
     effect_create_above(ef_firework, x,y,0.1,c_white);
 	instance_destroy();
 	instance_destroy(Oengine);
     instance_destroy(Oshield);
-	Ogame.alarm[0] =	120;
+	Ogame.alarm[0] =	120;// restart game
 	}
 	
 
-
+// shield broken 
 if shield == 0 and alarm[3] == -1{	
 	alarm[3] = 380;
 	audio_play_sound(snd_shield_broken,0,false);

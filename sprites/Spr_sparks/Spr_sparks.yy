@@ -51,8 +51,8 @@
   },
   "origin": 4,
   "parent": {
-    "name": "Objects",
-    "path": "folders/Sprites/Objects.yy",
+    "name": "effects",
+    "path": "folders/Sprites/sprite master/effects.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

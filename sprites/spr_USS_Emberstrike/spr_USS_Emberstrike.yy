@@ -23,7 +23,7 @@
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"ad9ce5a3-e729-47ff-8238-18bc49401a3d","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
-  "origin": 9,
+  "origin": 4,
   "parent": {
     "name": "sprites player ship",
     "path": "folders/Sprites/sprites player ship.yy",
@@ -60,7 +60,7 @@
     "visibleRange": null,
     "volume": 1.0,
     "xorigin": 7,
-    "yorigin": 8,
+    "yorigin": 7,
   },
   "swatchColours": null,
   "swfPrecision": 2.525,

@@ -6,6 +6,7 @@ image_yscale = 2;
 // ship config default
 ammo = 2;
 move_speed = 2;
+max_movespeed = 2;
 heat = 0;
 maxHeat = 140;
 max_life = 4;
