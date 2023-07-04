@@ -6,5 +6,5 @@ if _ship.shield >0 and O_enemy_mine.explosion_range == true
 	_ship.shield -=1;
 	visible = true;
     alarm[0]= 180;
-O_enemy_mine.explosion_range = true;
+O_enemy_mine.explosion_range = true; // detonação por aproximação
 }

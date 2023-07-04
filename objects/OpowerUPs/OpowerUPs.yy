@@ -10,7 +10,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Poweer UP",
-    "path": "folders/Objetos/Players/Engines/Poweer UP.yy",
+    "path": "folders/Objetos/objects/Poweer UP.yy",
   },
   "parentObjectId": null,
   "persistent": false,

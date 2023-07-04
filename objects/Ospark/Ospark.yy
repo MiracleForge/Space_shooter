@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Poweer UP",
-    "path": "folders/Objetos/Players/Engines/Poweer UP.yy",
+    "name": "efeitos",
+    "path": "folders/Objetos/Controls/efeitos.yy",
   },
   "parentObjectId": null,
   "persistent": false,

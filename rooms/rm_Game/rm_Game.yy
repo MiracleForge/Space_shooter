@@ -122,8 +122,8 @@
         {"name":"g_MaskTexture","type":2,"value":null,},
       ],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMREffectLayer","resourceVersion":"1.0","name":"Effect_1","depth":500,"effectEnabled":true,"effectType":"_filter_fractal_noise","gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[
-        {"name":"g_FractalNoiseScale","type":0,"value":"381",},
-        {"name":"g_FractalNoisePersistence","type":0,"value":"0",},
+        {"name":"g_FractalNoiseScale","type":0,"value":"202",},
+        {"name":"g_FractalNoisePersistence","type":0,"value":"0.1",},
         {"name":"g_FractalNoiseOffset","type":0,"value":"0",},
         {"name":"g_FractalNoiseOffset","type":0,"value":"0",},
         {"name":"g_FractalNoiseSpeed","type":0,"value":"0.05",},

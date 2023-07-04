@@ -2,10 +2,6 @@
 // Você pode escrever seu código neste editor
 
 var _ship = O_ship_parent;
-	
-	
-
-
 
 if (instance_exists(_ship)) {
     if (alarm[0] == -1) {
@@ -35,11 +31,12 @@ if (instance_exists(_ship)) {
     
                 alarm[0] = 300;
             }
-        } else if (enemy_type == 3) {
-            alarm[0] = 480;
-        }else if (enemy_type == 4) {
-			alarm[0] = 	120
-		}
+	        } else if (enemy_type == 3) {
+	            alarm[0] = 480;
+				
+		        }else if (enemy_type == 4) {
+					alarm[0] = 	120
+				}
     }
 }
 

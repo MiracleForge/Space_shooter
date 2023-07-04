@@ -21,7 +21,7 @@ ship_snd_select = false;
 // display ship
 rotationSpeed = 2;
 targetAngle = 90;
-
+cameratarget = O_ship_parent;
 
 global.level = 1;
 global.pause = false;

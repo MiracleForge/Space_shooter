@@ -1,37 +1,230 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 // Dentro do evento Create do objeto
+//destroying boss
 
 
-     dest_x = irandom_range(50, 680);
-     dest_y = irandom_range(50, 600);
-var veloc = 5; // Velocidade de movimento
-
-var walking = false; // Variável de controle para indicar se está andando
-
-// Dentro do evento Step do objeto
-if (!walking) {
-    var destiny = distance_to_point(dest_x, dest_y);
-    var _direction = point_direction(x, y, dest_x, dest_y);
-
-    h_speed = lengthdir_x(veloc, _direction);
-    v_speed = lengthdir_y(veloc, _direction);
+#region /////////////// MOVIMENT STATES SWITCH //////////////////////////
+switch(movState)
+{
+	case BOSSmov_state.intro:
+		y = lerp(y,positionY,0.01);
 	
-
-    if (destiny <= veloc) {
-        x = dest_x;
-        y = dest_y;
-        walking = false;
-
-        // Escolher novo destino
-        dest_x = irandom_range(50, 680);
-        dest_y = irandom_range(50, 600);
-    } else {
-        walking = true;
-		if alarm[0] == -1
+		if (floor(abs(y - positionY)) == 0) // caso esteja na posição
+		//mudar starte.
 		{
-			alarm[0] = 30;	
+			movState = BOSSmov_state.phase_one;
+			position.next._x = x;
 		}
-    }
-}
+	break;
+	
+	case BOSSmov_state.phase_one:
+	    if (ceil(x) == ceil(position.next._x)) // Verifica se a posição atual é igual à próxima posição
+	    {
+	        // Escolha aleatória de uma nova posição x
+	       position.next._x = irandom_range(96, room_width);
+	
+	    } 
 
+	    x = lerp(x, position.next._x, 0.5);
+	    image_angle = 5 * sign(x - position.next._x);
+  
+			if !instance_exists(Ofate)
+		{
+	
+			var _inst = instance_create_layer(x, y, "Instances", Ofate);
+			    _inst.sprite_index = sprite_index;
+				_inst.image_xscale = image_xscale;
+				_inst.image_yscale = image_yscale;
+		}
+	    if (timers.shooting._current <= 0)
+	    {
+	        attkState = choose(BOOSshot_state.slow,BOOSshot_state.slowpar,BOOSshot_state.waiting);
+	        timers.shooting._current = timers.shooting._max;
+	    }
+		    else
+		    {
+		        attkState = BOOSshot_state.waiting;
+		        timers.shooting._current -= 1;
+		    }
+		if beholder_life <=0  
+		{
+			audio_play_sound(choose(snd_missile_explosion, snd__retro_bomb_explosion),Sounds.hits,false,0.3);
+			movState = BOSSmov_state.phase_two;
+			position.next._x = x;
+			position.next._y = y;
+			timers.shooting._max *= 0.75;
+			beholder_life = max_beholder_life;
+	
+		}		  
+	break;
+	
+	case BOSSmov_state.phase_two:
+	   if (ceil(x) == ceil(position.next._x)) and (ceil(y) == ceil(position.next._y))// Verifica se a posição atual é igual à próxima posição
+	    {
+	        // Escolha aleatória de uma nova posição x
+	        position.next._x = irandom_range(96, room_width);
+
+	    } 
+		
+	    x = lerp(x, position.next._x, 0.5);
+	
+	    image_angle = 5 * sign(x - position.next._x);
+  
+			if !instance_exists(Ofate)
+			{
+	
+			var _inst = instance_create_layer(x, y, "Instances", Ofate);
+			    _inst.sprite_index = sprite_index;
+				_inst.image_xscale = image_xscale;
+				_inst.image_yscale = image_yscale;
+			}
+			 if (timers.shooting._current <= 0)
+		    {
+		        attkState = choose( BOOSshot_state.rapidfire, BOOSshot_state.slow, BOOSshot_state.waiting);
+		        timers.shooting._current = timers.shooting._max;
+		    }
+			    else
+			    {
+			        attkState = BOOSshot_state.waiting;
+			        timers.shooting._current -= 1;
+			    }
+			
+		if beholder_life <=0
+		{
+			audio_play_sound(choose(snd_missile_explosion, snd__retro_bomb_explosion),Sounds.hits,false,0.3);
+			movState = BOSSmov_state.phase_three;
+			position.next._x = room_width/2;
+			position.next._y = positionY;
+			timers.shooting._max *= 0.75;
+			beholder_life = max_beholder_life;
+		}	
+	break;
+
+	case BOSSmov_state.phase_three:
+		 if (ceil(x) == ceil(position.next._x))// Verifica se a posição atual é igual à próxima posição
+	    {
+	        // Escolha aleatória de uma nova posição x
+	        position.next._x = irandom_range(96, room_width);
+			
+	    }
+	   
+	    x = lerp(x, position.next._x, 0.5);
+		y = lerp(y, position.next._y, 0.5);
+		image_angle = 5 * sign(x - position.next._x);
+	  
+		 if (timers.shooting._current <= 0)
+		    {
+		        attkState = choose( BOOSshot_state.circle, BOOSshot_state.waiting);
+		        timers.shooting._current = timers.shooting._max;
+		    }
+			    else
+			    {
+			        attkState = BOOSshot_state.waiting;
+			        timers.shooting._current -= 1;
+			    }
+		 	if beholder_life <=0
+		{
+			audio_play_sound(choose(snd_missile_explosion, snd__retro_bomb_explosion),Sounds.hits,false,0.3);
+			movState = BOSSmov_state.mov_aleatory;
+			position.next._x = x;
+			position.next._y = y;
+			timers.shooting._max *= 0.75;
+			beholder_life = max_beholder_life;
+		}
+	break;
+	
+	case BOSSmov_state.mov_aleatory:
+		    if (ceil(x) == ceil(position.next._x) and ceil(y) == ceil(position.next._y)) // Verifica se a posição atual é igual à próxima posição
+	    {
+	        // Escolha aleatória de uma nova posição x
+	       position.next._x = irandom_range(96, room_width);
+		   position.next._y = irandom_range(100, 500);
+	
+	    } 
+
+	    x = lerp(x, position.next._x, 0.5);
+	    y = lerp(y, position.next._y, 0.5);
+	    image_angle = 5 * sign(x - position.next._x);
+		
+		if (timers.shooting._current <= 0)
+		    {
+		        attkState = choose( BOOSshot_state.aleatory, BOOSshot_state.waiting);
+		        timers.shooting._current = timers.shooting._max;
+		    }
+			    else
+			    {
+			        attkState = BOOSshot_state.waiting;
+			        timers.shooting._current -= 1;
+			    }
+		 	if beholder_life <=0
+		{
+			instance_destroy();
+		}
+	break;
+
+}
+#endregion
+
+switch(attkState)
+{
+	case BOOSshot_state.waiting:
+	//do nothing
+	break;
+	
+	case BOOSshot_state.slow:
+
+	var _inst = instance_create_layer(x,y,"instances", ObossBullet);
+	if instance_exists(O_ship_parent)
+	{
+		_inst.direction = point_direction(x,y,O_ship_parent.x, O_ship_parent.y);	
+	}
+	audio_play_sound(snd_bullet01,Sounds.lazer,false);
+	break;
+
+	case BOOSshot_state.slowpar:
+
+		var _inst_a = instance_create_layer(x + 50,y,"instances", ObossBullet);
+		var _inst_b = instance_create_layer(x - 50,y,"instances", ObossBullet);
+		if instance_exists(O_ship_parent)
+		{
+			_inst_a.direction = point_direction(x,y,O_ship_parent.x, O_ship_parent.y);	
+			_inst_b.direction = point_direction(x,y,O_ship_parent.x, O_ship_parent.y);	
+		}
+		audio_play_sound(snd_bullet01,Sounds.lazer,false);
+		break;
+		
+		case BOOSshot_state.aleatory:
+			if !instance_exists(ObossShield)
+			{
+				instance_create_layer(x,y,"layer_under", ObossShield);
+			}
+			if alarm[0] == -1
+			{
+				alarm[0] = 30;	
+			}
+		break;
+		case BOOSshot_state.rapidfire:
+		for (var i = 0; i < 4; ++i) {
+		   	var _inst = instance_create_layer(x,y,"instances", ObossBullet);
+			_inst.timer_wait = i *8;
+			if instance_exists(O_ship_parent)
+			{
+				_inst.direction = point_direction(x,y,O_ship_parent.x, O_ship_parent.y);	
+			}
+		audio_play_sound(snd_bullet01,Sounds.lazer,false);
+		}		
+		break;
+		
+		case BOOSshot_state.circle:
+		var _inst = noone;
+		for (var i = 180; i <360; i += 15) {
+		    var _xx = x + lengthdir_x(32,i);
+			var _yy = y + lengthdir_y(21,i);
+			
+			 _inst = instance_create_layer(_xx,_yy,"instances", ObossBulletslow);
+			_inst.direction = i;
+		}	
+		audio_play_sound(snd_bullet01,Sounds.lazer,false);
+		break;
+}

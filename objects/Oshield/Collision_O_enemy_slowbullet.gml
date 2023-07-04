@@ -7,7 +7,7 @@ if _ship.shield >0
 	visible = true;
     alarm[0]= 180;
 	with(other)
-{	
-	instance_destroy();
-}
+		{	
+			instance_destroy();
+		}
 }

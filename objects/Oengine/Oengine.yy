@@ -9,7 +9,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Engines",
-    "path": "folders/Objetos/Players/Engines.yy",
+    "path": "folders/Objetos/Engines.yy",
   },
   "parentObjectId": null,
   "persistent": false,

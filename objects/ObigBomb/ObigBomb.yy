@@ -11,8 +11,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "enemy bullets",
-    "path": "folders/Objetos/Enemys/enemy bullets.yy",
+    "name": "Boss",
+    "path": "folders/Objetos/Enemys/Boss.yy",
   },
   "parentObjectId": null,
   "persistent": false,

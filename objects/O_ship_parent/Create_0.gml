@@ -9,7 +9,7 @@ move_speed = 2;
 max_movespeed = 2;
 heat = 0;
 maxHeat = 140;
-max_life = 4;
+max_life = 10;
 life_ship = max_life;
 
 shield = 10;

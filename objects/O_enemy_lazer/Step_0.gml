@@ -10,29 +10,21 @@ y = _sniper.y +80;
 
 direction = point_direction(_sniper.x, _sniper.y,_ship.x, _ship.y);
 var max_lenght = distance_to_object(_ship);
-for (i = 0; i < max_lenght; i++) {
-    xEnd = x + lengthdir_x(i, direction);
-    yEnd = y + lengthdir_y(i, direction);
-    
-    lenght_lazer = i;
-	if _ship.shield >=10 {
-	if collision_point(xEnd, yEnd, Oshield, 1, 0) and _ship.shield >=10 {
-	/*
-        part_particles_create(O_particle_setup.particleSytem, xEnd, yEnd, O_particle_setup.particleTypehit, 1);
-        part_particles_create(O_particle_setup.particleSytem, xEnd, yEnd, O_particle_setup.particleTypespark, 10);
-      */
-        break;
-    }
-	}else{
-    if collision_point(xEnd, yEnd , O_ship_parent, 1, 0) {
-		/*
-        part_particles_create(O_particle_setup.particleSytem, xEnd, yEnd, O_particle_setup.particleTypehit, 1);
-        part_particles_create(O_particle_setup.particleSytem, xEnd, yEnd, O_particle_setup.particleTypespark, 10);
-       */
-        break;
-    }
+	for (i = 0; i < max_lenght; i++) {
+	    xEnd = x + lengthdir_x(i, direction);
+	    yEnd = y + lengthdir_y(i, direction);
+	    lenght_lazer = i;
+		
+		if _ship.shield >=10 {
+			if collision_point(xEnd, yEnd, Oshield, 1, 0) and _ship.shield >=10 {
+			/*
+		        part_particles_create(O_particle_setup.particleSytem, xEnd, yEnd, O_particle_setup.particleTypehit, 1);
+		        part_particles_create(O_particle_setup.particleSytem, xEnd, yEnd, O_particle_setup.particleTypespark, 10);
+		      */
+		        break;
+		    }
+		}
 	}
-}
 
 if instance_exists(O_enemy_parent){	
 	var _list = ds_list_create();

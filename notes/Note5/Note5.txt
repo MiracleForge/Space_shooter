@@ -1,0 +1,18 @@
+//Dash
+dash_dir = -1;
+dash_veloc = 1;
+
+
+//objeto dash 
+image_alpha = 0.6;
+image_xscale = 0.7;
+image_yscale = 0.7
+
+image_alpha -= 0.1;
+if image_alpha <= 0{	
+	instance_destroy();
+	}
+	
+	//script
+	   var _inst = instance_create_layer(x, y, "Instances", obj_dash);
+    _inst.sprite_index = sprite_index;
