@@ -40,3 +40,13 @@ if (timertodestroy <=0)
 {	
 	instance_destroy();	
 }
+
+
+if instance_exists(O_boss_beholder) and O_boss_beholder.movState == BOSSmov_state.intro and !capitao
+{
+	capitao = true;
+	var _inst =instance_create_depth(0,0,-9999,Ospeak);
+	_inst.text_id = "Capitao";
+	
+	
+}

@@ -1,6 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 instance_create_depth(x,y,-200,Oalert_room);
+var layer_id = layer_get_id("Enemy_layer");
+layer_destroy_instances(layer_id);
 image_xscale = 6;
 image_yscale = 6;
 //moviment
@@ -9,7 +11,7 @@ image_yscale = 6;
 //veloc = 2;
 
 //intro
-positionY = 180;
+positionY = 300;
 
 beholder_life = 150;
 max_beholder_life = 150;

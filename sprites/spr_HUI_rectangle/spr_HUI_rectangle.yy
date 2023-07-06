@@ -22,7 +22,30 @@
   "layers": [
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"6bcbf3d1-1fa6-4f0c-95bb-850de3df05bb","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
-  "nineSlice": null,
+  "nineSlice": {
+    "resourceType": "GMNineSliceData",
+    "resourceVersion": "1.0",
+    "bottom": 1,
+    "enabled": false,
+    "guideColour": [
+      4294902015,
+      4294902015,
+      4294902015,
+      4294902015,
+    ],
+    "highlightColour": 1728023040,
+    "highlightStyle": 0,
+    "left": 1,
+    "right": 1,
+    "tileMode": [
+      1,
+      0,
+      0,
+      0,
+      3,
+    ],
+    "top": 1,
+  },
   "origin": 0,
   "parent": {
     "name": "HUD",

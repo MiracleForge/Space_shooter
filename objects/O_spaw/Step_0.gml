@@ -24,7 +24,7 @@ if (!Ogame.pick_ship) {
 	    timeSinceLastCheck = 0;
 	}
 	// enemy_ships spawner
-    if (!O_spaw_conter_atk.counter_attack) and !instance_exists(O_boss_beholder) 
+    if (!O_spaw_conter_atk.counter_attack) and !instance_exists(O_boss_beholder) and alarm[0]!= -1
 	{
         var spawnIntervals = [
             [40, O_enemy_01, irandom_range(1, 1), [0, 720, 0, -20]],

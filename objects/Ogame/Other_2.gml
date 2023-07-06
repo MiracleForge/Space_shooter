@@ -1,6 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-
+view_enabled = true;
+view_visible[0] =true
 
 var _w = global.res_width;
 var _h = global.res_height;
@@ -12,4 +13,5 @@ camera_set_view_border(_cam, _w / 2, _h / 2);
 room_width = global.res_width;
 room_height = global.res_height;
 
+view_camera[0] = _cam
 pick_ship = true;

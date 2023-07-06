@@ -19,6 +19,8 @@ time2 = 0;
 glow = 0;
 
 timertodestroy = 600;
+
+ capitao = false
 //zooning 
 //Ogame.cameratarget = O_boss_beholder;
 //zoomtimer = 30;
