@@ -1,8 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 draw_self();
-
-if movState == BOSSmov_state.intro or movState == BOSSmov_state.dying
+draw_text(x -30 , y +100, Ospeak.spriteicon);
+if movState == BOSSmov_state.intro or movState == BOSSmov_state.dying or movState == BOSSmov_state.phase_pre
 {
 		return;	
 }

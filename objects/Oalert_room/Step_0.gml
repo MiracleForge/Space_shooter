@@ -49,4 +49,5 @@ if instance_exists(O_boss_beholder) and O_boss_beholder.movState == BOSSmov_stat
 	_inst.text_id = "Capitao";
 	
 	
+	
 }

@@ -14,4 +14,7 @@ and room_alarmBoss == true
 	room_alarmBoss = false;
 	audio_stop_sound(snd__alarm__1_);
 	audio_play_sound(snd_boss_fight,50,true);
+}else 
+{
+	audio_stop_sound(snd_boss_fight);	
 }

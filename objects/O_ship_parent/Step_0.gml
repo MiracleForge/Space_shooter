@@ -15,6 +15,7 @@ if life_ship <= 0 {
 if shield == 0 and alarm[3] == -1{	
 	alarm[3] = 380;
 	audio_play_sound(snd_shield_broken,0,false);
+	
 	}
 
 var _move_x = 0;

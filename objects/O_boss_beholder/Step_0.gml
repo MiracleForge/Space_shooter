@@ -2,7 +2,15 @@
 // Você pode escrever seu código neste editor
 // Dentro do evento Create do objeto
 //destroying boss
-
+if !instance_exists(Ofate) and movState != BOSSmov_state.intro 
+and movState != BOSSmov_state.dying 
+and movState != BOSSmov_state.phase_pre
+{	
+	var _inst = instance_create_layer(x, y, "Instances", Ofate);
+	_inst.sprite_index = sprite_index;
+	_inst.image_xscale = image_xscale;
+	_inst.image_yscale = image_yscale;
+}
 
 #region /////////////// MOVIMENT STATES SWITCH //////////////////////////
 switch(movState)
@@ -29,14 +37,7 @@ switch(movState)
 	    x = lerp(x, position.next._x, 0.5);
 	    image_angle = 5 * sign(x - position.next._x);
   
-			if !instance_exists(Ofate)
-		{
 	
-			var _inst = instance_create_layer(x, y, "Instances", Ofate);
-			    _inst.sprite_index = sprite_index;
-				_inst.image_xscale = image_xscale;
-				_inst.image_yscale = image_yscale;
-		}
 	    if (timers.shooting._current <= 0)
 	    {
 	        attkState = choose(BOOSshot_state.slow,BOOSshot_state.slowpar,BOOSshot_state.waiting);
@@ -71,14 +72,7 @@ switch(movState)
 	
 	    image_angle = 5 * sign(x - position.next._x);
   
-			if !instance_exists(Ofate)
-			{
-	
-			var _inst = instance_create_layer(x, y, "Instances", Ofate);
-			    _inst.sprite_index = sprite_index;
-				_inst.image_xscale = image_xscale;
-				_inst.image_yscale = image_yscale;
-			}
+			
 			 if (timers.shooting._current <= 0)
 		    {
 		        attkState = choose( BOOSshot_state.rapidfire, BOOSshot_state.slow, BOOSshot_state.waiting);
@@ -125,13 +119,32 @@ switch(movState)
 			    }
 		 	if beholder_life <=0
 		{
+			audio_play_sound(snd_horn_sound,Sounds.lazer,true);
 			audio_play_sound(choose(snd_missile_explosion, snd__retro_bomb_explosion),Sounds.hits,false,0.3);
-			movState = BOSSmov_state.mov_aleatory;
+			movState = BOSSmov_state.phase_pre;
 			position.next._x = x;
 			position.next._y = y;
 			timers.shooting._max *= 0.75;
 			beholder_life = max_beholder_life;
 		}
+	break;
+	
+	case BOSSmov_state.phase_pre:
+		x = lerp(x,room_width/2,0.01);
+		y = lerp(y,positionY,0.01);
+		
+	
+		if (floor(abs(y - positionY)) == 0) and (floor(abs(x - room_width/2)) == 0)and !alarm2set // caso esteja na posição
+		//mudar starte.
+		{	
+			alarm[2] = 60;
+			alarm2set = true
+		
+		}
+		
+			  attkState = BOOSshot_state.waiting;
+			  timers.shooting._current -= 1;
+			   
 	break;
 	
 	case BOSSmov_state.mov_aleatory:
@@ -159,13 +172,47 @@ switch(movState)
 			    }
 		 	if beholder_life <=0
 		{
-			instance_destroy();
+		movState = BOSSmov_state.dying;
+		
+			
 		}
 	break;
+	case BOSSmov_state.dying:
+		
+		x = x;
+		y = y;
+		var area_randomX = x + random(sprite_width);
+		var area_randomY = y + random(sprite_height);
+		attkState = BOOSshot_state.waiting;
+		if alarm[3] == -1 {
+			with(Ogame){
+			  shake = true;
+		      shake_time = 30;
+		      shake_magnitude = 5;
+		      shake_fade = 0.2;
+			}
+				
+			alarm[3] = 60;
+		}
+			for (var ex = 0; ex < 10; ex++)   {
+			    // code here
+		
+			    var randomOffsetX = irandom_range(-32, 32); // Ajuste o valor conforme necessário para a distribuição desejada
+			    var randomOffsetY = irandom_range(-32, 32); // Ajuste o valor conforme necessário para a distribuição desejada
 
+			    var spawnX = area_randomX + randomOffsetX;
+			    var spawnY = area_randomY + randomOffsetY;
+
+			    instance_create_layer(spawnX, spawnY, "Enemy_layer", O_eff_bombs);
+			}
+		
+		
+	break;
 }
 #endregion
 
+
+#region /// switch states attaks
 switch(attkState)
 {
 	case BOOSshot_state.waiting:
@@ -228,3 +275,4 @@ switch(attkState)
 		audio_play_sound(snd_bullet01,Sounds.lazer,false);
 		break;
 }
+#endregion

@@ -7,7 +7,13 @@ if instance_exists(O_boss_beholder) and O_boss_beholder.movState == BOSSmov_stat
 {
 text_draw =true;
 	
-	 scr_create_text_id(text_id);
+	 scr_create_text_id(text_id,0);
+}
+if Ogame.aideship
+{
+text_draw =true;
+	
+	 scr_create_text_id(text_id,1);
 }
 
  

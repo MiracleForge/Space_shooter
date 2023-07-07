@@ -8,8 +8,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Controls",
-    "path": "folders/Objetos/Controls.yy",
+    "name": "efeitos",
+    "path": "folders/Objetos/Controls/efeitos.yy",
   },
   "parentObjectId": null,
   "persistent": false,

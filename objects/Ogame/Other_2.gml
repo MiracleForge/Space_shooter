@@ -14,4 +14,6 @@ room_width = global.res_width;
 room_height = global.res_height;
 
 view_camera[0] = _cam
-pick_ship = true;
+
+
+

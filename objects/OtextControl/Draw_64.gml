@@ -39,6 +39,7 @@ if draw_char >= text_length[page]
     }
     else
     {
+		
         instance_destroy();
     }
 }
@@ -59,7 +60,15 @@ if instance_exists(Ospeak)
 	var _drawtext = string_copy(text[page],1,draw_char);
 	draw_text_ext(textbox_x + text_x_offset[page] + border,textbox_y + border + (room_height/2 - 20), _drawtext, line_sep,line_width);
 
-
+	// draw_characterBOX
+	draw_sprite_ext(spr_HUI_rectangle,0,room_width/2,room_height/1.5, 6,6,0,c_white,1)
+	// draw_ icon character
+	
+	if !is_undefined(Ospeak.spriteicon)
+	{
+		image_speed = 0.1;
+		draw_sprite_ext(Ospeak.spriteicon,image_index,room_width/2 + 5,room_height/1.5 + 6,10,10,0,c_white,1);	
+	}
 	
 }
 

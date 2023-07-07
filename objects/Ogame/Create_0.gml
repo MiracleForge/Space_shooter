@@ -16,12 +16,19 @@ if (_display_ratio < _ratio){
 
 randomize();
 //ship selection
-pick_ship = false;
+pick_ship = true;
 ship_snd_select = false;
 // display ship
 rotationSpeed = 2;
 targetAngle = 90;
 cameratarget = O_ship_parent;
+// effects
+shake = false;
+shake_time = 0;
+shake_magnitude = 0;
+shake_fade = 0.25;
+
+
 
 global.level = 1;
 global.pause = false;
@@ -31,4 +38,8 @@ Pyframe_icon = 0;
 paused_surf = -1;
 
 lenght_shieldBar = 0;
+
+//chamadas
+boss_killed = false;
+aideship = false; // there's a aide ship one map?
 

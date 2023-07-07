@@ -12,6 +12,7 @@ image_yscale = 6;
 
 //intro
 positionY = 300;
+alarm2set = false;
 
 beholder_life = 150;
 max_beholder_life = 150;
@@ -22,6 +23,7 @@ enum BOSSmov_state
 	phase_one,
 	phase_two,
 	phase_three,
+	phase_pre,
 	mov_aleatory,
 	dying
 	

@@ -18,7 +18,7 @@ var _ship02_A = sprite_get_height(_ship02) * _scale;
 var _guiship02_L =  _guiL/1.2 - _ship02_L/2;  // dividir o tamanho da sprite 
 var _guiship02_A = _guia/2 - _ship02_A/2;
 //rotação das sprites no seletor
-if pick_ship	
+if pick_ship and room == rm_Game
 {
 	if point_in_rectangle(_mx, _my, (_guiship01_L + 50) - _ship01_L, (_guiship01_A + 50) - _ship01_A, _guiship01_L + 50, _guiship01_A + 50) 
 	{
@@ -37,8 +37,39 @@ if pick_ship
 		}
 		}
 }
-	
+#region // shake effect
+if (shake) 
+{ 
+   shake_time -= 1; 
+   var _xval = choose(-shake_magnitude, shake_magnitude); 
+   var _yval = choose(-shake_magnitude, shake_magnitude); 
+   camera_set_view_pos(view_camera[0], _xval, _yval); 
 
+   if (shake_time <= 0) 
+   { 
+      shake_magnitude -= shake_fade; 
+
+      if (shake_magnitude <= 0) 
+      { 
+         camera_set_view_pos(view_camera[0], 0, 0); 
+         shake = false; 
+      } 
+   } 
+}
+#endregion	
+
+
+#region // chamadas
+if instance_exists(OaideShip) and !aideship
+{
+	aideship = true;
+	var _inst =instance_create_depth(0,0,-9999,Ospeak);
+	_inst.text_id = "AIDE";
+	
+	
+	
+}
+#endregion
 
 
 

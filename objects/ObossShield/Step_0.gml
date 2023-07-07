@@ -1,5 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if instance_exists(O_boss_beholder) and O_boss_beholder.attkState == BOOSshot_state.aleatory
+{
  var _ship = O_boss_beholder;
  image_yscale = -image_yscale;
     
@@ -9,7 +11,8 @@
     direction = _ship.direction;
     image_angle = _ship.direction;
 	
-if !instance_exists(O_boss_beholder) or O_boss_beholder.attkState == BOOSshot_state.aleatory
-{
+	
+}else
+	{	
 	instance_destroy();
-}
+	}

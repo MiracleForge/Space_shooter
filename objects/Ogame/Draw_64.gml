@@ -1,5 +1,6 @@
 /// @description DRAW_GUI_UI
 // Você pode escrever seu código neste editor
+
 #region //Variables from UI
 // Mouse tracking
 var _mx = device_mouse_x(0);
@@ -91,7 +92,7 @@ draw_sprite_ext(Spr_HUI_shield, 0, 430 + (lenght_shieldBar /10) , 75, _scale *1.
 #endregion ////END UI
 
 #region // Player selection screen
-if pick_ship {
+if pick_ship  {
 // Ship USS Cerulean
 var _ship01_L = sprite_get_width(_ship01) * _scale;
 var _ship01_A = sprite_get_height(_ship01) * _scale;
@@ -165,5 +166,4 @@ else {
 }
 }
 #endregion
-
 

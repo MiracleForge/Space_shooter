@@ -5,3 +5,7 @@
         take_damage = false;
         life_ship -= 1;
     }
+	with(other)
+	{
+	instance_destroy();	
+	}

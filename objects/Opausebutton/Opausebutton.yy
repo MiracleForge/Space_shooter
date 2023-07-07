@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Controls",
-    "path": "folders/Objetos/Controls.yy",
+    "name": "Controls and joystick",
+    "path": "folders/Objetos/Controls/Controls and joystick.yy",
   },
   "parentObjectId": {
     "name": "O_ui_parent",
