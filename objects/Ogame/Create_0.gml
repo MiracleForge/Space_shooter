@@ -22,24 +22,31 @@ ship_snd_select = false;
 rotationSpeed = 2;
 targetAngle = 90;
 cameratarget = O_ship_parent;
+
 // effects
 shake = false;
 shake_time = 0;
 shake_magnitude = 0;
 shake_fade = 0.25;
-
-
-
+//global variables
 global.level = 1;
 global.pause = false;
 score = 0;
 
 Pyframe_icon = 0;
-paused_surf = -1;
+max_Pyframe_icon = 8;
+trakying_ship = 1;
+max_trakying_ship = 3;
+choose_ship = true;
 
+test = false;
+
+// surface draw
+paused_surf = -1;
+// size of the shield bars
 lenght_shieldBar = 0;
 
 //chamadas
 boss_killed = false;
-aideship = false; // there's a aide ship one map?
+
 

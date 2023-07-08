@@ -9,6 +9,7 @@ var _my = device_mouse_y(0);
 var _guiL = display_get_gui_width();
 var _guia = display_get_gui_height();
 var _scale =  6;
+var _scalahalf = _scale *1.5;
 //collours
 var c = c_white;
 var C = c_black;
@@ -17,10 +18,15 @@ var p = c_purple;
 //Player Ships sprits
 var _ship01 = spr_USS_Cerulean;
 var _ship02 = spr_USS_Emberstrike;
+var _ship03 = spr_USS_Verdant_Shield
 var _ship_pai =O_ship_parent;
 
-#endregion
+//room coords 
+var rm_w = room_width/4;
+var rm_h = room_height/3;
 
+#endregion
+if room == rm_Game{
 // HUI elements 
 #region DRAW_UI
 
@@ -90,47 +96,146 @@ draw_sprite_ext(Spr_HUI_shield, 0, 430 + (lenght_shieldBar /10) , 75, _scale *1.
 #endregion
 
 #endregion ////END UI
+}
 
 #region // Player selection screen
-if pick_ship  {
-// Ship USS Cerulean
-var _ship01_L = sprite_get_width(_ship01) * _scale;
-var _ship01_A = sprite_get_height(_ship01) * _scale;
-var _guiship01_L =  _guiL/2.4 - _ship01_L/2;  // dividir o tamanho da sprite 
-var _guiship01_A = _guia/2 - _ship01_A/2;
-// USS Emberstrike
-var _ship02_L = sprite_get_width(_ship02) * _scale;
-var _ship02_A = sprite_get_height(_ship02) * _scale;
-var _guiship02_L =  _guiL/1.2 - _ship02_L/2;  // dividir o tamanho da sprite 
-var _guiship02_A = _guia/2 - _ship02_A/2;
-
-draw_rectangle_color(0,0,720, 1280, C,p,cA,C,false);
-// Verificar se o mouse está na posição desejada
-
-if point_in_rectangle(_mx, _my, (_guiship01_L + 50) - _ship01_L, (_guiship01_A + 50) - _ship01_A, _guiship01_L + 50, _guiship01_A + 50)
+if pick_ship and room == rm_Game
 {
+    var _background_l = sprite_get_width(spr_back_menu) * 24;
+    var _background_A = sprite_get_height(spr_back_menu) * 24;
+    var _guiback_L = rm_w - _background_l / 8;
+    var _guiback_A = rm_h - _background_A / 8;
+
+    var _display_x = rm_w + (_background_l / 2) - (_scale * sprite_get_width(spr_display_ship)) / 2;
+    var _display_y = rm_h + (_background_A / 2) - (_scale * sprite_get_height(spr_display_ship)) / 2;
 	
-    draw_sprite_ext(_ship01, 0, _guiship01_L, _guiship01_A, _scale, _scale, targetAngle, c, 1);
-    draw_sprite_ext(_ship02,0,_guiship02_L,_guiship02_A,_scale,_scale,90,c,1);
-	if ship_snd_select == false{
-	audio_play_sound(snd_menu_click,0,false);
-	ship_snd_select = true;
-	}
-	}else if point_in_rectangle(_mx, _my, (_guiship02_L + 50) - _ship02_L, (_guiship02_A + 50) - _ship02_A, _guiship02_L + 50, _guiship02_A + 50){
-		draw_sprite_ext(_ship01, 0, _guiship01_L, _guiship01_A, _scale, _scale, 90, c, 1);
-	    draw_sprite_ext(_ship02,0,_guiship02_L,_guiship02_A,_scale,_scale,targetAngle,c,1);
-		if ship_snd_select == false{
-		audio_play_sound(snd_menu_click,0,false);
-		ship_snd_select = true;
-		}
-}else
-	{
-	draw_sprite_ext(_ship01,0,_guiship01_L,_guiship01_A,_scale,_scale,90,c,1);
-	draw_sprite_ext(_ship02,0,_guiship02_L,_guiship02_A,_scale,_scale,90,c,1);
-	ship_snd_select = false;
-	}
+	var porttrait_posX = _display_x + 50;
+	var porttrait_posY = _display_y + 50;
 	
+
+    draw_rectangle_color(0, 0, 720, 1280, C, p, cA, C, false); //back color
+    draw_sprite_ext(spr_back_menu, 0, rm_w, rm_h, 24, 24, 0, c, 1); //background rectangle
+    draw_sprite_ext(spr_display_ship, 0, _display_x, _display_y, _scale, _scale, 0, c, 1); // rectangle
+
+    if choose_ship // player is choosing their ships
+    {
+        switch (trakying_ship)//draw ship
+        {
+            case 1:
+                draw_sprite_ext(spr_USS_Cerulean, 0, porttrait_posX,porttrait_posY, _scale, _scale, targetAngle, c, 1);
+                break;
+            case 2:
+                draw_sprite_ext(spr_USS_Emberstrike, 0, porttrait_posX, porttrait_posY, _scale, _scale, targetAngle, c, 1);
+                break;
+            case 3:
+                draw_sprite_ext(spr_USS_Verdant_Shield, 0, porttrait_posX, porttrait_posY, _scale, _scale, targetAngle, c, 1);
+                break;
+        }
+    }
+    else
+    {
+        switch (Pyframe_icon) // draw characters
+        {
+            case 0:
+                draw_sprite_ext(spr_HUI_character, 0, porttrait_posX, porttrait_posY, _scalahalf , _scalahalf, 0, c, 1);
+                break;
+            case 1:
+                draw_sprite_ext(spr_HUI_character, 1, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
+                break;
+            case 2:
+                draw_sprite_ext(spr_HUI_character, 2, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
+                break;
+            case 3:
+                draw_sprite_ext(spr_HUI_character, 3, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
+                break;
+            case 4:
+                draw_sprite_ext(spr_HUI_character, 4, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
+                break;
+            case 5:
+                draw_sprite_ext(spr_HUI_character, 5, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
+                break;
+            case 6:
+                draw_sprite_ext(spr_HUI_character, 6, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
+                break;
+            case 7:
+                draw_sprite_ext(spr_HUI_character, 7, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
+                break;
+            case 8:
+                draw_sprite_ext(spr_HUI_character, 8, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
+                break;
+        }
+    }
+
+    var posnext2 = 300;
+    var subimg = 1;
+    repeat (2)
+    {
+        draw_sprite_ext(Spr_next, subimg, posnext2, _display_y + 130, _scale, _scale, 0, c, 1);
+        posnext2 += 150;
+        subimg -= 1;
+    }
+
+    if point_in_rectangle(_mx, _my, 300, 600, 340, 680)
+    {
+        if mouse_check_button_pressed(mb_left)
+        {
+            if choose_ship
+            {
+                trakying_ship = clamp(trakying_ship - 1, 1, max_trakying_ship);
+            }
+	            else
+	            {
+	                Pyframe_icon = clamp(Pyframe_icon - 1, 1, Pyframe_icon);
+	            }
+        }
+    }
+
+    if point_in_rectangle(_mx, _my, 450, 600, 480, 680)
+    {
+        if mouse_check_button_pressed(mb_left)
+        {
+            if choose_ship
+            {
+                trakying_ship = clamp(trakying_ship + 1, 1, max_trakying_ship);
+            }
+	            else
+	            {
+	                Pyframe_icon =  clamp(Pyframe_icon + 1, 1, max_Pyframe_icon);
+	            }
+        }
+    }
+//button to confirm player choice
+    draw_sprite_ext(spr_button_play, 0, 358, 750, _scalahalf, _scalahalf, 0, c, 1);
+
+    if point_in_rectangle(_mx, _my, 358, 680, 430, 750)
+    {
+        if mouse_check_button_pressed(mb_left)
+        {
+			if choose_ship	
+			{
+				choose_ship = false;
+			}
+				else 
+				{	
+					pick_ship = false; // leaving selectiong menu
+					switch (trakying_ship) //create player choice instance
+				        {
+				            case 1:
+				               	instance_create_layer(rm_w,1070,"instances", O_USS_Cerulean);
+				                break;
+				            case 2:
+				                instance_create_layer(rm_w,1070,"instances", O_USS_Emberstrike);
+				                break;
+				            case 3:
+				                instance_create_layer(rm_w,1070,"instances", O_USS_Emerald_Warhammer);
+				                break;
+				        }
+					
+				}
+        }
+    }
 }
+
 #endregion
 
 #region // PAUSE GAME //////////////////////////////////////////////////
@@ -165,5 +270,16 @@ else {
     
 }
 }
+#endregion
+
+#region //contador de instancias
+// Dentro de um objeto ou evento adequado
+
+// Variável para armazenar o número de instâncias do objeto OaideShip
+var oaideShipCount = 0;
+
+// No evento Step ou Draw
+oaideShipCount = instance_number(Olight);
+draw_text(x, y, "Quantidade de OaideShip: " + string(oaideShipCount));
 #endregion
 

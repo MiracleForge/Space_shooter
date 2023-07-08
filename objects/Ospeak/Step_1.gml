@@ -9,7 +9,7 @@ text_draw =true;
 	
 	 scr_create_text_id(text_id,0);
 }
-if Ogame.aideship
+if instance_exists(OaideShip)and OaideShip.aideship and !text_draw
 {
 text_draw =true;
 	

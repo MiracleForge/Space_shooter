@@ -5,5 +5,5 @@ image_yscale = 3.6;
 image_angle = 270;
 
 vspeed = -5;
-
+aideship = false;
 alarm[0] = irandom_range(100, 260);

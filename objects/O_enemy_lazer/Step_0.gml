@@ -1,6 +1,5 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-
 var _ship = O_ship_parent;
 var _sniper = O_enemy_sniper;
 if instance_exists(_ship) and instance_exists(_sniper){

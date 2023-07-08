@@ -15,7 +15,7 @@ if (!Ogame.pick_ship) {
 	    var randomValue = random(1000 - global.level);
 
 	    // Verifica se o número aleatório está dentro da probabilidade desejada
-	    if (randomValue <= 0.25) {
+	    if (randomValue <= 0.25)  {
 	     var random_posX = irandom_range(10,720);
 		instance_create_layer(random_posX, 1275,"instances",OaideShip);
 	    }

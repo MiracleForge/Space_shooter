@@ -5,6 +5,8 @@ var _my = device_mouse_y(0);
 var _guiL = display_get_gui_width();
 var _guia = display_get_gui_height();
 var _scale =  6;
+var rm_w = room_width/4;
+var rm_h = room_height/3;
 var _ship01 = spr_USS_Cerulean;
 var _ship02 = spr_USS_Emberstrike;
 // Ship USS Cerulean
@@ -17,26 +19,13 @@ var _ship02_L = sprite_get_width(_ship02) * _scale;
 var _ship02_A = sprite_get_height(_ship02) * _scale;
 var _guiship02_L =  _guiL/1.2 - _ship02_L/2;  // dividir o tamanho da sprite 
 var _guiship02_A = _guia/2 - _ship02_A/2;
-//rotação das sprites no seletor
+
 if pick_ship and room == rm_Game
-{
-	if point_in_rectangle(_mx, _my, (_guiship01_L + 50) - _ship01_L, (_guiship01_A + 50) - _ship01_A, _guiship01_L + 50, _guiship01_A + 50) 
-	{
-	    targetAngle += rotationSpeed; // Incrementa o ângulo de destino
-		if mouse_check_button(mb_left)	
-		{	
-		instance_create_layer(450,1070,"instances", O_USS_Cerulean);	
-		pick_ship = false;
-		}
-	}else if point_in_rectangle(_mx, _my, (_guiship02_L + 50) - _ship02_L, (_guiship02_A + 50) - _ship02_A, _guiship02_L + 50, _guiship02_A + 50){	
-		 targetAngle += rotationSpeed; // Incrementa o ângulo de destino
-		 if mouse_check_button(mb_left)	
-		{	
-		instance_create_layer(450,1070,"instances", O_USS_Emberstrike);	
-		pick_ship = false;
-		}
-		}
+{	
+	targetAngle += rotationSpeed; // rotation of sprites
+
 }
+
 #region // shake effect
 if (shake) 
 { 
@@ -59,17 +48,6 @@ if (shake)
 #endregion	
 
 
-#region // chamadas
-if instance_exists(OaideShip) and !aideship
-{
-	aideship = true;
-	var _inst =instance_create_depth(0,0,-9999,Ospeak);
-	_inst.text_id = "AIDE";
-	
-	
-	
-}
-#endregion
 
 
 

@@ -17,11 +17,11 @@
   "option_operagx_mod_team_id": "",
   "option_operagx_mod_team_name": "",
   "option_operagx_mod_version": "1.0.0.0",
-  "option_operagx_next_version": "1.0.0.85",
+  "option_operagx_next_version": "1.0.0.90",
   "option_operagx_publicShareUrl": "",
   "option_operagx_scale": 0,
   "option_operagx_team_id": "8926c433-a1d5-4905-8af9-db29a95af295",
   "option_operagx_team_name": "Paulotale studio",
   "option_operagx_texture_page": "2048x2048",
-  "option_operagx_version": "1.0.0.84",
+  "option_operagx_version": "1.0.0.89",
 }
