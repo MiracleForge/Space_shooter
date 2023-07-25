@@ -1,9 +1,9 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "O_enemy_machine_gun",
+  "name": "O_enemy_bullets",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":7,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
@@ -11,10 +11,7 @@
     "name": "enemy bullets",
     "path": "folders/Objetos/Enemys/enemy bullets.yy",
   },
-  "parentObjectId": {
-    "name": "O_enemy_bullets",
-    "path": "objects/O_enemy_bullets/O_enemy_bullets.yy",
-  },
+  "parentObjectId": null,
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -30,10 +27,7 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": {
-    "name": "Spr_enemy_bullet01",
-    "path": "sprites/Spr_enemy_bullet01/Spr_enemy_bullet01.yy",
-  },
+  "spriteId": null,
   "spriteMaskId": null,
   "visible": true,
 }

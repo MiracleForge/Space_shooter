@@ -20,6 +20,6 @@ if (life <= 0) {
         case 4:
             score += 10*(10* global.level);
             break;
-	
 		}
+		instance_destroy(other);
 	}

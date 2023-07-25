@@ -12,8 +12,8 @@ if (instance_exists(_ship)) {
                 _miss.direction = direction;
                 _miss.image_angle = direction;
         
-                var randomPitch = random_range(0.8, 10);
-                audio_sound_pitch(snd_missile_launcher, randomPitch);
+                var _random_pitch = random_range(0.8, 10);
+                audio_sound_pitch(snd_missile_launcher, _random_pitch);
                 audio_play_sound(snd_missile_launcher, 0, false);
         
                 alarm[0] = 280;
@@ -25,8 +25,8 @@ if (instance_exists(_ship)) {
                 _miss.direction = image_angle;
                 _miss.image_angle = direction;
     
-                var randomPitch = random_range(0.8, 10);
-                audio_sound_pitch(snd_missile_launcher, randomPitch);
+                var _random_pitch = random_range(0.8, 10);
+                audio_sound_pitch(snd_missile_launcher, _random_pitch);
                 audio_play_sound(snd_missile_launcher, 0, false);
     
                 alarm[0] = 300;

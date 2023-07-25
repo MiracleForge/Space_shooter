@@ -26,45 +26,42 @@ var rm_w = room_width/4;
 var rm_h = room_height/3;
 
 #endregion
-if room == rm_Game{
-// HUI elements 
-#region DRAW_UI
+#region  game UI REGION
+if room == rm_Game {
+    // HUI elements
+    var _guiL = display_get_gui_width();
+    var _guia = display_get_gui_height();
+    var _scale = 6;
+    var _scalahalf = _scale * 1.5;
 
-#region  //HEAT CAPACITY
-draw_sprite_ext(spr_GunHeat, 0, 50, 260, _scale, _scale , 0, c, 1);
-if instance_exists(O_ship_parent) {
-//Heat bars
-var maxHeat = O_ship_parent.maxHeat;
-var currentHeat = O_ship_parent.heat;
-// shields bars
-var max_shield = O_ship_parent.max_shield;
-var current_shield = O_ship_parent.shield;
-var barHeight = (currentHeat / maxHeat) * _scale ;
-var barShield = (current_shield / max_shield) * _scale
+    // Draw Heat Capacity
+    draw_sprite_ext(spr_GunHeat, 0, 50, 260, _scale, _scale, 0, c, 1);
+    
+    if instance_exists(O_ship_parent) {
+        var maxHeat = O_ship_parent.maxHeat;
+        var currentHeat = O_ship_parent.heat;
+        var max_shield = O_ship_parent.max_shield;
+        var current_shield = O_ship_parent.shield;
 
-draw_sprite_ext(spr_GunHeatBar, 0, 50, 260, _scale, barHeight, 0, c, 1);
-draw_sprite_ext(spr_HUI_lifebar, 1, 150, 80, _scale, barShield, 0, c, 1);
-}
-#endregion // END HEAT CAPACITY
+        draw_sprite_ext(spr_GunHeatBar, 0, 50, 260, _scale, (currentHeat / maxHeat) * _scale, 0, c, 1);
+        draw_sprite_ext(spr_HUI_lifebar, 1, 150, 80, _scale, (current_shield / max_shield) * _scale, 0, c, 1);
+    }
 
-#region Item slots
-var pos_x = 80;
-repeat(3)
-{	
-	draw_sprite_ext(spr_HUI_rectangle, 0, pos_x, 140, _scale/1.8, _scale/1.8 , 0, c, 1);
-	pos_x += 60;
-}
-#endregion //END ITEM SLOTS
+	// Draw Item Slots
+	var itemPositions = [80, 140, 200];
+	for (var i = 0; i < array_length(itemPositions); i++)
+	{
+	    draw_sprite_ext(spr_HUI_rectangle, 0, itemPositions[i], 140, _scale / 1.8, _scale / 1.8, 0, c, 1);
+	}
 
-#region Player portrait
-
-draw_sprite_ext(spr_HUI_character, Pyframe_icon, 30, 33, _scale *1.7, _scale *1.7 , 0, c, 1);
-draw_sprite_ext(spr_HUI_porttrait, 0, 15, 15, _scale *1.2, _scale *1.2 , 0, c, 1);
-#endregion // END PORTRAIT
+	// Draw Player Portrait
+	draw_sprite_ext(spr_HUI_character, Pyframe_icon, 74, 74, _scale * 1.7, _scale * 1.7, 0, c, 1);
+	draw_sprite_ext(spr_HUI_porttrait, 0, 15, 15, _scale * 1.2, _scale * 1.2, 0, c, 1);
 
 #region Life bars and Shield bars
 
 draw_sprite_ext(spr_HUI_lifebar, 0, 150, 80, _scale, _scale, 0, c, 1);
+//score
     draw_text_transformed_colour(200, 186, score, 2, 2, 0,cA, cA, cA, cA, 1);
     draw_text_transformed_colour(90, 185, "Score", 2, 2, 0,cA, cA, cA, cA, 1);
 
@@ -89,18 +86,18 @@ if instance_exists(_ship_pai){
 		lenght_shieldBar = i;
 	}
 
+  }
 }
-/*
-draw_sprite_ext(Spr_HUI_shield, 0, 430 + (lenght_shieldBar /10) , 75, _scale *1.2, _scale *1.2 , 0, c, 1);
-*/
 #endregion
 
 #endregion ////END UI
-}
+
 
 #region // Player selection screen
 if pick_ship and room == rm_Game
 {
+	//window character creation
+	//background
     var _background_l = sprite_get_width(spr_back_menu) * 24;
     var _background_A = sprite_get_height(spr_back_menu) * 24;
     var _guiback_L = rm_w - _background_l / 8;
@@ -117,8 +114,11 @@ if pick_ship and room == rm_Game
     draw_sprite_ext(spr_back_menu, 0, rm_w, rm_h, 24, 24, 0, c, 1); //background rectangle
     draw_sprite_ext(spr_display_ship, 0, _display_x, _display_y, _scale, _scale, 0, c, 1); // rectangle
 
+// Verifica se o jogador está escolhendo sua nave (choose_ship é verdadeira).
     if choose_ship // player is choosing their ships
     {
+		// Nesse caso, desenha o sprite da nave selecionada com base na variável "trakying_ship".
+       // Cada número representa uma nave específica.
         switch (trakying_ship)//draw ship
         {
             case 1:
@@ -134,6 +134,9 @@ if pick_ship and room == rm_Game
     }
     else
     {
+	// Caso o jogador esteja escolhendo um personagem (choose_ship é falsa),
+    // desenha o sprite do personagem selecionado com base na variável "Pyframe_icon".
+    // Cada número representa um personagem específico.
         switch (Pyframe_icon) // draw characters
         {
             case 0:
@@ -166,6 +169,10 @@ if pick_ship and room == rm_Game
         }
     }
 
+// Desenha os botões de navegação para o jogador percorrer as opções de nave/personagem.
+// Os botões são representados pelo sprite "Spr_next".
+// A variável "posnext2" representa a posição horizontal inicial do primeiro botão.
+// A variável "subimg" representa o número da subimagem do sprite a ser desenhada (1 ou 0).
     var posnext2 = 300;
     var subimg = 1;
     repeat (2)
@@ -175,65 +182,57 @@ if pick_ship and room == rm_Game
         subimg -= 1;
     }
 
-    if point_in_rectangle(_mx, _my, 300, 600, 340, 680)
+    // Verifica se o mouse está sobre o botão de navegação esquerdo ou direito.
+    var previous_button = point_in_rectangle(_mx, _my, 300, 600, 340, 680);
+    var next_button = point_in_rectangle(_mx, _my, 450, 600, 480, 680);
+
+    // Se o botão esquerdo ou direito do mouse foi pressionado...
+    if mouse_check_button_pressed(mb_left)
     {
-        if mouse_check_button_pressed(mb_left)
+        // Verifica se o jogador está escolhendo a nave (choose_ship é verdadeira) e qual botão foi pressionado.
+        if choose_ship
         {
-            if choose_ship
-            {
+            if previous_button
                 trakying_ship = clamp(trakying_ship - 1, 1, max_trakying_ship);
-            }
-	            else
-	            {
-	                Pyframe_icon = clamp(Pyframe_icon - 1, 1, Pyframe_icon);
-	            }
-        }
-    }
-
-    if point_in_rectangle(_mx, _my, 450, 600, 480, 680)
-    {
-        if mouse_check_button_pressed(mb_left)
-        {
-            if choose_ship
-            {
+            else if next_button
                 trakying_ship = clamp(trakying_ship + 1, 1, max_trakying_ship);
-            }
-	            else
-	            {
-	                Pyframe_icon =  clamp(Pyframe_icon + 1, 1, max_Pyframe_icon);
-	            }
         }
-    }
-//button to confirm player choice
-    draw_sprite_ext(spr_button_play, 0, 358, 750, _scalahalf, _scalahalf, 0, c, 1);
-
-    if point_in_rectangle(_mx, _my, 358, 680, 430, 750)
-    {
-        if mouse_check_button_pressed(mb_left)
+        else // Caso esteja escolhendo um personagem.
         {
-			if choose_ship	
-			{
-				choose_ship = false;
-			}
-				else 
-				{	
-					pick_ship = false; // leaving selectiong menu
-					switch (trakying_ship) //create player choice instance
-				        {
-				            case 1:
-				               	instance_create_layer(rm_w,1070,"instances", O_USS_Cerulean);
-				                break;
-				            case 2:
-				                instance_create_layer(rm_w,1070,"instances", O_USS_Emberstrike);
-				                break;
-				            case 3:
-				                instance_create_layer(rm_w,1070,"instances", O_USS_Emerald_Warhammer);
-				                break;
-				        }
-					
-				}
+            if previous_button
+                Pyframe_icon = clamp(Pyframe_icon - 1, 1, max_Pyframe_icon);
+            else if next_button
+                Pyframe_icon = clamp(Pyframe_icon + 1, 1, max_Pyframe_icon);
         }
     }
+	
+// Desenha o botão de confirmação para o jogador escolher sua opção.
+// O jogador pode confirmar sua escolha de nave ou personagem ao clicar nesse botão.
+// Calcula a posição do botão de confirmação
+var button_x = 358;
+var button_y = 750;
+var button_size = _scalahalf * sprite_get_width(spr_button_play);
+
+// Desenha o botão de confirmação
+draw_sprite_ext(spr_button_play, 0, button_x, button_y, _scalahalf, _scalahalf, 0, c, 1);
+
+// Verifica se o mouse está sobre o botão de confirmação e o botão esquerdo do mouse foi pressionado
+if point_in_rectangle(_mx, _my, button_x - button_size/2, button_y - button_size/2, button_x + button_size/2, button_y + button_size/2) && mouse_check_button_pressed(mb_left)
+{
+    // Define o valor de choose_ship diretamente usando o operador ternário.
+    choose_ship = choose_ship ? false : true;
+
+    // Se não estiver escolhendo a nave, cria a instância do jogador com base no valor de "trakying_ship"
+    if (choose_ship)
+    {
+ 
+
+        pick_ship = false; // Saindo do menu de seleção
+        instance_create_layer(rm_w, 1070, "instances", ship_dict[trakying_ship]);
+		
+		
+    }
+}
 }
 
 #endregion
@@ -272,14 +271,17 @@ else {
 }
 #endregion
 
-#region //contador de instancias
-// Dentro de um objeto ou evento adequado
+#region //debuging area
 
+#region // contador de instancias
 // Variável para armazenar o número de instâncias do objeto OaideShip
 var oaideShipCount = 0;
 
 // No evento Step ou Draw
-oaideShipCount = instance_number(Olight);
+oaideShipCount = instance_number(O_missile);
 draw_text(x, y, "Quantidade de OaideShip: " + string(oaideShipCount));
+#endregion
+draw_text_ext_transformed(0,0,fps_real,0,10,3,3,0);
+
 #endregion
 

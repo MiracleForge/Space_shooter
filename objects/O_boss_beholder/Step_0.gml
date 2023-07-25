@@ -132,6 +132,7 @@ switch(movState)
 	case BOSSmov_state.phase_pre:
 		x = lerp(x,room_width/2,0.01);
 		y = lerp(y,positionY,0.01);
+		image_angle = 360;
 		
 	
 		if (floor(abs(y - positionY)) == 0) and (floor(abs(x - room_width/2)) == 0)and !alarm2set // caso esteja na posição

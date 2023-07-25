@@ -2,6 +2,7 @@
 // Você pode escrever seu código neste editor
 var _ship = O_ship_parent;
 var _sniper = O_enemy_sniper;
+var _Pyshield = _ship.shield
 if instance_exists(_ship) and instance_exists(_sniper){
 
 x = _sniper.x - 20;
@@ -15,7 +16,7 @@ var max_lenght = distance_to_object(_ship);
 	    lenght_lazer = i;
 		
 		if _ship.shield >=10 {
-			if collision_point(xEnd, yEnd, Oshield, 1, 0) and _ship.shield >=10 {
+			if collision_point(xEnd, yEnd, Oshield, 1, 0) and _Pyshield >=10 {
 			/*
 		        part_particles_create(O_particle_setup.particleSytem, xEnd, yEnd, O_particle_setup.particleTypehit, 1);
 		        part_particles_create(O_particle_setup.particleSytem, xEnd, yEnd, O_particle_setup.particleTypespark, 10);

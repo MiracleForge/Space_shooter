@@ -1,5 +1,5 @@
 /// @description Inserir descrição aqui
-instance_destroy();
+
 effect_create_above(ef_explosion,x,y,0.1,c_orange);	
 	
 life = 0;
@@ -20,4 +20,6 @@ if (life <= 0) {
             break;
 	
 		}
+		instance_destroy();
+		instance_destroy(other);
 	}

@@ -7,15 +7,15 @@ if enemy_type == 3
 	{
 	   instance_create_layer(_ship.x, _ship.y, "Enemy_layer", O_enemy_lazer);
 	}
-}else if (enemy_type == 4) {
+}else if (enemy_type == 4) and instance_number(O_enemy_mine) <= 10 {
             var _miss = instance_create_layer(x + 35, y + 10, "Enemy_layer", O_enemy_mine);
             if (instance_exists(_miss)) {
                 _miss.speed = 6;
                 _miss.direction = image_angle;
                 _miss.image_angle = direction;
     
-                var randomPitch = random_range(0.8, 10);
-                audio_sound_pitch(snd_missile_launcher, randomPitch);
+                var _random_pitch = random_range(0.8, 10);
+                audio_sound_pitch(snd_missile_launcher, _random_pitch);
                 audio_play_sound(snd_missile_launcher, 0, false);
     
                 alarm[0] = 20;

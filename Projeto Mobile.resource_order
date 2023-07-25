@@ -173,6 +173,7 @@
     {"name":"snd_bullet01","order":1,"path":"sounds/snd_bullet01/snd_bullet01.yy",},
     {"name":"ObossBulletslow","order":4,"path":"objects/ObossBulletslow/ObossBulletslow.yy",},
     {"name":"Information","order":7,"path":"sprites/Information/Information.yy",},
+    {"name":"O_enemy_bullets","order":5,"path":"objects/O_enemy_bullets/O_enemy_bullets.yy",},
     {"name":"Spr_HUI_shield","order":11,"path":"sprites/Spr_HUI_shield/Spr_HUI_shield.yy",},
     {"name":"SpaceShooterAssetPack_BackGrounds","order":2,"path":"sprites/SpaceShooterAssetPack_BackGrounds/SpaceShooterAssetPack_BackGrounds.yy",},
     {"name":"code enemys","order":3,"path":"notes/code enemys/code enemys.yy",},

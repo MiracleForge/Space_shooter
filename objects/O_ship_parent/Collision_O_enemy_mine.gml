@@ -8,10 +8,10 @@ if _mina.explosion_range == true
 	instance_destroy();
 }
 					
-				    if (take_damage == true) {
-				        alarm[2] = 260;   
-				        take_damage = false;
-				        life_ship -= 1;
+  if (take_damage == true) {
+	 alarm[2] = 260;   
+	take_damage = false;
+	life_ship -= 1;
 			    }
 			
 	}

@@ -22,6 +22,13 @@ ship_snd_select = false;
 rotationSpeed = 2;
 targetAngle = 90;
 cameratarget = O_ship_parent;
+//creation of player ship objects
+// Evento Create
+ship_dict = ds_map_create();
+ship_dict[1] = O_USS_Cerulean;
+ship_dict[2] = O_USS_Emberstrike;
+ship_dict[3] = O_USS_Emerald_Warhammer;
+
 
 // effects
 shake = false;
@@ -48,5 +55,8 @@ lenght_shieldBar = 0;
 
 //chamadas
 boss_killed = false;
+
+
+
 
 
