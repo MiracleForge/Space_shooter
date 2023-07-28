@@ -1,5 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+
+
 surface_set_target(surf_light);
 		gpu_set_blendmode_ext(bm_dest_color, bm_zero);
 			draw_surface(application_surface,0,0);

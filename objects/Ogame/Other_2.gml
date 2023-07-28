@@ -1,5 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+
+/*
 view_enabled = true;
 view_visible[0] =true
 
@@ -14,6 +16,7 @@ room_width = global.res_width;
 room_height = global.res_height;
 
 view_camera[0] = _cam
+
 
 
 

@@ -39,8 +39,9 @@ if instance_exists(O_enemy_parent){
 	}
 	}
 
+
+}
 if !instance_exists(_sniper) or alarm[0] == -1
 {
-	instance_destroy(O_enemy_lazer);	
-}
+	instance_destroy();	
 }

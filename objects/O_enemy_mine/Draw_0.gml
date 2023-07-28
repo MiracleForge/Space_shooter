@@ -1,8 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 draw_self();
-//draw alpha after hit
-if alarm[2] >0 {	
+
+if mineEff {	
 	if image_alpha >= 1{		
 		damage_alpha = -0.05; 
 		}else if image_alpha <= 0 {	
@@ -13,4 +13,10 @@ if alarm[2] >0 {
 		image_alpha = 1;
 		}
 		
-draw_text(x-20,y - 20,overheat)
+
+
+
+
+
+
+

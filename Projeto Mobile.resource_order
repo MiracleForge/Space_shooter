@@ -115,6 +115,7 @@
     {"name":"Note5","order":4,"path":"notes/Note5/Note5.yy",},
     {"name":"snd__scriptel__tactic","order":5,"path":"sounds/snd__scriptel__tactic/snd__scriptel__tactic.yy",},
     {"name":"Stats_Bar","order":6,"path":"sprites/Stats_Bar/Stats_Bar.yy",},
+    {"name":"Surface_LIGHTS","order":3,"path":"scripts/Surface_LIGHTS/Surface_LIGHTS.yy",},
     {"name":"ObuttonUI","order":3,"path":"objects/ObuttonUI/ObuttonUI.yy",},
     {"name":"Ospawner","order":1,"path":"objects/Ospawner/Ospawner.yy",},
     {"name":"SpaceShooterAssetPack_Miscellaneous","order":4,"path":"sprites/SpaceShooterAssetPack_Miscellaneous/SpaceShooterAssetPack_Miscellaneous.yy",},

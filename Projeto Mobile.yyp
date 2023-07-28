@@ -146,6 +146,7 @@
     {"id":{"name":"snd__scriptel__tactic","path":"sounds/snd__scriptel__tactic/snd__scriptel__tactic.yy",},},
     {"id":{"name":"ObigMeteor","path":"objects/ObigMeteor/ObigMeteor.yy",},},
     {"id":{"name":"Stats_Bar","path":"sprites/Stats_Bar/Stats_Bar.yy",},},
+    {"id":{"name":"Surface_LIGHTS","path":"scripts/Surface_LIGHTS/Surface_LIGHTS.yy",},},
     {"id":{"name":"ObuttonUI","path":"objects/ObuttonUI/ObuttonUI.yy",},},
     {"id":{"name":"Ospawner","path":"objects/Ospawner/Ospawner.yy",},},
     {"id":{"name":"Functions","path":"scripts/Functions/Functions.yy",},},

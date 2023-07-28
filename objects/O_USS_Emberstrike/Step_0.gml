@@ -39,7 +39,7 @@ if (keyboard_check_pressed(vk_space) && Shooting_button.alarm[0] == -1 || shoot_
     }
     else
     {
-        _inst = instance_create_layer(x - _instY, y - 1, "Instances", O_missile);
+   var  _inst = instance_create_layer(x - _instY, y - 1, "Instances", O_missile);
         _inst.speed = -8;
         _inst.direction = direction;
         _inst.image_angle = direction;

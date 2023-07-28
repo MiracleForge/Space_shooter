@@ -2,18 +2,18 @@
 // Você pode escrever seu código neste editor
 
 // aspect ratio and camera e room size
-global.res_width = 720;
-global.res_height = 1280;
+/*global.res_width = 720;
+global.res_height = 2400;
 
 var _ratio = global.res_width / global.res_height;
-var _display_ratio = display_get_width() / display_get_height();
+var _display_ratio = display_get_gui_width() / display_get_gui_height();
 
 if (_display_ratio < _ratio){
-    global.res_height = 1280; // Optional
+    global.res_height = 2400; // Optional
 
     global.res_width = global.res_height * _display_ratio;
 }
-
+*/
 randomize();
 //ship selection
 pick_ship = true;
@@ -52,6 +52,7 @@ test = false;
 paused_surf = -1;
 // size of the shield bars
 lenght_shieldBar = 0;
+betterlight = true;
 
 //chamadas
 boss_killed = false;

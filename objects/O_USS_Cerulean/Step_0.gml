@@ -4,7 +4,7 @@
 // Inherit the parent event
 event_inherited();
 
-if (keyboard_check_pressed(vk_space) && Shooting_button.alarm[0] == -1 || shoot_on)
+if (keyboard_check_pressed(vk_space) && Shooting_button.alarm[0] == -1 || shoot_on )
 {
     // Código específico da nave tipo 1 para gerar projéteis
     var _instY = -10;
@@ -29,6 +29,7 @@ if (keyboard_check_pressed(vk_space) && Shooting_button.alarm[0] == -1 || shoot_
     }
     else
     {
+		shoot_on = false;
         for (var i = 0; i < ammo + 2; i++)
         {
             _inst = instance_create_layer(x - _instY, y - 1, "Instances", Omachinegun);

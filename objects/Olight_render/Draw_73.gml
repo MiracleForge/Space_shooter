@@ -2,14 +2,6 @@
 // Você pode escrever seu código neste editor
 
 
-if (surface_format_is_supported(surface_rgba16float))
-{
-    optimizeSurfaceCreation(surface_rgba16float);
-}
-else
-{
-    optimizeSurfaceCreation(surface_rgba8unorm);
-}
 
 surface_set_target(surf_light);
 

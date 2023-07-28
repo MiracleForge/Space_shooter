@@ -6,7 +6,7 @@ vspeed = 2 + global.level;
 
 life = 5 + global.level;
 
-
+Pyexist = false;
 enemy_direction = false;
 
 if (surface_format_is_supported(surface_rgba16float))

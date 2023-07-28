@@ -29,10 +29,7 @@ var rm_h = room_height/3;
 #region  game UI REGION
 if room == rm_Game {
     // HUI elements
-    var _guiL = display_get_gui_width();
-    var _guia = display_get_gui_height();
-    var _scale = 6;
-    var _scalahalf = _scale * 1.5;
+
 
     // Draw Heat Capacity
     draw_sprite_ext(spr_GunHeat, 0, 50, 260, _scale, _scale, 0, c, 1);
@@ -281,7 +278,7 @@ var oaideShipCount = 0;
 oaideShipCount = instance_number(O_missile);
 draw_text(x, y, "Quantidade de OaideShip: " + string(oaideShipCount));
 #endregion
-draw_text_ext_transformed(0,0,fps_real,0,10,3,3,0);
+draw_text_ext_transformed(0,0,fps_real,1,10,3,3,0);
 
 #endregion
 
