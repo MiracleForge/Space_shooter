@@ -14,13 +14,13 @@ if instance_exists(_ship){
 
 	if _ship ==	O_USS_Cerulean
 	{
-	image_xscale = 3;
-	image_yscale = 3;
+	image_xscale = 5;
+	image_yscale = 5;
 
 	} else 
 	{	
-	image_xscale = 4;
-	image_yscale = 4;
+	image_xscale = 6;
+	image_yscale = 6;
 		}
 		
 	x = _ship.x + lengthdir_x(1, _ship.direction);

@@ -243,9 +243,9 @@ switch(attkState)
 		break;
 		
 		case BOOSshot_state.aleatory:
-			if !instance_exists(ObossShield)
+			if alarm[4] == -1 and !instance_exists(ObossShield)
 			{
-				instance_create_layer(x,y,"layer_under", ObossShield);
+				alarm[4] = 120;
 			}
 			if alarm[0] == -1
 			{

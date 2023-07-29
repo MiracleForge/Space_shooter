@@ -11,6 +11,7 @@ heat = 0;
 maxHeat = 140;
 max_life = 10;
 life_ship = max_life;
+active = true;
 
 shield = 10;
 max_shield = 10;

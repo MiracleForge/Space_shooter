@@ -3,7 +3,47 @@
 
 // Inherit the parent event
 event_inherited();
-direction = 1; // Começa movendo para a direita
-speed = 1; // Defina a velocidade desejada
+/// @description Inserir descrição aqui
+// Você pode escrever seu código neste editor
+vspeed = 0; // this ship dosen't need speeds, so I reset to zero
+hspeed = 0;
+enemy_movement_time = 160; // TIME TO CHANGE STATE
+alarm[1] = enemy_movement_time; // time to change walk state
+
+enum SNIPER
+{
+	
+	WALK,
+	STEALTH,
+	CHARGING,
+	SHOOTING
+}
+
+stateSniper = SNIPER.WALK;
+
+position =
+{	
+	next:	
+	{	
+		_x: irandom_range(96, room_width),
+		_y: irandom_range(96, room_height),
+	},	
+};
+
+timers = 
+{
+	shooting:
+	{
+		_max: game_get_speed(gamespeed_fps) * 1,
+		_current: 0,
+	},
+};
+
+
+
+
+
+
+
 
 

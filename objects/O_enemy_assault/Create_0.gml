@@ -13,3 +13,4 @@ if x == 0 {
 	{
 	enemy_direction = true;	
 	}
+

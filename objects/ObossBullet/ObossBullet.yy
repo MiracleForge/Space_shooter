@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Boss",
-    "path": "folders/Objetos/Enemys/Boss.yy",
+    "name": "Beholder",
+    "path": "folders/Objetos/Enemys/Boss/Beholder.yy",
   },
   "parentObjectId": null,
   "persistent": false,
