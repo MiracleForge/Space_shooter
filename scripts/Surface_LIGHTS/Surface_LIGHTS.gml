@@ -34,3 +34,38 @@ function //scr_create_light(_x, _y, _colour, _intensity, _xscale, _yscale, _targ
     light.image_alpha = _intensity;
     light.target = _target;
 }
+*/
+
+
+   /// @function        scr_blend_light(_area,_particles,_lengdir,_xscale,_yscale,_angle,_colour,_alpha, _glow)
+   /// @param {real} _area area around the obj or angle 90 to 360
+   /// @param {real}  _particles  quantity of objects add around the glowing obj
+   /// @param {real} _lengdir  where the particles begin and end
+   /// @param {real} _xscale  x scale of glow particles - default image_xscale
+   /// @param {real} _yscale  y scale of glow particles - default image_yscale
+   /// @param {real} _angle  angleof the glow - default image_angle
+   /// @param {constant.colour} _colour  angleof the glow - - default image_blend
+   /// @param {real} _alpha  alpha 
+   /// @param {boolean} _glow  glow true or false
+function scr_blend_light(_area,_particles,_lengdir,_xscale,_yscale,_angle,_colour,_alpha,_glow)
+{
+	
+
+   
+   ///@description  this script is responsible for drawing an area around the object
+   ///            responsible for the light load glow
+  var _glow_max = 0.5 + (1 + sin(2 + pi * current_time / 1000 * 0.10)) * 0.8; // 0.5 - 1.3
+// first number controls intensite and 1000 * number control velocit
+    if Ogame.light_mode_light == true
+    {
+        gpu_set_blendmode(bm_add);
+        for (B = 0; B < _area; B += _particles)
+        {
+            var draw_alpha = _glow ? (_glow_max * _alpha) : _alpha;
+            draw_sprite_ext(sprite_index, image_index,
+                x + lengthdir_x(_lengdir, B), y + lengthdir_y(_lengdir, B),
+                _xscale, _yscale, _angle, _colour, draw_alpha);
+        }
+        gpu_set_blendmode(bm_normal);
+    }
+}
