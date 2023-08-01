@@ -3,6 +3,9 @@
 //ship size default
 image_xscale = 2;
 image_yscale = 2;
+
+currentState = scr_normal_state;
+
 // ship config default
 ammo = 2;
 move_speed = 2;
@@ -22,7 +25,18 @@ damage_alpha = -1;
 take_damage = true;
 shield_up = true;
 // shot controls default
+
 shoot_on = false;
+dial_control = false;
+enum Py_speed
+{
+	height_speed_pos,
+	height_speed_moving,
+	height_speed_dialog,
+	height_speed_end
+}
+room_Py_speed = Py_speed.height_speed_pos;
+
 instance_create_layer(x,y,"layer_under", Oshield);
 if current_ship == 1{	
 
@@ -33,3 +47,4 @@ if current_ship == 1{
 	instance_create_layer(x,y,"layer_under", Oengine);
 	instance_create_layer(x,y,"layer_under", Oengine);
 	}
+

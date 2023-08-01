@@ -2,9 +2,9 @@
 // Você pode escrever seu código neste editor
 //direction and moviment
 
-speed = 0.1;
-direction = random(360);
-image_angle = random(360);
+//speed = 0.1;
+//direction = random(360);
+//image_angle = random(360);
 
 meteor_size = irandom_range(2,3);
 // object 

@@ -19,6 +19,7 @@ text_length[0] = string_length(text[0]);
 text_speed = 1/5;
 draw_char = 0;
 setup = false;
+next_page = false;
 
 
 

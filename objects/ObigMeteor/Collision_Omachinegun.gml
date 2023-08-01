@@ -1,15 +1,17 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+/*
 meteor_hp -= 1;
 direction = random(360);
 
 if sprite_index == spr_bigMeteors {	
 	sprite_index = spr_small_meteors;
-	instance_copy(true);
 	
-	}else if instance_number(ObigMeteor) <12{	
+	
+	}else if instance_number(ObigMeteor) >12{	
 		sprite_index = spr_bigMeteors;
 		x = -100
+		//instance_copy(true);
 		
 		}else {	
 			if meteor_hp <= 50{
@@ -20,5 +22,12 @@ if sprite_index == spr_bigMeteors {
 				
 				}else if meteor_hp <=0{	
 					instance_destroy();
+					show_message("explodiu");
 					}
 			}
+			*/
+			meteor_hp -= 1;
+			 if meteor_hp <=0{	
+					instance_destroy();
+					
+					}

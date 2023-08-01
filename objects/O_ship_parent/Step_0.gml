@@ -1,42 +1,7 @@
 /// @description Inserir descrição aqui
 // engine creation after select ship
 
-#region ship moviment
-var _move_x = 0;
-var _move_y = 0;
-
-with(Ojoystick){	
-	_move_x = joy_x/ radius;
-	_move_y = joy_y/ radius;
-	}
-x += _move_x * move_speed;
-y += _move_y * move_speed;
-
-if _move_x != 0 or _move_y != 0{
-direction = point_direction(0, 0, -Ojoystick.joy_x, -Ojoystick.joy_y);
-image_angle = direction;
-
-}
-
-if keyboard_check(vk_up){	
-	speed = -2;
-	
-    image_angle = direction;
-
-	}else if keyboard_check(vk_down) {	
-	speed = +2;
-	}else {	
-		speed = 0;
-		}
-	
-if keyboard_check(vk_left){	
-	direction += 3;
-	}
-if keyboard_check(vk_right){	
-	direction -=3;
-	}
-move_wrap(true,false,0)
-#endregion
+script_execute(currentState);
 
 //destroy ship
 if life_ship <= 0 {	

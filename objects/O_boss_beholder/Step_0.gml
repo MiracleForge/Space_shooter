@@ -6,7 +6,7 @@ if !instance_exists(Ofate) and movState != BOSSmov_state.intro
 and movState != BOSSmov_state.dying 
 and movState != BOSSmov_state.phase_pre
 {	
-	var _inst = instance_create_layer(x, y, "Instances", Ofate);
+var _inst = instance_create_layer(x, y, "Instances", Ofate);
 	_inst.sprite_index = sprite_index;
 	_inst.image_xscale = image_xscale;
 	_inst.image_yscale = image_yscale;
@@ -206,7 +206,7 @@ switch(movState)
 
 			    instance_create_layer(spawnX, spawnY, "Enemy_layer", O_eff_bombs);
 			}
-		
+		Ogame.alarm[3] = 120;
 		
 	break;
 }

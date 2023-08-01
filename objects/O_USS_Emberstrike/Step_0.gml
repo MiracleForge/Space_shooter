@@ -14,7 +14,7 @@ if (keyboard_check_pressed(vk_space) && Shooting_button.alarm[0] == -1 || shoot_
     {
         for (var i = 0; i < ammo; i++)
         {
-            _inst = instance_create_layer(x - _instY, y - 1, "Instances", Omachinegun);
+           var _inst = instance_create_layer(x - _instY, y - 1, "Instances", Omachinegun);
             _inst.speed = -6;
             _inst.direction = direction;
             _inst.image_angle = direction;

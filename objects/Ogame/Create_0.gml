@@ -38,15 +38,18 @@ shake_fade = 0.25;
 //global variables
 global.level = 1;
 global.pause = false;
+global.dialog_down = false;
 score = 0;
 
+// UI
 Pyframe_icon = 0;
 max_Pyframe_icon = 8;
 trakying_ship = 1;
 max_trakying_ship = 3;
 choose_ship = true;
-
 test = false;
+
+pos_fase = false;
 
 // surface draw
 paused_surf = -1;

@@ -1,5 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+
 var _max_devices = 4;
 
 for (var i = 0; i < _max_devices; i++)

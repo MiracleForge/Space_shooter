@@ -25,6 +25,7 @@ var _ship_pai =O_ship_parent;
 var rm_w = room_width/4;
 var rm_h = room_height/3;
 
+
 #endregion
 #region  game UI REGION
 if room == rm_Game {
@@ -272,13 +273,41 @@ else {
 
 #region // contador de instancias
 // Variável para armazenar o número de instâncias do objeto OaideShip
-var oaideShipCount = 0;
+var Contador = 0;
 
 // No evento Step ou Draw
-oaideShipCount = instance_number(O_missile);
-draw_text(x, y, "Quantidade de OaideShip: " + string(oaideShipCount));
+Contador = instance_number(ObigMeteor);
+draw_text(x, y, "Quantidade de OaideShip: " + string(Contador));
+draw_text_ext_transformed(0,0,fps_real,1,2,3,3,0);
+draw_text_ext_transformed(0,100,fps,1,2,3,3,0);
 #endregion
-draw_text_ext_transformed(0,0,fps_real,1,10,3,3,0);
+
 
 #endregion
 
+// go to pos fase 
+if pos_fase 
+{
+	draw_set_alpha(0.6);
+// Draw Event
+var rect_x = (room_width - 450) / 2;
+var rect_y = (room_height - 450) / 2;
+draw_rectangle_color(rect_x, rect_y, rect_x + 450, rect_y + 450, C, C, C, C, false);
+var button_x = 330;
+var button_y = 780;
+var button_size = _scalahalf * sprite_get_width(spr_button_play);
+var button_x_next = button_x + 42;
+var button_y_next = button_y - 38;
+draw_sprite_ext(spr_button_play, 0, button_x, button_y, _scalahalf, _scalahalf, 0, c_white, 1);
+draw_rectangle(button_x_next - button_size/2, button_y_next - button_size/2, button_x_next + button_size/2, button_y_next + button_size/2, false);
+instance_deactivate_layer("control_layer");
+
+if point_in_rectangle(_mx, _my, button_x_next - button_size/2, button_y_next - button_size/2, button_x_next + button_size/2, button_y_next + button_size/2) && mouse_check_button_pressed(mb_left)
+{
+    room_goto(rm_Hightspeed);
+	pos_fase = false;
+	draw_set_alpha(1);
+
+}
+
+}

@@ -25,8 +25,8 @@
   "nineSlice": null,
   "origin": 0,
   "parent": {
-    "name": "sprite master",
-    "path": "folders/Sprites/sprite master.yy",
+    "name": "Backgrounds",
+    "path": "folders/Sprites/sprite master/Backgrounds.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

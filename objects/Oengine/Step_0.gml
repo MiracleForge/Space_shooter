@@ -21,18 +21,34 @@ if instance_exists(_ship){
 	{	
 	image_xscale = 6;
 	image_yscale = 6;
-		}
+	}
 		
-	x = _ship.x + lengthdir_x(1, _ship.direction);
-	y = _ship.y + lengthdir_y(0.5, _ship.direction);	
-if _ship.x == 0 {
+
+
+if (room == rm_Hightspeed) {
+	
+    sprite_index = spr_engine_speed;
+	if !instance_exists(Olight)
+	{
+		if (surface_format_is_supported(surface_rgba16float))
+		{
+			//scr_create_light(x ,y,c_aqua,1.2,1,1,id);
+		}	
+	}
+} else if (_ship.x == 0) {
     sprite_index = spr_engineoff;
 } else {
     sprite_index = spr_engineOn;
 }
+
+
+x = _ship.x + lengthdir_x(1, _ship.direction);
+y = _ship.y + lengthdir_y(0.5, _ship.direction);
 	
 direction = _ship.direction;
 image_angle = _ship.direction;
+
+
 }else {	
 	instance_destroy();
 	}

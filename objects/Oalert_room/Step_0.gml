@@ -42,12 +42,18 @@ if (timertodestroy <=0)
 }
 
 
-if instance_exists(O_boss_beholder) and O_boss_beholder.movState == BOSSmov_state.intro and !capitao
+if (instance_exists(O_boss_beholder) and O_boss_beholder.movState == BOSSmov_state.intro and !capitao)
 {
 	capitao = true;
 	var _inst =instance_create_depth(0,0,-9999,Ospeak);
 	_inst.text_id = "Capitao";
 	
-	
+}
+
+if (room == rm_Hightspeed and O_ship_parent.room_Py_speed == Py_speed.height_speed_dialog and !capitao)
+{
+	capitao = true;
+	var _inst =instance_create_depth(0,0,-9999,Ospeak);
+	_inst.text_id = "first travel";
 	
 }

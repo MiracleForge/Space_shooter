@@ -11,5 +11,5 @@ enemy_direction = false;
 
 if (surface_format_is_supported(surface_rgba16float))
 {
-scr_create_light(x,y,c_yellow,0.3,1.8,1.8,id);
+//scr_create_light(x,y,c_yellow,0.3,1.8,1.8,id);
 }

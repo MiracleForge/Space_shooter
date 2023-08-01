@@ -1,8 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-accept_key  = keyboard_check_pressed(ord("P"));
-textbox_x = camera_get_view_x(view_camera[0]);
-textbox_y = camera_get_view_y(view_camera[0]);
+var accept_key  = keyboard_check_pressed(ord("P"));
+var textbox_x = camera_get_view_x(view_camera[0]);
+var textbox_y = camera_get_view_y(view_camera[0]);
 
 
 if (!setup) {
@@ -30,8 +30,9 @@ if draw_char < text_length[page]
 }
 
 //flip to pages
-if draw_char >= text_length[page]
+if accept_key or next_page == true or draw_char >= text_length[page] 
 {
+	next_page = false;
     if page < page_number - 1
     {
         page++;
@@ -39,14 +40,14 @@ if draw_char >= text_length[page]
     }
     else
     {
-		
+        global.dialog_down= true;
         instance_destroy();
     }
 }
 
 
-if instance_exists(Ospeak)
-{
+
+
 	//draw the textbox
 	txtb_img += txtb_img_spd;
 	var txtb_spr_w = sprite_get_width(txtb_spr);
@@ -70,7 +71,7 @@ if instance_exists(Ospeak)
 		draw_sprite_ext(Ospeak.spriteicon,image_index,room_width/2 + 5,room_height/1.5 + 6,10,10,0,c_white,1);	
 	}
 	
-}
+
 
 
 

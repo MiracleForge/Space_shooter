@@ -7,4 +7,4 @@ damage_alpha = -1;
 
 visible = false;
 
-scr_create_light(x,y +30,c_aqua,1,0.7,0.7,id)
+//scr_create_light(x,y +30,c_aqua,1,0.7,0.7,id)

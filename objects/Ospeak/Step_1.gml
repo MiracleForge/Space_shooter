@@ -15,6 +15,13 @@ text_draw =true;
 	
 	 scr_create_text_id(text_id,1);
 }
+if room == rm_Hightspeed and !text_draw
+{
+text_draw =true;
+	
+	 scr_create_text_id(text_id,0);
+}
+
 
  
 

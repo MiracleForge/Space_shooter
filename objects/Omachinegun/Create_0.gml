@@ -11,9 +11,9 @@ if (surface_format_is_supported(surface_rgba16float))
 {
 	
 if _ship.overheat == true {
-scr_create_light(x,y +30,c_red,2,0.7,0.7,id)
+//scr_create_light(x,y +30,c_red,2,0.7,0.7,id)
 }else {	
-	scr_create_light(x,y +30,c_orange,2,0.7,0.7,id)
+	//scr_create_light(x,y +30,c_orange,2,0.7,0.7,id)
 	}
 }
 }

@@ -32,8 +32,8 @@
   "nineSlice": null,
   "origin": 4,
   "parent": {
-    "name": "HUD",
-    "path": "folders/Sprites/HUD.yy",
+    "name": "Player HUI",
+    "path": "folders/Sprites/HUD/Player HUI.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
