@@ -7,3 +7,4 @@ event_inherited();
 //orbit_speed =0.05;
 
 planet_scale = 2;
+planet_unlocked = false;

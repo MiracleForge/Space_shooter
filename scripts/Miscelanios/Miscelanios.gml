@@ -45,3 +45,4 @@ function point_in_button(x, y, button) {
 	///Isso é útil para detectar cliques do mouse em botões específicos na interface do jogo.
     return (x >= button.left && x <= button.right && y >= button.top && y <= button.bottom);
 }
+

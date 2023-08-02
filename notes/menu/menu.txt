@@ -1,0 +1,3 @@
+Cria mais 3 botoes com nome missão
+modificar planeta para jogar
+e descrição do planeta em baixo
