@@ -12,6 +12,7 @@
 // growth size variable
 planet_scale = undefined; // updates with internal variable of child / changes size
 planet_id = -1; // identify the current planet clicked
+open_gui = false;
 
 
 

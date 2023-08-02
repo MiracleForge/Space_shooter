@@ -46,7 +46,7 @@ function //scr_create_light(_x, _y, _colour, _intensity, _xscale, _yscale, _targ
    /// @param {real} _angle  angleof the glow - default image_angle
    /// @param {constant.colour} _colour  angleof the glow - - default image_blend
    /// @param {real} _alpha  alpha 
-   /// @param {boolean} _glow  glow true or false
+   /// @param {bool} _glow  glow true or false
 function scr_blend_light(_area,_particles,_lengdir,_xscale,_yscale,_angle,_colour,_alpha,_glow)
 {
 	

@@ -1,6 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-
+open_gui = true;
 audio_play_sound(snd_button,0,false);
 // Criação da ds_list para armazenar os objetos filhos relevantes
 var children_list = ds_list_create();

@@ -53,7 +53,7 @@ pos_fase = false;
 
 // surface draw
 paused_surf = -1;
-light_mode_light = true
+light_mode_light = true // turn on light mode
 // size of the shield bars
 lenght_shieldBar = 0;
 betterlight = true;

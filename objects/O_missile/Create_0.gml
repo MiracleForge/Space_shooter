@@ -7,3 +7,4 @@ image_xscale = 5;
 image_yscale = 5;
 
 target_enemy = noone;
+is_targeting_enemy = false;

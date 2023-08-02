@@ -13,3 +13,4 @@ if alarm[2] >0 {
 		image_alpha = 1;
 		}
 
+//scr_blend_light(360,6,20,image_xscale,image_yscale,image_angle,image_blend,0.01,false);

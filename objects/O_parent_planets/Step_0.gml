@@ -15,11 +15,17 @@ y = grav_center_y + orbit_distance * sin(degtorad(orbit_dir));
 }
 */
 #endregion
-if planet_id == id 
-{
-	image_xscale = 3;
-	image_yscale = 3;
-	
+var scale_speed = 0.2
+
+if (planet_id == id) {
+  // Se o planeta atual for o planeta desejado, aumente gradualmente a escala.
+  if (image_xscale < 3) {
+    image_xscale += scale_speed
+  }
+  if (image_yscale < 3) {
+    image_yscale += scale_speed
+  }
+  
 }else
 {	
 	image_yscale = planet_scale;

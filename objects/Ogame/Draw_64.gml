@@ -56,12 +56,34 @@ if room == rm_Game {
 	draw_sprite_ext(spr_HUI_character, Pyframe_icon, 74, 74, _scale * 1.7, _scale * 1.7, 0, c, 1);
 	draw_sprite_ext(spr_HUI_porttrait, 0, 15, 15, _scale * 1.2, _scale * 1.2, 0, c, 1);
 
-#region Life bars and Shield bars
+#region Life bars and Shield bars //timers
 
 draw_sprite_ext(spr_HUI_lifebar, 0, 150, 80, _scale, _scale, 0, c, 1);
 //score
     draw_text_transformed_colour(200, 186, score, 2, 2, 0,cA, cA, cA, cA, 1);
     draw_text_transformed_colour(90, 185, "Score", 2, 2, 0,cA, cA, cA, cA, 1);
+	
+	if object_exists(O_timer)
+	{
+		var t = ""
+		    t += string(O_timer.t_min)
+			t += ":"
+		if O_timer.t_sec > 9 
+		{
+			t +=  ""+string(O_timer.t_sec);	
+		}
+		if O_timer.t_sec < 10 
+		{
+			 t += "0"+string(O_timer.t_sec);
+		}
+			t += "."
+			t += string(O_timer.t_mil);
+			
+			draw_set_color(cA);
+			if O_timer.t_min < 1 then draw_set_color(c_red);
+			draw_text_transformed(90, 220, t, 2, 2, 0);
+			draw_set_color(-1);
+	}
 
 if instance_exists(_ship_pai){
 	var pos_x = 160;
@@ -227,8 +249,7 @@ if point_in_rectangle(_mx, _my, button_x - button_size/2, button_y - button_size
 
         pick_ship = false; // Saindo do menu de seleção
         instance_create_layer(rm_w, 1070, "instances", ship_dict[trakying_ship]);
-		
-		
+
     }
 }
 }

@@ -146,6 +146,10 @@ function scr_player_height_speed()
 			    room_goto(rm_Mapa);
 				vspeed = 0;
 				currentState = scr_normal_state;
+				dial_control = false;
+				global.audio_is_playing = false;
+				global.dialog_down = false;
+				audio_stop_all();
 				}
 			}
             break;
