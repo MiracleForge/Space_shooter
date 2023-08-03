@@ -31,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "Terran",
-    "path": "sprites/Terran/Terran.yy",
+    "name": "Terran1",
+    "path": "sprites/Terran1/Terran1.yy",
   },
   "spriteMaskId": null,
   "visible": true,

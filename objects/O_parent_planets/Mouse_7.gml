@@ -1,11 +1,17 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-if planet_unlocked
+planet_select = true;
+
+if !open_gui
 {
-	open_gui = true;
-}
-draw_text(mouse_x,mouse_y,id);
-audio_play_sound(snd_button,0,false);
+	if planet_unlocked
+	{
+		audio_play_sound(snd_button,0,false);
+		}else 
+		{
+			audio_play_sound(snd_acesse_denied,0,false);	
+		}
+
 // Criação da ds_list para armazenar os objetos filhos relevantes
 var children_list = ds_list_create();
 
@@ -43,9 +49,11 @@ for (var i = 0; i < instance_number(O_parent_planets); ++i)
         break;
     }
 }
-
 // Libera a ds_list após seu uso
-ds_list_destroy(children_list);
+ds_list_destroy(children_list);	
+}
+
+
 
 
 

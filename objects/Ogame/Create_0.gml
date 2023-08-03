@@ -28,6 +28,8 @@ ship_dict = ds_map_create();
 ship_dict[1] = O_USS_Cerulean;
 ship_dict[2] = O_USS_Emberstrike;
 ship_dict[3] = O_USS_Emerald_Warhammer;
+ship_dict[4] = O_USS_ShadowStrike;
+ship_dict[5] = O_USS_ThunderCore;
 
 
 // effects
@@ -45,7 +47,7 @@ score = 0;
 Pyframe_icon = 0;
 max_Pyframe_icon = 8;
 trakying_ship = 1;
-max_trakying_ship = 3;
+max_trakying_ship = 5;
 choose_ship = true;
 test = false;
 

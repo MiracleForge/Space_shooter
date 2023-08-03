@@ -26,8 +26,8 @@
   "nineSlice": null,
   "origin": 3,
   "parent": {
-    "name": "sprites player ship",
-    "path": "folders/Sprites/sprites player ship.yy",
+    "name": "engines",
+    "path": "folders/Sprites/sprites player ship/engines.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

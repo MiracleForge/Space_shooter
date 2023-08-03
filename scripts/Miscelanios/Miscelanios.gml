@@ -2,12 +2,20 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 para obter mais informações
 function scr_check_audio_playing(_sound)
 {
-// This script will check if the audio has finished playing and update the global variable accordingly.
-	if (!audio_is_playing(_sound))
-	{
-		global.audio_is_playing = false;
-	}
+    // This script will check if the audio has finished playing and update the global variable accordingly.
+    if (!audio_is_playing(_sound))
+    {
+       
+        global.audio_is_playing = false;
+        return false; // Retorna false se o áudio não estiver tocando
+    }
+    else
+    {
+        global.audio_is_playing = true;
+        return true; // Retorna true se o áudio estiver tocando
+    }
 }
+
 
 
 //@function create_button_data
@@ -21,12 +29,6 @@ function create_button_data(index, left, top, right, bottom) {
 	
 	///@description: Esta função cria e retorna um objeto contendo os limites de um botão com base no índice fornecido.
 	///Os limites do botão são calculados usando os arrays _x_positions e _y_positions, juntamente com os arrays _xscales e _yscales. O objeto retornado contém quatro propriedades: left (esquerda), top (superior), right (direita) e bottom (inferior), que representam as coordenadas do retângulo que envolve o botão.
-	
-	var _sprites = [spr_window_frame, spr_menu_organizer, spr_planet_panel, spr_text_box,sprite_index,spr_button_menu_panel,spr_button_menu_panel,spr_button_menu_panel];
-    var _x_positions = [1, 86, 0, 364.98,546,86,86,86.001];
-    var _y_positions = [0.5, 172.49, 124.5, 640.49,491,560,460,355];
-    var _xscales = [0.5679, 1, 1, 0.3356,5,0.8840,0.8840,0.8840];
-    var _yscales = [1.5541, 0.9962, 1, 1.47,5.6666,0.3640,0.3640,0.3640];
 	
     var btn_left = _x_positions[index];
     var btn_right = _x_positions[index] + _xscales[index];

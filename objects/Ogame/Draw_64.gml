@@ -134,60 +134,39 @@ if pick_ship and room == rm_Game
     draw_sprite_ext(spr_back_menu, 0, rm_w, rm_h, 24, 24, 0, c, 1); //background rectangle
     draw_sprite_ext(spr_display_ship, 0, _display_x, _display_y, _scale, _scale, 0, c, 1); // rectangle
 
-// Verifica se o jogador está escolhendo sua nave (choose_ship é verdadeira).
-    if choose_ship // player is choosing their ships
-    {
-		// Nesse caso, desenha o sprite da nave selecionada com base na variável "trakying_ship".
-       // Cada número representa uma nave específica.
-        switch (trakying_ship)//draw ship
-        {
-            case 1:
-                draw_sprite_ext(spr_USS_Cerulean, 0, porttrait_posX,porttrait_posY, _scale, _scale, targetAngle, c, 1);
-                break;
-            case 2:
-                draw_sprite_ext(spr_USS_Emberstrike, 0, porttrait_posX, porttrait_posY, _scale, _scale, targetAngle, c, 1);
-                break;
-            case 3:
-                draw_sprite_ext(spr_USS_Verdant_Shield, 0, porttrait_posX, porttrait_posY, _scale, _scale, targetAngle, c, 1);
-                break;
-        }
-    }
-    else
-    {
-	// Caso o jogador esteja escolhendo um personagem (choose_ship é falsa),
-    // desenha o sprite do personagem selecionado com base na variável "Pyframe_icon".
-    // Cada número representa um personagem específico.
-        switch (Pyframe_icon) // draw characters
-        {
-            case 0:
-                draw_sprite_ext(spr_HUI_character, 0, porttrait_posX, porttrait_posY, _scalahalf , _scalahalf, 0, c, 1);
-                break;
-            case 1:
-                draw_sprite_ext(spr_HUI_character, 1, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
-                break;
-            case 2:
-                draw_sprite_ext(spr_HUI_character, 2, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
-                break;
-            case 3:
-                draw_sprite_ext(spr_HUI_character, 3, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
-                break;
-            case 4:
-                draw_sprite_ext(spr_HUI_character, 4, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
-                break;
-            case 5:
-                draw_sprite_ext(spr_HUI_character, 5, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
-                break;
-            case 6:
-                draw_sprite_ext(spr_HUI_character, 6, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
-                break;
-            case 7:
-                draw_sprite_ext(spr_HUI_character, 7, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
-                break;
-            case 8:
-                draw_sprite_ext(spr_HUI_character, 8, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
-                break;
-        }
-    }
+if (choose_ship) // player is choosing their ships
+{
+    // Mapeamento dos sprites das naves
+    var ship_sprites = [
+        spr_USS_Cerulean,
+        spr_USS_Emberstrike,
+        spr_USS_Verdant_Shield,
+        spr_USS_Shadowstrike,
+        Spr_USS_Thundercore
+    ];
+
+    // Verifica se o número da nave selecionada é válido
+    var selected_ship = clamp(trakying_ship - 1, 0, array_length(ship_sprites) - 1);
+
+    // Desenha o sprite da nave selecionada
+    draw_sprite_ext(ship_sprites[selected_ship], 0, porttrait_posX, porttrait_posY, _scale, _scale, targetAngle, c, 1);
+}
+else
+{
+    // Sprite base dos personagens
+    var character_base_sprite = spr_HUI_character;
+
+    // Número total de frames dos personagens
+    var num_character_frames = 9; // Aumentar a cada sprite de personagem nova 
+
+    // Verifica se o número do personagem selecionado é válido
+    var selected_character_frame = clamp(Pyframe_icon, 0, num_character_frames - 1);
+
+    // Desenha o sprite do personagem selecionado com base no frame
+    draw_sprite_ext(character_base_sprite, selected_character_frame, porttrait_posX, porttrait_posY, _scalahalf, _scalahalf, 0, c, 1);
+}
+
+
 
 // Desenha os botões de navegação para o jogador percorrer as opções de nave/personagem.
 // Os botões são representados pelo sprite "Spr_next".
@@ -293,6 +272,7 @@ else {
 #region //debuging area
 
 #region // contador de instancias
+/*
 // Variável para armazenar o número de instâncias do objeto OaideShip
 var Contador = 0;
 
@@ -301,6 +281,7 @@ Contador = instance_number(ObigMeteor);
 draw_text(x, y, "Quantidade de OaideShip: " + string(Contador));
 draw_text_ext_transformed(0,0,fps_real,1,2,3,3,0);
 draw_text_ext_transformed(0,100,fps,1,2,3,3,0);
+*/
 #endregion
 
 
@@ -309,26 +290,42 @@ draw_text_ext_transformed(0,100,fps,1,2,3,3,0);
 // go to pos fase 
 if pos_fase 
 {
-	draw_set_alpha(0.6);
-// Draw Event
+
+draw_set_alpha(0.6);
+
+// Evento de desenho
+// Define as coordenadas do retângulo a ser desenhado centralizado na tela
 var rect_x = (room_width - 450) / 2;
 var rect_y = (room_height - 450) / 2;
+
+// Desenha um retângulo colorido na tela usando a cor "C"
 draw_rectangle_color(rect_x, rect_y, rect_x + 450, rect_y + 450, C, C, C, C, false);
+
+// Define as coordenadas e o tamanho do botão
 var button_x = 330;
 var button_y = 780;
 var button_size = _scalahalf * sprite_get_width(spr_button_play);
 var button_x_next = button_x + 42;
 var button_y_next = button_y - 38;
+
+// Desenha o sprite do botão na tela com as coordenadas e escala definidas
 draw_sprite_ext(spr_button_play, 0, button_x, button_y, _scalahalf, _scalahalf, 0, c_white, 1);
+
+// Desenha um retângulo invisível na tela que servirá como área clicável do botão
 draw_rectangle(button_x_next - button_size/2, button_y_next - button_size/2, button_x_next + button_size/2, button_y_next + button_size/2, false);
+
+// Desativa a camada "control_layer" no jogo // para o player não atirar nem andar
 instance_deactivate_layer("control_layer");
 
+// Verifica se o mouse está sobre a área do botão e se o botão esquerdo do mouse foi pressionado
 if point_in_rectangle(_mx, _my, button_x_next - button_size/2, button_y_next - button_size/2, button_x_next + button_size/2, button_y_next + button_size/2) && mouse_check_button_pressed(mb_left)
 {
+    // o jogo vai para a sala "rm_Hightspeed", e a variável "pos_fase" é definida como false.
     room_goto(rm_Hightspeed);
-	pos_fase = false;
-	draw_set_alpha(1);
+    pos_fase = false;
 
+    draw_set_alpha(1);
 }
+
 
 }

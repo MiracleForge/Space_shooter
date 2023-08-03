@@ -14,24 +14,30 @@
 planet_scale = undefined; // updates with internal variable of child / changes size
 planet_id = -1; // identify the current planet clicked
 open_gui = false;
+planet_select = false;
+scaling_completed = false;
 
 // variables from panel 
-mission = false;
+mission1 = false; 
+mission2 = false;
+mission3 = false;
 planet_description = true;
 
 // Definir o array booleano para representar o desbloqueio dos planetas (false = bloqueado, true = desbloqueado)
- planet_unlocked = undefined;
+planet_unlocked = undefined;
+planet_opening = false;
 
-// Suponha que você tenha um array de arrays para verificar se as missões de cada planeta foram concluídas (true = concluída, false = não concluída)
- missions_completed = [
-    [true, true, true], // Planeta 1: Todas as missões foram concluídas
-    [false, false, false], // Planeta 2: Nenhuma missão foi concluída
-    [false, false, false], // Planeta 3: A missão 2 foi concluída
-    [false, true, false], // Planeta 4: As missões 1 e 2 foram concluídas
-    [false, false, false] // Planeta 5: Todas as missões foram concluídas
-];
+// shaking planet
+skake_initialized = false; // Variável booleana para controlar a atualização de prev_x e prev_y
+prev_x = x;
+prev_y = y;
 
-
+ 
+_sprites = [spr_window_frame, spr_menu_organizer, spr_planet_panel, spr_text_box, sprite_index, spr_button_menu_panel, spr_button_menu_panel, spr_button_menu_panel,spr_button_menu_panel,spr_button_menu_panel]; // Sprites a serem desenhados
+_x_positions = [1, 86, 0, 364.98, 546, 86, 86, 86.001,86,32]; // Posições horizontais dos sprites
+_y_positions = [0.5, 172.49, 124.5, 640.49, 491, 560, 460, 355,671,1024]; // Posições verticais dos sprites
+_xscales = [0.5679, 1, 1, 0.3356, 5, 0.8840, 0.8840, 0.8840,0.8840,2.2753]; // Escalas horizontais dos sprites
+_yscales = [1.5541, 0.9962, 1, 1.47, 5.6666, 0.3640, 0.3640, 0.3640,0.3640,1.1825]; // Escalas verticais dos sprites
 
 
 

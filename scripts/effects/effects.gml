@@ -9,6 +9,7 @@ function screenshake(_time, _magnitude, _fade)
 /// @param  {real}  _fade       How quickly the screenshake effect will fade out
 /// @description    Set the screenshake object variables.
 
+
    with (Ogame)
    {
       shake = true;
@@ -16,4 +17,7 @@ function screenshake(_time, _magnitude, _fade)
       shake_magnitude = _magnitude;
       shake_fade = _fade;
    }
+  
 }
+
+
