@@ -13,6 +13,16 @@ if (global.open_gui && planet_id == id)
     draw_set_alpha(_alpha); // Temporarily disable transparency for this code section (lines 12-14)
     draw_rectangle_color(0, 0, room_width, room_height, c, c, c, c, false); // Draw a filled black rectangle (background)
 
+	var _sprites = [spr_window_frame, spr_menu_organizer, spr_planet_panel, spr_text_box, sprite_index, spr_button_menu_panel, spr_button_menu_panel, spr_button_menu_panel, spr_button_menu_panel, spr_button_menu_panel, spr_button_menu_panel];
+	// Posições horizontais dos sprites
+	var _x_positions = [1, 86, 0, 364.98, 546, 86, 86, 86, 86, 86, 32];
+	// Posições verticais dos sprites
+	var _y_positions = [0.5, 172.49, 124.5, 640.49, 491, 560, 460, 355, 671, 780, 1024];
+	// Escalas horizontais dos sprites
+	var _xscales = [0.5679, 1, 1, 0.3356, 5, 0.8840, 0.8840, 0.8840, 0.8840, 0.8840, 2.2753];
+	// Escalas verticais dos sprites
+	var _yscales = [1.5541, 0.9962, 1, 1.47, 5.6666, 0.3640, 0.3640, 0.3640, 0.3640, 0.3640, 1.1825];
+
     // Draw sprites and texts for each button
     var _mission_description = [
         ["ice", "ice mission", "Ice mission 2", "ice mission 3"],
@@ -44,13 +54,13 @@ if (global.open_gui && planet_id == id)
 
         var descriptionIndex = mission3 ? 3 : (mission2 ? 2 : 1); // verify mission3 is true? else if mission 2 , else mission1 = true
         draw_sprite_ext(_sprites[i], image_index, _x_positions[i], _y_positions[i], _xscales[i], _yscales[i], 0, C, 1); // Draw the sprite in the correct position
-        draw_set_font(Fnt_Menu);
+		draw_set_font(Fnt_Menu_description);
 		//draw the missions of planets
         draw_text_ext_color(408, 670, _mission_description[textIndex][descriptionIndex], string_height("M"), 300, c_white, c_white, c_white, c_white, 1); // Draw the description text
         //draw the descriptions of planets
 		draw_text_ext_color(100, 1050, _planet_description[textIndex][1], string_height("M"), 300, C, C, C, C, 1);
     }
-
+	draw_set_font(Fnt_Menu);
     var _button_name_x = _x_positions[5] + 40; // Initial horizontal position to draw button names
 
     for (var i = 0; i < 5; i++) {

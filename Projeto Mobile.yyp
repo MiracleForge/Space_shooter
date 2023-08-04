@@ -210,6 +210,7 @@
     {"id":{"name":"Players_ships","path":"scripts/Players_ships/Players_ships.yy",},},
     {"id":{"name":"O_USS_Emberstrike","path":"objects/O_USS_Emberstrike/O_USS_Emberstrike.yy",},},
     {"id":{"name":"ObigBomb","path":"objects/ObigBomb/ObigBomb.yy",},},
+    {"id":{"name":"Fnt_Menu_description","path":"fonts/Fnt_Menu_description/Fnt_Menu_description.yy",},},
     {"id":{"name":"spr_GunHeatBar","path":"sprites/spr_GunHeatBar/spr_GunHeatBar.yy",},},
     {"id":{"name":"spr_HUI_lifebar","path":"sprites/spr_HUI_lifebar/spr_HUI_lifebar.yy",},},
     {"id":{"name":"Spr_shield_front","path":"sprites/Spr_shield_front/Spr_shield_front.yy",},},

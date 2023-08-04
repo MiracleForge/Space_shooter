@@ -17,7 +17,7 @@ function scr_check_audio_playing(_sound)
 }
 
 
-
+/*
 //@function create_button_data
 ///@param {array} index - O índice do botão que será criado.
 ///@param {real} left - A posição X à esquerda do botão.
