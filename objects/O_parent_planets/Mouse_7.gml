@@ -2,7 +2,7 @@
 // Você pode escrever seu código neste editor
 planet_select = true;
 
-if !open_gui
+if !global.open_gui
 {
 	if planet_unlocked
 	{
@@ -20,6 +20,7 @@ for (var i = 0; i < instance_number(O_parent_planets); ++i)
 {
     var current_planet = instance_find(O_parent_planets, i);
     planets[i] = current_planet;
+	
 
     if (id == current_planet) /*
 							    se o valor do id do planeta clicado for igual ao valor de current_planet
@@ -44,6 +45,7 @@ for (var i = 0; i < instance_number(O_parent_planets); ++i)
         {
             var current_child = ds_list_find_value(children_list, j); // salva o filho especifico 
             current_child.planet_id = planets[i]; // modifica sua variavel interna
+			
         }
 
         break;

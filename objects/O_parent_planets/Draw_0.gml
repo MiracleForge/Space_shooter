@@ -1,11 +1,11 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 // Verifica se o planeta está desbloqueado (substitua "planet_unlocked" pelo array que contém os estados de desbloqueio dos planetas)
-draw_text(mouse_x,mouse_y,open_gui);
+
 draw_self();
-if !planet_unlocked and !open_gui
+if !planet_unlocked and !global.open_gui
 {
-	image_index = 0;
+	image_speed = 0;
     var planet_width = sprite_get_width(sprite_index);
     var planet_height = sprite_get_height(sprite_index);
 
@@ -19,7 +19,7 @@ if !planet_unlocked and !open_gui
     draw_sprite_ext(Spr_lock, 0, x, y, lock_scale_x, lock_scale_y, 0, c_white, 1);
 }else
 {
-		image_index = -1;
+		image_speed = -1;
 		scr_blend_light(360,50,6,image_xscale,image_yscale,image_angle,image_blend,0.05,false)
 }
 

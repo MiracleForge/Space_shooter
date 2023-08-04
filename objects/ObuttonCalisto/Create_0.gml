@@ -6,4 +6,4 @@ event_inherited();
 //orbit_distance = 80;
 //orbit_speed = 0.5;
 planet_scale = 1.5;
-planet_unlocked = false;
+planet_unlocked = true;

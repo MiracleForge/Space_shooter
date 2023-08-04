@@ -13,7 +13,7 @@
 // growth size variable
 planet_scale = undefined; // updates with internal variable of child / changes size
 planet_id = -1; // identify the current planet clicked
-open_gui = false;
+global.open_gui = false;
 planet_select = false;
 scaling_completed = false;
 
@@ -33,11 +33,20 @@ prev_x = x;
 prev_y = y;
 
  
-_sprites = [spr_window_frame, spr_menu_organizer, spr_planet_panel, spr_text_box, sprite_index, spr_button_menu_panel, spr_button_menu_panel, spr_button_menu_panel,spr_button_menu_panel,spr_button_menu_panel]; // Sprites a serem desenhados
-_x_positions = [1, 86, 0, 364.98, 546, 86, 86, 86.001,86,32]; // Posições horizontais dos sprites
-_y_positions = [0.5, 172.49, 124.5, 640.49, 491, 560, 460, 355,671,1024]; // Posições verticais dos sprites
-_xscales = [0.5679, 1, 1, 0.3356, 5, 0.8840, 0.8840, 0.8840,0.8840,2.2753]; // Escalas horizontais dos sprites
-_yscales = [1.5541, 0.9962, 1, 1.47, 5.6666, 0.3640, 0.3640, 0.3640,0.3640,1.1825]; // Escalas verticais dos sprites
+_sprites = [spr_window_frame, spr_menu_organizer, spr_planet_panel, spr_text_box, sprite_index, spr_button_menu_panel, spr_button_menu_panel, spr_button_menu_panel, spr_button_menu_panel, spr_button_menu_panel, spr_button_menu_panel];
+
+// Posições horizontais dos sprites
+_x_positions = [1, 86, 0, 364.98, 546, 86, 86, 86, 86, 86, 32];
+
+// Posições verticais dos sprites
+_y_positions = [0.5, 172.49, 124.5, 640.49, 491, 560, 460, 355, 671, 780, 1024];
+
+// Escalas horizontais dos sprites
+_xscales = [0.5679, 1, 1, 0.3356, 5, 0.8840, 0.8840, 0.8840, 0.8840, 0.8840, 2.2753];
+
+// Escalas verticais dos sprites
+_yscales = [1.5541, 0.9962, 1, 1.47, 5.6666, 0.3640, 0.3640, 0.3640, 0.3640, 0.3640, 1.1825];
+
 
 
 
