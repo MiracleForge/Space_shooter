@@ -1,6 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-room_goto(rm_Game);
+room_goto(rm_game_1_1);
 //player selector
 pick_ship = true;
 Pyframe_icon = 0;

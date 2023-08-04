@@ -25,7 +25,7 @@ if instance_exists(_ship){
 		
 
 
-if (room == rm_Hightspeed) {
+if (room == rm_Hightspeed or room == rm_game_1_2) {
 	
     sprite_index = spr_engine_speed;
 	if !instance_exists(Olight)

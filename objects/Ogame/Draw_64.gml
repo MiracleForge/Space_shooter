@@ -28,7 +28,7 @@ var rm_h = room_height/3;
 
 #endregion
 #region  game UI REGION
-if room == rm_Game {
+if room == rm_game_1_1 {
     // HUI elements
 
 
@@ -114,7 +114,7 @@ if instance_exists(_ship_pai){
 
 
 #region // Player selection screen
-if pick_ship and room == rm_Game
+if pick_ship and room == rm_game_1_1
 {
 	//window character creation
 	//background

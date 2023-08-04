@@ -9,7 +9,7 @@ if (menu_music) {
 	}
     audio_stop_all();
     switch (room) {
-        case rm_Game:
+        case rm_game_1_1:
 		
             audio_play_sound(snd__scriptel__tactic, 0, true);
             break;

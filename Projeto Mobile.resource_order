@@ -243,11 +243,12 @@
     {"name":"Earth","order":5,"path":"sprites/Earth/Earth.yy",},
     {"name":"SpaceShooterAssetPack_BackGrounds","order":2,"path":"sprites/SpaceShooterAssetPack_BackGrounds/SpaceShooterAssetPack_BackGrounds.yy",},
     {"name":"code enemys","order":3,"path":"notes/code enemys/code enemys.yy",},
+    {"name":"rm_game_1_2","order":6,"path":"rooms/rm_game_1_2/rm_game_1_2.yy",},
     {"name":"O_USS_Emerald_Warhammer","order":3,"path":"objects/O_USS_Emerald_Warhammer/O_USS_Emerald_Warhammer.yy",},
     {"name":"Ospeak","order":2,"path":"objects/Ospeak/Ospeak.yy",},
     {"name":"menu","order":6,"path":"notes/menu/menu.yy",},
     {"name":"BeholderBullets","order":5,"path":"sprites/BeholderBullets/BeholderBullets.yy",},
     {"name":"snd_impact","order":24,"path":"sounds/snd_impact/snd_impact.yy",},
-    {"name":"rm_Game","order":1,"path":"rooms/rm_Game/rm_Game.yy",},
+    {"name":"rm_game_1_1","order":1,"path":"rooms/rm_game_1_1/rm_game_1_1.yy",},
   ],
 }

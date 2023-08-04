@@ -22,7 +22,7 @@ mission1 = false;
 mission2 = false;
 mission3 = false;
 planet_description = true;
-
+textIndex = noone;
 // Definir o array booleano para representar o desbloqueio dos planetas (false = bloqueado, true = desbloqueado)
 planet_unlocked = undefined;
 planet_opening = false;

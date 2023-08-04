@@ -1,6 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-if room == rm_Game
+if room == rm_game_1_1
 {
 if global.pause == false
         {
