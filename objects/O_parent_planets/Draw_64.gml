@@ -7,12 +7,10 @@ var C = c_white;
 var c = c_black; 
 var cA = c_aqua; 
 
-
-
 if (global.open_gui && planet_id == id)
 {
-    var _alpha = 0.8; // Define the opacity (transparency) of the panel
-    draw_set_alpha(_alpha); // Temporarily disable transparency for this code section (lines 12-14)
+    var _alpha = 0.8; 
+    draw_set_alpha(_alpha); 
     draw_rectangle_color(0, 0, room_width, room_height, c, c, c, c, false); // Draw a filled black rectangle (background)
 
 	var _sprites = [spr_window_frame, spr_menu_organizer, spr_planet_panel, spr_text_box, sprite_index, spr_button_menu_panel, spr_button_menu_panel, spr_button_menu_panel, spr_button_menu_panel, spr_button_menu_panel, spr_button_menu_panel];
@@ -47,12 +45,13 @@ if (global.open_gui && planet_id == id)
 	    [rm_Hightspeed,rm_Hightspeed, rm_Hightspeed],  // Planet 1 rooms for mission 1, 2, 3
 	    [rm_Hightspeed, rm_Hightspeed, rm_Hightspeed],  // Planet 2 rooms for mission 1, 2, 3
 	    [rm_game_1_1, rm_game_1_2, rm_Hightspeed],  // Planet 3 rooms for mission 1, 2, 3
-	    [rm_Hightspeed, rm_Hightspeed, rm_Hightspeed],  // Planet 3 rooms for mission 1, 2, 3
-	    [rm_Hightspeed, rm_Hightspeed, rm_Hightspeed],  // Planet 3 rooms for mission 1, 2, 3
+	    [rm_Hightspeed, rm_Hightspeed, rm_Hightspeed],  // Planet 4 rooms for mission 1, 2, 3
+	    [rm_Hightspeed, rm_Hightspeed, rm_Hightspeed],  // Planet 5 rooms for mission 1, 2, 3
 	    // Add more entries for other planets if needed
 	]
-    var _button_names = ["Mission 2", "Mission 1", "Play", "Mission 3", "Exit"]; // wrong order because I messed up with coord of buttons array
+    var _button_names = ["Mission 2", "Mission 1", "Play", "Mission 3", "Exit"]; // wrong order because I messed up with coord of buttons array, DON'T CHANGE
 
+    // Primary loop , draw every the most numbers of elements on GUI / sprites, descriptions, planets, missions GUI 
     for (var i = 0; i < array_length(_sprites); i++) {
          textIndex = i; // Set "textIndex" initially to "i", meaning the current index of the loop (0, 1, 2, ...).
         switch (sprite_index[i]) { // changes the icon exibeted and the info 
@@ -71,6 +70,7 @@ if (global.open_gui && planet_id == id)
         //draw the descriptions of planets
 		draw_text_ext_color(100, 1050, _planet_description[textIndex][1], string_height("M"), 300, C, C, C, C, 1);
     }
+	// Secundary loop , draw the buttons names GUI
 	draw_set_font(Fnt_Menu);
     var _button_name_x = _x_positions[5] + 40; // Initial horizontal position to draw button names
 
@@ -79,8 +79,8 @@ if (global.open_gui && planet_id == id)
         draw_text_ext_color(_button_name_x, _button_name_y, _button_names[i], string_height("M"), 300, cA, cA, cA, cA, 1);
     }
 
-  // Check if the left mouse button was pressed
-if (mouse_check_button_pressed(mb_left)) {
+	 // Check if the left mouse button was pressed
+	if (mouse_check_button_pressed(mb_left)) {
  
 
     // Button data - contains information about each button's name and coordinates
@@ -125,13 +125,13 @@ if (mouse_check_button_pressed(mb_left)) {
 		if (clicked_button == 0 && textIndex >= 0 && textIndex < array_length(_mission_description)) {
 		    if (mission1) {
 		        show_message("play " + _mission_description[textIndex][1] + " 1");
-		        room_goto(room_for_missions[textIndex][0]); // Go to the appropriate room for mission 1
+		        //room_goto(room_for_missions[textIndex][0]); // Go to the appropriate room for mission 1
 		    } else if (mission2) {
 		        show_message("play " + _mission_description[textIndex][1] + " 2");
 		        room_goto(room_for_missions[textIndex][1]); // Go to the appropriate room for mission 2
 		    } else if (mission3) {
 		        show_message("play " + _mission_description[textIndex][1] + " 3");
-		        room_goto(room_for_missions[textIndex][2]); // Go to the appropriate room for mission 3
+		        //room_goto(room_for_missions[textIndex][2]); // Go to the appropriate room for mission 3
 		    }
 		}
 

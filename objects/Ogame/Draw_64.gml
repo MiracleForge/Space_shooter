@@ -28,7 +28,7 @@ var rm_h = room_height/3;
 
 #endregion
 #region  game UI REGION
-if room == rm_game_1_1 {
+if room == rm_game_1_1 or room == rm_game_1_2 {
     // HUI elements
 
 

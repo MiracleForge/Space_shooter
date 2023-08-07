@@ -48,3 +48,16 @@ function point_in_button(x, y, button) {
     return (x >= button.left && x <= button.right && y >= button.top && y <= button.bottom);
 }
 
+*/
+// Função personalizada para encontrar o índice de um valor em um array
+// Retorna -1 se o valor não estiver presente no array
+function find_index_in_array(value, arr) {
+    var len = array_length(arr);
+    for (var i = 0; i < len; i++) {
+        if (arr[i] == value) {
+            return i;
+        }
+    }
+    return -1;
+}
+

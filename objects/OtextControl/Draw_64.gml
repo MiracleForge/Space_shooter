@@ -40,6 +40,7 @@ if accept_key or next_page == true or draw_char >= text_length[page]
     }
     else
     {
+		
         global.dialog_down= true;
         instance_destroy();
     }

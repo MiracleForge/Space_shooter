@@ -38,6 +38,7 @@ if distance_to_object(_ship) >= _dist
 	} 
 }
 	
+	
 if (alarm[0] == -1) 
 { 
             var _miss = instance_create_layer(x + 35, y + 10, "Enemy_layer", O_enemy_slowbullet);

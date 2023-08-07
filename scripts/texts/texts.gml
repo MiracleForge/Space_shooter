@@ -31,6 +31,10 @@ function scr_gametext(_text_id, _sprite)
 	        scr_text("bla bla bla, ");
 	        scr_text("passar missão ");
 	        break;
+			
+		case "SATELLETE":
+	        scr_text(" O que você esta fazendo? Não deixe que cortem nossas comunicaçoes");
+	        break;
 	}
 	switch (_sprite)
 	{
@@ -40,6 +44,7 @@ function scr_gametext(_text_id, _sprite)
 	    case 1:
 	        Ospeak.spriteicon = Spr_hui_aide
 	    break;
+		
 		
 	 
 	}	

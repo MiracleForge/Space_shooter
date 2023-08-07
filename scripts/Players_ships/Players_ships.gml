@@ -2,51 +2,94 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 para obter mais informações
 function scr_normal_state()
 {
-	#region ship moviment
-var _move_x = 0;
-var _move_y = 0;
+    #region ship movement
 
-with(Ojoystick){	
-	_move_x = joy_x/ radius;
-	_move_y = joy_y/ radius;
-	}
-x += _move_x * move_speed;
-y += _move_y * move_speed;
+    var _move_x = 0;
+    var _move_y = 0;
 
-if _move_x != 0 or _move_y != 0{
-direction = point_direction(0, 0, -Ojoystick.joy_x, -Ojoystick.joy_y);
-image_angle = direction;
+    with(Ojoystick) {	
+        _move_x = joy_x / radius;
+        _move_y = joy_y / radius;
+    }
 
+ 
+    // Predict the next position based on the joystick input
+    var next_x = x + _move_x * move_speed;
+    var next_y = y + _move_y * move_speed;
+
+    // Use the scr_locking_room function to prevent the player from leaving the room
+    var corrected_positions = scr_locking_room(next_x, next_y);
+    next_x = corrected_positions[0];
+    next_y = corrected_positions[1];
+
+    // Update player position based on joystick input
+    x = next_x;
+    y = next_y;
+
+    if (_move_x != 0 or _move_y != 0) {
+        direction = point_direction(0, 0, -Ojoystick.joy_x, -Ojoystick.joy_y);
+        image_angle = direction;
+    }
+
+    if keyboard_check(vk_up) {	
+        speed = -2;
+        image_angle = direction;
+    } else if keyboard_check(vk_down) {	
+        speed = +2;
+    } else {	
+        speed = 0;
+    }
+    
+    if keyboard_check(vk_left) {	
+        direction += 3;
+    }
+    if keyboard_check(vk_right) {	
+        direction -= 3;
+    }
+
+    //move_wrap(true, false, 0);
+    #endregion	
+
+    if room == rm_Hightspeed {
+        currentState = scr_player_height_speed;
+    }
 }
 
-if keyboard_check(vk_up){	
-	speed = -2;
-	
-    image_angle = direction;
+#region // controls bords 
 
-	}else if keyboard_check(vk_down) {	
-	speed = +2;
-	}else {	
-		speed = 0;
-		}
-	
-if keyboard_check(vk_left){	
-	direction += 3;
-	}
-if keyboard_check(vk_right){	
-	direction -=3;
-	}
-move_wrap(true,false,0)
-#endregion	
+function scr_locking_room(next_x, next_y)
+{
+    var borderY_inf = (room_height - 200); // Set the desired bottom boundary here
 
-if room == rm_Hightspeed
-{	
-	currentState = scr_player_height_speed;
+    // Calculate the leftmost and rightmost points of the sprite
+    var leftmost_x = next_x - sprite_width / 2;
+    var rightmost_x = next_x + sprite_width / 2;
+
+    // Calculate the topmost and bottommost points of the sprite
+    var topmost_y = next_y - sprite_height / 2;
+    var bottommost_y = next_y + sprite_height / 2;
+
+    // Check if any part of the sprite is outside the room boundaries
+    if (leftmost_x < 0) {
+        next_x = sprite_width / 2; // Prevent horizontal movement if left side outside room
+    } else if (rightmost_x > room_width) {
+        next_x = room_width - sprite_width / 2; // Prevent horizontal movement if right side outside room
+    }
+
+    if (topmost_y < 0) {
+        next_y = sprite_height / 2; // Prevent vertical movement if top side outside room
+    } else if (bottommost_y > borderY_inf) {
+        next_y = borderY_inf - sprite_height / 2; // Prevent vertical movement if bottom side outside room
+    }
+
+    // Return the corrected positions as an array
+    return [next_x, next_y];
 }
-}
+#endregion
 
 
 // Function to control player movement and behavior based on room_Py_speed
+
 function scr_player_height_speed()
 {
     // Define target coordinates and offset
