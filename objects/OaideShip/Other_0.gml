@@ -2,4 +2,5 @@
 // Você pode escrever seu código neste editor
 aideship = false;
 instance_destroy();
+instance_destroy(Ospeak);
 

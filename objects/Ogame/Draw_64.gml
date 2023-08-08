@@ -63,7 +63,7 @@ draw_sprite_ext(spr_HUI_lifebar, 0, 150, 80, _scale, _scale, 0, c, 1);
     draw_text_transformed_colour(200, 186, score, 2, 2, 0,cA, cA, cA, cA, 1);
     draw_text_transformed_colour(90, 185, "Score", 2, 2, 0,cA, cA, cA, cA, 1);
 	
-	if object_exists(O_timer)
+	if (object_exists(O_timer) and global.pause == false)
 	{
 		var t = ""
 		    t += string(O_timer.t_min)
@@ -244,6 +244,7 @@ if !surface_exists(paused_surf)
         {
         instance_deactivate_all(true); // DESACTIVATE ALL INSTANCES
 		// REACTIVA ONLY THE BUTTONS
+		instance_activate_object(Omusic_control);
 		instance_activate_object(Opausebutton);
 		instance_activate_object(O_ui_parent);
 		instance_activate_object(O_multi_touch_manager);
@@ -256,15 +257,149 @@ if !surface_exists(paused_surf)
 	
     }
 else {	
-    draw_surface(paused_surf, 0, 0);
-    draw_set_alpha(0.5);
-    draw_rectangle_colour(0, 0, room_width, room_height, C, C, C, C, false);
-    draw_set_alpha(1);
-    draw_set_halign(fa_center);
-    draw_text_transformed_colour(room_width / 2, room_height / 2, "PAUSED", 2, 2, 0,cA, cA, cA, cA, 1);
-    draw_set_halign(fa_left);
-	
+ // Draw the paused surface
+draw_surface(paused_surf, 0, 0);
+
+// Apply a semi-transparent overlay
+draw_set_alpha(0.5);
+draw_rectangle_colour(0, 0, room_width, room_height, C, C, C, C, false);
+draw_set_alpha(1);
+
+// Horizontal alignment setup for text
+draw_set_halign(fa_left);
+// Combined array of sprite data
+var _sprite_data = [
+    [spr_window_frame,     0,    0,    0.5609, 1.8625],
+    [spr_coin,             32,   1056, 0.3,    0.3],
+    [spr_text_box,         127,  880,  0.4570, 0.84],
+    [Spr_home,             608,  96,   0.3,    0.3],
+    [Spr_audio_control,    504,  96,   0.4,    0.4],
+    [Spr_shop,             32,   96,   0.23,   0.23],
+    [spr_button_menu_panel,267,  447,  0.884,  0.364],
+    [spr_button_menu_panel,267,  511,  0.884,  0.364],
+    [spr_button_menu_panel,267,  575,  0.884,  0.364]
+];
+
+// Names of buttons
+var _pause_button_names = ["Resume", "Settings", "Exit"];
+
+// Loop through sprite data
+for (var _i = 0; _i < array_length(_sprite_data); ++_i) {
+    var _sprite_info = _sprite_data[_i];
+    var _sprite = _sprite_info[0];
+    var _x = _sprite_info[1];
+    var _y = _sprite_info[2];
+    var _xscale = _sprite_info[3];
+    var _yscale = _sprite_info[4];
+    var _offset_x = 8;
+    var icon_pox_x = _x - 50;
+	var _mute_icon = isoundOn ? 0: 1; // if same sprite gets more frames, this will not work anymore, 
+    // Draw the sprite at specified position with scaling
+    draw_sprite_ext(_sprite, _mute_icon, _x, _y, _xscale, _yscale, 0, c, image_alpha);
+    if (_i == 1)
+	{         // PLAYER CURRENT STATUS ON PAUSE MENU
+	    draw_text_transformed_colour(_x + 50, _y, score, 2, 2, 0,cA, cA, cA, cA, 1);
+	}
+    // Check if index is greater than or equal to the index for buttons
+    if (_i >= array_length(_sprite_data) - array_length(_pause_button_names)) {
+        var _button_index = _i - (array_length(_sprite_data) - array_length(_pause_button_names));
+        var _button_name = _pause_button_names[_button_index];
+        
+        // Calculate the center position for text
+        var _sprite_center_x = _x + (sprite_get_width(_sprite) * _xscale) / 2.8;
+        var _sprite_center_y = _y + (sprite_get_height(_sprite) * _yscale) / 2.5 - 5;
+        
+        // Set the font and draw the button text
+        draw_set_font(Fnt_Menu);
+        draw_text_ext_color(_sprite_center_x - _offset_x, _sprite_center_y, _button_name, string_height("M"), 300, cA, cA, cA, cA, 1);
+		draw_sprite_ext( spr_icon_pause,  _button_index , icon_pox_x,_y,1.6,1.6,image_angle,c,image_alpha);
+		
+        // Update offset and reset it after every EXIT button
+        _offset_x += 16;
+        if (_button_index % 2 == 1) {
+            _offset_x = 0;
+        }
+    }
+}
+
+
+// Check if the left mouse button was pressed
+if mouse_check_button_pressed(mb_left) {
+    // List of button names to be displayed
+    var _button_names = ["Home Button", "Audio Control", "Shop", "Resume", "Settings", "Exit"];
+    var _button_data = []; // Initialize an array to store button data
+    var _index_of_buttons = 3; //only for buttons that have a text on it 
     
+    // Loop through the button names to create button data
+    for (var _i = 0; _i < array_length(_button_names); _i++) {
+        var _button_name = _button_names[_i];
+        var _left_x = _sprite_data[_i + _index_of_buttons][1];
+        var _top_y = _sprite_data[_i + _index_of_buttons][2];
+        var _right_x = _left_x + (sprite_get_width(_sprite_data[_i + _index_of_buttons][0]) * _sprite_data[_i + _index_of_buttons][3]);
+        var _bottom_y = _top_y + (sprite_get_height(_sprite_data[_i + _index_of_buttons][0]) * _sprite_data[_i + _index_of_buttons][4]);
+        
+        // Store button data in the array
+        _button_data[_i] = [_button_name, _left_x, _top_y, _right_x, _bottom_y];
+    }
+    
+    // Find which button was clicked
+    var _clicked_button = -1; // Initialize clicked_button to -1 (no button clicked)
+    
+    // Loop through the button data to find which button was clicked
+    for (var _i = 0; _i < array_length(_button_data); _i++) {
+        var _btn = _button_data[_i];
+        // Check if the mouse cursor is within the rectangle of the current button
+        if (point_in_rectangle(mouse_x, mouse_y, _btn[1], _btn[2], _btn[3], _btn[4])) {
+            _clicked_button = _i; // Record the index of the clicked button
+            break; // Exit the loop, no need to check further
+        }
+    }
+
+    // If a button was clicked
+    if (_clicked_button >= 0) {
+        // Debug
+        show_message(_button_data[_clicked_button][0] + " clicked"); // Mostra uma mensagem com o nome do botão clicado
+    
+        switch (_clicked_button) {
+            case 0: // Mapa
+                global.pause = false;
+                audio_stop_all();
+                room_goto(rm_Mapa);
+                break;
+            
+            case 1: // Controle de áudio
+                isoundOn = !isoundOn;
+                var _audio_action = isoundOn ? audio_resume_all : audio_pause_all;
+                audio_master_gain(isoundOn ? 1 : 0); // Define o volume mestre para 1 (som ativado) ou 0 (som desativado)
+                show_message(isoundOn ? "som on" : "som off");
+                _audio_action();
+                break;
+            
+            case 3: // Retomar
+                global.pause = false;
+                break;
+            
+            case 5: // SAIR
+                global.pause = false;
+				isoundOn = false;
+                room_goto(rm_Menu);
+                pick_ship = false;
+                Pyframe_icon = 0;
+                trakying_ship = 1;
+                choose_ship = true;
+                ship_snd_select = false;
+                // Música
+                game_restart();
+                break;
+        }
+        
+        audio_play_sound(snd_button, 0, false); // Toca um som de clique de botão
+    }
+}
+
+
+
+
 }
 }
 #endregion

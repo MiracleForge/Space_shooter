@@ -59,9 +59,12 @@ light_mode_light = true // turn on light mode
 // size of the shield bars
 lenght_shieldBar = 0;
 betterlight = true;
+isoundOn = true;
 
 //chamadas
 boss_killed = false;
+
+test = -1;
 
 
 

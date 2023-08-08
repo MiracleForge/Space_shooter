@@ -137,6 +137,7 @@ function scr_player_height_speed()
 
         case Py_speed.height_speed_dialog:
             // Check if the alert room instance doesn't exist and dial_control is false
+			
             if (!instance_exists(Oalert_room) and !dial_control)
             {
                 dial_control = true;

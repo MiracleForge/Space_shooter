@@ -6,6 +6,7 @@ image_angle += rotation_speed
 if life <= 1
 {
 	instance_destroy();
+	instance_destroy(Ospeak);
 	satellite = false;
 }
 
