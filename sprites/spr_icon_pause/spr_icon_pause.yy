@@ -23,12 +23,13 @@
   "HTile": false,
   "layers": [
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"c3c9d879-23a2-4e86-bf55-c047eb982785","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"ab476154-3c0f-490b-88ca-66a02949db2d","blendMode":0,"displayName":"Layer 1","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 0,
   "parent": {
-    "name": "Selection overlay",
-    "path": "folders/Sprites/menu/Menu_map/Selection overlay.yy",
+    "name": "PAUSE",
+    "path": "folders/Sprites/menu/Menu_map/Selection overlay/PAUSE.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

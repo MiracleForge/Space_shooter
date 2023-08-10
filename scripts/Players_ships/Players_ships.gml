@@ -138,12 +138,18 @@ function scr_player_height_speed()
         case Py_speed.height_speed_dialog:
             // Check if the alert room instance doesn't exist and dial_control is false
 			
-            if (!instance_exists(Oalert_room) and !dial_control)
-            {
-                dial_control = true;
-                instance_create_depth(x, y, -200, Oalert_room); // Create the alert room instance
-            }
+           // if (!instance_exists(Oalert_room) and !dial_control)
+           // {
+               // dial_control = true;
+               // instance_create_depth(x, y, -200, Oalert_room); // Create the alert room instance
+           // }
+				if !instance_exists(Ospeak) 
+				{
+					var _inst =instance_create_depth(0,0,-9999,Ospeak);
+					dial_control = true;
+					_inst.text_id = "first travel";	
 
+				}
             // Check if the global.dialog_down is true
             if (global.dialog_down)
             {
@@ -188,9 +194,17 @@ function scr_player_height_speed()
 				if room != rm_Mapa
 				{
 			    room_goto(rm_Mapa);
-				vspeed = 0;
-				currentState = scr_normal_state;
-				dial_control = false;
+				//vspeed = 0;
+				//currentState = scr_normal_state;
+				//dial_control = false;
+				instance_deactivate_object(O_ship_parent);
+				with(O_ship_parent)
+				{
+						vspeed = 0;
+						currentState = scr_normal_state;
+						dial_control = false;
+						visible = false;
+				}
 				global.audio_is_playing = false;
 				global.dialog_down = false;
 				audio_stop_all();

@@ -66,7 +66,7 @@ if accept_key or next_page == true or draw_char >= text_length[page]
 	draw_sprite_ext(spr_HUI_rectangle,0,room_width/2,room_height/1.5, 6,6,0,c_white,1)
 	// draw_ icon character
 	
-	if !is_undefined(Ospeak.spriteicon)
+	if instance_exists(Ospeak) and !is_undefined(Ospeak.spriteicon)
 	{
 		image_speed = 0.1;
 		draw_sprite_ext(Ospeak.spriteicon,image_index,room_width/2 + 5,room_height/1.5 + 6,10,10,0,c_white,1);	

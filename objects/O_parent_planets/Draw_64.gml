@@ -42,11 +42,11 @@ if (global.open_gui && planet_id == id)
     ];
 
 	var room_for_missions = [
-	    [rm_Hightspeed,rm_Hightspeed, rm_Hightspeed],  // Planet 1 rooms for mission 1, 2, 3
-	    [rm_Hightspeed, rm_Hightspeed, rm_Hightspeed],  // Planet 2 rooms for mission 1, 2, 3
-	    [rm_game_1_1, rm_game_1_2, rm_Hightspeed],  // Planet 3 rooms for mission 1, 2, 3
+	    [rm_Hightspeed,rm_Hightspeed, rm_Hightspeed],  // Planet 0 rooms for mission 1, 2, 3
+	    [rm_Hightspeed, rm_Hightspeed, rm_Hightspeed],  // Planet 1 rooms for mission 1, 2, 3
+	    [rm_game_1_1, rm_game_1_2, rm_Hightspeed],  // Planet 2 rooms for mission 1, 2, 3
+	    [rm_Hightspeed, rm_Hightspeed, rm_Hightspeed],  // Planet 3 rooms for mission 1, 2, 3
 	    [rm_Hightspeed, rm_Hightspeed, rm_Hightspeed],  // Planet 4 rooms for mission 1, 2, 3
-	    [rm_Hightspeed, rm_Hightspeed, rm_Hightspeed],  // Planet 5 rooms for mission 1, 2, 3
 	    // Add more entries for other planets if needed
 	]
     var _button_names = ["Mission 2", "Mission 1", "Play", "Mission 3", "Exit"]; // wrong order because I messed up with coord of buttons array, DON'T CHANGE

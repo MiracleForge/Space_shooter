@@ -25,8 +25,8 @@
   "nineSlice": null,
   "origin": 0,
   "parent": {
-    "name": "Selection overlay",
-    "path": "folders/Sprites/menu/Menu_map/Selection overlay.yy",
+    "name": "PAUSE",
+    "path": "folders/Sprites/menu/Menu_map/Selection overlay/PAUSE.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

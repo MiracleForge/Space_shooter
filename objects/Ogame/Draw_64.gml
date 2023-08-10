@@ -114,7 +114,7 @@ if instance_exists(_ship_pai){
 
 
 #region // Player selection screen
-if pick_ship and room == rm_game_1_1
+if pick_ship and room == rm_game_1_1 or pick_ship and room == rm_game_1_2
 {
 	//window character creation
 	//background
@@ -294,6 +294,7 @@ for (var _i = 0; _i < array_length(_sprite_data); ++_i) {
     var _offset_x = 8;
     var icon_pox_x = _x - 50;
 	var _mute_icon = isoundOn ? 0: 1; // if same sprite gets more frames, this will not work anymore, 
+	if settings and _i == 6 {break;}
     // Draw the sprite at specified position with scaling
     draw_sprite_ext(_sprite, _mute_icon, _x, _y, _xscale, _yscale, 0, c, image_alpha);
     if (_i == 1)
@@ -314,7 +315,7 @@ for (var _i = 0; _i < array_length(_sprite_data); ++_i) {
         draw_text_ext_color(_sprite_center_x - _offset_x, _sprite_center_y, _button_name, string_height("M"), 300, cA, cA, cA, cA, 1);
 		draw_sprite_ext( spr_icon_pause,  _button_index , icon_pox_x,_y,1.6,1.6,image_angle,c,image_alpha);
 		
-        // Update offset and reset it after every EXIT button
+        // Update offset and reset it position  after every EXIT button
         _offset_x += 16;
         if (_button_index % 2 == 1) {
             _offset_x = 0;
@@ -324,7 +325,7 @@ for (var _i = 0; _i < array_length(_sprite_data); ++_i) {
 
 
 // Check if the left mouse button was pressed
-if mouse_check_button_pressed(mb_left) {
+if mouse_check_button_pressed(mb_left) and !settings {
     // List of button names to be displayed
     var _button_names = ["Home Button", "Audio Control", "Shop", "Resume", "Settings", "Exit"];
     var _button_data = []; // Initialize an array to store button data
@@ -361,46 +362,116 @@ if mouse_check_button_pressed(mb_left) {
         show_message(_button_data[_clicked_button][0] + " clicked"); // Mostra uma mensagem com o nome do botão clicado
     
         switch (_clicked_button) {
-            case 0: // Mapa
-                global.pause = false;
-                audio_stop_all();
-                room_goto(rm_Mapa);
-                break;
-            
-            case 1: // Controle de áudio
-                isoundOn = !isoundOn;
-                var _audio_action = isoundOn ? audio_resume_all : audio_pause_all;
+			// change to phase selection
+            case 0:  global.pause = false; audio_stop_all(); room_goto(rm_Mapa);break;
+            // button mute
+            case 1: 
+				isoundOn = !isoundOn; 
+				var _audio_action = isoundOn ? audio_resume_all : audio_pause_all;
                 audio_master_gain(isoundOn ? 1 : 0); // Define o volume mestre para 1 (som ativado) ou 0 (som desativado)
                 show_message(isoundOn ? "som on" : "som off");
                 _audio_action();
                 break;
-            
-            case 3: // Retomar
-                global.pause = false;
-                break;
-            
-            case 5: // SAIR
-                global.pause = false;
-				isoundOn = false;
-                room_goto(rm_Menu);
-                pick_ship = false;
-                Pyframe_icon = 0;
-                trakying_ship = 1;
-                choose_ship = true;
-                ship_snd_select = false;
-                // Música
-                game_restart();
-                break;
+			// retomar
+            case 3: global.pause = false; break;
+            // settings menu
+			case 4: settings = true; break; 
+			// close pause and exit to menu
+            case 5: scr_reestart_game();game_restart(); break;
         }
         
         audio_play_sound(snd_button, 0, false); // Toca um som de clique de botão
     }
+
+} 
+	// settings draw 
+	//settings data base
+if settings 
+	{
+	
+	var _settings_data = [
+	[Spr_config_panel, 64,  479, 1.5,  1.5],
+	[Spr_audio_control,140, 567, 0.5,  0.5],
+	[Spr_iconconfig,   160, 704, 0.18, 0.18],
+	[horizontal_hover_thumb, 264, 593, 0.4, 1],
+	[Spr_close,        608, 544, 0.5,  0.5],
+	[Spr_tab03,        260, 716, 2,   3],
+	[Spr_tab02,        352, 716, 0.6,  0.6],
+	[Spr_tab01,        448, 716, 2,    3],	
+	];
+
+for (var _s = 0; _s < array_length(_settings_data); _s++) {
+    var _settings_info = _settings_data[_s];
+    var _sprite = _settings_info[0];
+    var _x = _settings_info[1];
+    var _y = _settings_info[2];
+    var _xscale = _settings_info[3];
+    var _yscale = _settings_info[4];
+    
+    draw_sprite_ext(_sprite, 0, _x, _y, _xscale, _yscale, image_angle, c, 1);
+
+}
+	draw_sprite_ext(Spr_point_volume,0,posx_volume,600,0.2,0.2,image_angle,c, image_alpha);
+// Initialize settings button data array
+var _settings_button_data = [];
+
+// Loop through the settings data starting from the fifth element
+for (var _i = 3; _i < array_length(_settings_data); _i++) {
+    var _btn_info = _settings_data[_i];
+    var _btn_x = _btn_info[1];
+    var _btn_y = _btn_info[2];
+    var _btn_width = sprite_get_width(_btn_info[0]) * _btn_info[3];
+    var _btn_height = sprite_get_height(_btn_info[0]) * _btn_info[4];
+
+    _settings_button_data[_i - 3] = [_btn_x, _btn_y, _btn_x + _btn_width, _btn_y + _btn_height];
 }
 
+// Check for button click
+if (mouse_check_button_pressed(mb_left)) {
+    var _clicked_button = -1; // Initialize clicked_button to -1 (no button clicked)
 
+    // Loop through the button data to find which button was clicked
+    for (var _i = 0; _i < array_length(_settings_button_data); _i++) {
+        var _btn = _settings_button_data[_i];
+        if (point_in_rectangle(mouse_x, mouse_y, _btn[0], _btn[1], _btn[2], _btn[3])) {
+            _clicked_button = _i;
+            break;
+        }
+    }
 
+    if (_clicked_button != -1) {
+        // Do something with the clicked button
+        switch (_clicked_button + 3) { // Adding 4 to get the correct button index
+			case 3: 
+			
+	            var newVolume = (mouse_x - _settings_button_data[_clicked_button][0]) / (_settings_button_data[_clicked_button][2] - _settings_button_data[_clicked_button][0]);
+                var adjustedVolume = clamp(newVolume, 0, 1); // Ensure volume is within range
+				// Update posx_volume to be proportional to the adjustedVolume and within the bounds of the bar
+                posx_volume = _settings_button_data[_clicked_button][0] + (_settings_button_data[_clicked_button][2] - _settings_button_data[_clicked_button][0]) * adjustedVolume;
+                audio_master_gain(adjustedVolume);	
+			 break;
+			// close settings window
+            case 4: settings = false; break;
+		    // Tab 01 desactivate all grafics
+			case 5: show_message("low graphics"); break;
+
+			// activate mid grafics
+            case 6: show_message("mid graphics"); break;
+            // Tab 02
+            case 7: show_message("height graphics"); break;
+			
+            
+        }
+	
+
+        audio_play_sound(snd_button, 0, false);
+    }
 
 }
+
+}
+}
+draw_set_font(-1);
 }
 #endregion
 

@@ -3,10 +3,7 @@
 var timeSinceLastCheck = 0;
 var _max_inst = 20 + global.level;
 if (!Ogame.pick_ship) {
-    if (alarm[0] == -1) {	
-        alarm[0] = 18000;
 
-    }
 		// Atualiza o temporizador aide ship
 timeSinceLastCheck += delta_time;
 
@@ -98,7 +95,4 @@ if (!instance_exists(O_boss_beholder) && alarm[0] != -1)
         }
     }
 }
-
-
-
 }

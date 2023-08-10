@@ -4,6 +4,7 @@
 // Inherit the parent event
 image_xscale = 6;
 image_yscale = 6;
+x = choose( 720, 0)
 event_inherited();
 
 

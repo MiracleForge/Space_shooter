@@ -46,6 +46,7 @@ function scr_gametext(_text_id, _sprite)
 	    break;
 		
 		
+		
 	 
 	}	
 

@@ -60,7 +60,9 @@ light_mode_light = true // turn on light mode
 lenght_shieldBar = 0;
 betterlight = true;
 isoundOn = true;
-
+settings = false;
+posx_volume = 540;
+ isAdjustingVolume = false;
 //chamadas
 boss_killed = false;
 

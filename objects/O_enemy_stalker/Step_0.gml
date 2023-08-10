@@ -2,7 +2,8 @@
 // Você pode escrever seu código neste editor
 
 event_inherited();
-    var _dist = 30; // Distância desejada do jogador
+var _dist = irandom_range(280,400); // Distância desejada do jogador
+var _close_atak = false;
 if Pyexist
 {
 	var _ship = O_ship_parent;
@@ -11,7 +12,7 @@ if Pyexist
 
 if distance_to_object(_ship) >= _dist 
 {
-	
+
 	speed = 0;
 	hspeed = 2;
 	
@@ -19,11 +20,13 @@ if distance_to_object(_ship) >= _dist
 	var _new_y = _dest_y 
 		
     var _dir_to_player = point_direction(x, y, _new_x, _new_y);
-    
+
     direction = _dir_to_player;
 	image_angle = _dir_to_player; // Atualiza o ângulo da imagem
 	
 	} else {	
+
+	_close_atak = true;	   
 	speed = 0;
 	hspeed = 0;
 	
@@ -36,24 +39,37 @@ if distance_to_object(_ship) >= _dist
 	image_angle = _dir_to_player; // Atualiza o ângulo da imagem
 
 	} 
+
 }
+ if (alarm[0] == -1)
+ {
+	if (_close_atak == true) //close attak
+		{
+		 var _miss = instance_create_layer(x + 35, y + 10, "Enemy_layer", O_enemy_slowbullet);
+			_miss.speed = 8;
+		    _miss.direction = image_angle;
+		    _miss.image_angle = direction;
+		    alarm[0] = 160;
+		}else { //ranged attack
 	
-	
-if (alarm[0] == -1) 
-{ 
-            var _miss = instance_create_layer(x + 35, y + 10, "Enemy_layer", O_enemy_slowbullet);
+		 var _numProjectiles = 3; // Número total de projéteis
+		 var _angleOffset = 15;   // Ângulo de desvio em graus
 
-                _miss.speed = 4;
-                _miss.direction = image_angle;
-                _miss.image_angle = direction;
-    
-                var _random_pitch = random_range(0.8, 10);
-                audio_sound_pitch(snd_missile_launcher, _random_pitch);
-                audio_play_sound(snd_missile_launcher, 0, false);
-    
-                alarm[0] = 300;
-}
- 
-
-
+			for (var i = 0; i < _numProjectiles; i++)
+			    {
+					var _centralMissile = instance_create_layer(x, y, "Enemy_layer", O_enemy_slowbullet);
+			        var _angle = image_angle + _angleOffset * (i - 1); // Calcula o ângulo para cada projétil
+			        _centralMissile.speed = 7;
+			        _centralMissile.direction = _angle;
+			        _centralMissile.image_angle = _angle;
+					alarm[0] = 160;
+		    
+		 
+				}	
+		}
+	// bullet audio control
+    var _random_pitch = random_range(0.8, 10);
+    audio_sound_pitch(snd_missile_launcher, _random_pitch);
+    audio_play_sound(snd_missile_launcher, 0, false);
+ }
 

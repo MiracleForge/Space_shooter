@@ -28,3 +28,18 @@ function find_index_in_array(value, arr) {
     return -1;
 }
 
+
+function scr_reestart_game()	
+{
+			global.pause = false; 
+			isoundOn = false;
+            room_goto(rm_Menu);
+            pick_ship = false;
+            Pyframe_icon = 0;
+            trakying_ship = 1;
+            choose_ship = true;
+            ship_snd_select = false;
+
+
+
+}
