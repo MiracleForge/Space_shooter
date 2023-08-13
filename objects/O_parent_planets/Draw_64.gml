@@ -78,7 +78,7 @@ if (global.open_gui && planet_id == id)
         var _button_name_y = _y_positions[5 + i] + 20;
         draw_text_ext_color(_button_name_x, _button_name_y, _button_names[i], string_height("M"), 300, cA, cA, cA, cA, 1);
     }
-
+		draw_set_font(-1);
 	 // Check if the left mouse button was pressed
 	if (mouse_check_button_pressed(mb_left)) {
  
@@ -125,13 +125,18 @@ if (global.open_gui && planet_id == id)
 		if (clicked_button == 0 && textIndex >= 0 && textIndex < array_length(_mission_description)) {
 		    if (mission1) {
 		        show_message("play " + _mission_description[textIndex][1] + " 1");
-		        //room_goto(room_for_missions[textIndex][0]); // Go to the appropriate room for mission 1
+		        room_goto(room_for_missions[textIndex][0]); // Go to the appropriate room for mission 1
+				Ogame.pick_ship = true;
+				Ogame.choose_ship = true;
+				Ogame.ship_snd_select = false;
+				Ogame.trakying_ship = 1
 		    } else if (mission2) {
 		        show_message("play " + _mission_description[textIndex][1] + " 2");
 		        room_goto(room_for_missions[textIndex][1]); // Go to the appropriate room for mission 2
 		    } else if (mission3) {
 		        show_message("play " + _mission_description[textIndex][1] + " 3");
-		        //room_goto(room_for_missions[textIndex][2]); // Go to the appropriate room for mission 3
+				Ogame.pick_ship = true;
+		        room_goto(room_for_missions[textIndex][2]); // Go to the appropriate room for mission 3
 		    }
 		}
 

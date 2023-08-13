@@ -25,8 +25,8 @@
   "nineSlice": null,
   "origin": 0,
   "parent": {
-    "name": "PAUSE",
-    "path": "folders/Sprites/menu/Menu_map/Selection overlay/PAUSE.yy",
+    "name": "sprite master",
+    "path": "folders/Sprites/sprite master.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

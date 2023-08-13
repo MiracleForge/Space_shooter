@@ -32,7 +32,7 @@ function scr_normal_state()
     }
 
     if keyboard_check(vk_up) {	
-        speed = -2;
+        speed = -2 + global.speedo;
         image_angle = direction;
     } else if keyboard_check(vk_down) {	
         speed = +2;

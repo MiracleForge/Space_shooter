@@ -1,6 +1,13 @@
 /// @description DRAW_GUI_UI
 // Você pode escrever seu código neste editor
 
+draw_text_ext_transformed(0,0,global.player_coin,10,300,3,3,0);
+
+draw_text_ext_transformed(0,100,global.armor,10,300,3,3,0);
+draw_text_ext_transformed(0,200,global.shield,10,300,3,3,0);
+draw_text_ext_transformed(0,300,global.heat,10,300,3,3,0);
+draw_text_ext_transformed(0,400,global.attack,10,300,3,3,0);
+
 #region //Variables from UI
 // Mouse tracking
 var _mx = device_mouse_x(0);
@@ -34,10 +41,10 @@ if room == rm_game_1_1 or room == rm_game_1_2 {
 
     // Draw Heat Capacity
     draw_sprite_ext(spr_GunHeat, 0, 50, 260, _scale, _scale, 0, c, 1);
-    
+    var currentHeat, maxHeat;
     if instance_exists(O_ship_parent) {
-        var maxHeat = O_ship_parent.maxHeat;
-        var currentHeat = O_ship_parent.heat;
+         maxHeat = O_ship_parent.maxHeat;
+         currentHeat = O_ship_parent.heat;
         var max_shield = O_ship_parent.max_shield;
         var current_shield = O_ship_parent.shield;
 
@@ -116,6 +123,7 @@ if instance_exists(_ship_pai){
 #region // Player selection screen
 if pick_ship and room == rm_game_1_1 or pick_ship and room == rm_game_1_2
 {
+
 	//window character creation
 	//background
     var _background_l = sprite_get_width(spr_back_menu) * 24;
@@ -182,9 +190,9 @@ else
     }
 
     // Verifica se o mouse está sobre o botão de navegação esquerdo ou direito.
-    var previous_button = point_in_rectangle(_mx, _my, 300, 600, 340, 680);
+    var previous_button = point_in_rectangle(_mx, _my, 300, 700, 340, 740);
     var next_button = point_in_rectangle(_mx, _my, 450, 600, 480, 680);
-
+draw_rectangle(300, 700, 340, 740,true)
     // Se o botão esquerdo ou direito do mouse foi pressionado...
     if mouse_check_button_pressed(mb_left)
     {
@@ -224,8 +232,8 @@ if point_in_rectangle(_mx, _my, button_x - button_size/2, button_y - button_size
     // Se não estiver escolhendo a nave, cria a instância do jogador com base no valor de "trakying_ship"
     if (choose_ship)
     {
- 
-
+		O_timer.alarm[0] = 6;
+		choose_ship = false;
         pick_ship = false; // Saindo do menu de seleção
         instance_create_layer(rm_w, 1070, "instances", ship_dict[trakying_ship]);
 
@@ -267,7 +275,9 @@ draw_set_alpha(1);
 
 // Horizontal alignment setup for text
 draw_set_halign(fa_left);
+
 // Combined array of sprite data
+
 var _sprite_data = [
     [spr_window_frame,     0,    0,    0.5609, 1.8625],
     [spr_coin,             32,   1056, 0.3,    0.3],
@@ -275,9 +285,11 @@ var _sprite_data = [
     [Spr_home,             608,  96,   0.3,    0.3],
     [Spr_audio_control,    504,  96,   0.4,    0.4],
     [Spr_shop,             32,   96,   0.23,   0.23],
+	[Spr_skill_tree,       46,   223,  1.3,    1.5],
     [spr_button_menu_panel,267,  447,  0.884,  0.364],
     [spr_button_menu_panel,267,  511,  0.884,  0.364],
-    [spr_button_menu_panel,267,  575,  0.884,  0.364]
+    [spr_button_menu_panel,267,  575,  0.884,  0.364],
+	
 ];
 
 // Names of buttons
@@ -327,7 +339,7 @@ for (var _i = 0; _i < array_length(_sprite_data); ++_i) {
 // Check if the left mouse button was pressed
 if mouse_check_button_pressed(mb_left) and !settings {
     // List of button names to be displayed
-    var _button_names = ["Home Button", "Audio Control", "Shop", "Resume", "Settings", "Exit"];
+    var _button_names = ["Home Button", "Audio Control", "Shop", "Skill three", "Resume", "Settings", "Exit"];
     var _button_data = []; // Initialize an array to store button data
     var _index_of_buttons = 3; //only for buttons that have a text on it 
     
@@ -372,12 +384,16 @@ if mouse_check_button_pressed(mb_left) and !settings {
                 show_message(isoundOn ? "som on" : "som off");
                 _audio_action();
                 break;
-			// retomar
-            case 3: global.pause = false; break;
-            // settings menu
-			case 4: settings = true; break; 
+			// shop
+			case 2: show_message("shop?") break;
+			// skill tree
+            case 3: global.pause = false; room_goto(rm_skillTree); break;
+            // resume game
+			case 4: global.pause = false; break; 
+			// open settings config
+			case 5: settings = true; break;
 			// close pause and exit to menu
-            case 5: scr_reestart_game();game_restart(); break;
+            case 6: scr_reestart_game();game_restart(); break;
         }
         
         audio_play_sound(snd_button, 0, false); // Toca um som de clique de botão
@@ -470,6 +486,10 @@ if (mouse_check_button_pressed(mb_left)) {
 }
 
 }
+
+
+
+
 }
 draw_set_font(-1);
 }

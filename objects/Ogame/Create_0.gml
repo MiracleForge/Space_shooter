@@ -42,6 +42,13 @@ global.level = 1;
 global.pause = false;
 global.dialog_down = false;
 score = 0;
+global.player_coin = 50000;
+global.speedo = 0;
+global.heat = 0;
+global.attack = 0;
+global.shield = 0;
+global.armor = 0; 
+global.special = 0;
 
 // UI
 Pyframe_icon = 0;
@@ -62,7 +69,8 @@ betterlight = true;
 isoundOn = true;
 settings = false;
 posx_volume = 540;
- isAdjustingVolume = false;
+isAdjustingVolume = false;
+iskillTreeopen = false;
 //chamadas
 boss_killed = false;
 

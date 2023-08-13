@@ -9,16 +9,16 @@ currentState = scr_normal_state;
 
 // ship config default
 ammo = 2;
-move_speed = 2;
+move_speed = 2 + global.speedo;
 max_movespeed = 2;
 heat = 0;
-maxHeat = 140;
-max_life = 10;
+maxHeat = 140 + global.heat;
+max_life = 10 + global.armor;
 life_ship = max_life;
 active = true;
 
 shield = 10;
-max_shield = 10;
+max_shield = 10 + global.shield;
 overheat = false;
 
 //hit damage
