@@ -76,6 +76,8 @@ boss_killed = false;
 
 test = -1;
 
+scrollpos = 0;
+mouse_yprevious = 0;
 
 
 

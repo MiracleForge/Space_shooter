@@ -123,7 +123,174 @@ if instance_exists(_ship_pai){
 #region // Player selection screen
 if pick_ship and room == rm_game_1_1 or pick_ship and room == rm_game_1_2
 {
+	//[Spr_scrllbar_area,              7,   571, 3.1, 1.7],
+draw_rectangle_color(0, 0, room_width, room_height, C, p, cA, C, false); //back color
+draw_sprite_ext(Spr_scrllbar_area, 0, 7, 571, 3.1, 1.7, image_angle,image_blend,image_alpha);	
+// Defina as informações dos elementos
+var _scroll_data = [	
+    [Spr_config_panel,                26,  608, 1.6, 0.7],
+    [scifi_inventory02_box_select01 , 126, 639, 5,   5  ],
+    [Spr_diamont,                     294, 639, 0.7, 0.7],
+    [spr_coin,                        294, 702, 0.2, 0.2],
+    [spr_buttonlock,                  512, 640, 0.2, 0.2]
+];
 
+// Defina a posição vertical do limite superior do Spr_config_panel
+var config_panel_limit = 400;
+
+// Defina a posição vertical do limite inferior
+var limit_bottom = 571 + sprite_get_height(Spr_scrllbar_area) * 1.7;
+
+// Defina o número de conjuntos
+var number_of_ships = 5;
+
+// Defina o deslocamento vertical
+var _y_offset = 0;
+
+// Loop através dos conjuntos
+for (var _nDisplay = 0; _nDisplay < number_of_ships; _nDisplay++) {
+    var draw_set = true;
+    
+    // Loop através dos elementos do conjunto
+    for (var _scl = 0; _scl < array_length(_scroll_data); _scl++) {
+        var _scrolldata_info = _scroll_data[_scl];
+        var _scroll_y = scrollpos + (_y_offset + _scrolldata_info[2]);
+        
+        // Verifique se o elemento está dentro dos limites verticais
+        if (_scroll_y + sprite_get_height(_scrolldata_info[0]) > config_panel_limit && _scroll_y < limit_bottom) {
+            if (_scrolldata_info[0] == Spr_config_panel) {
+                // Verifique se o Spr_config_panel toca o limite superior
+                if (_scroll_y <= config_panel_limit) {
+                    draw_set = false;
+                    break;
+                }
+            }
+        } else {
+            // Se um elemento não está dentro dos limites, defina o draw_set como falso
+            draw_set = false;
+            break;
+        }
+    }
+    
+    // Se o conjunto deve ser desenhado, desenhe todos os elementos
+    if (draw_set) {
+        for (var _scl = 0; _scl < array_length(_scroll_data); _scl++) {
+            var _scrolldata_info = _scroll_data[_scl];
+            var _scrollsprite = _scrolldata_info[0];
+            var _scroll_x = _scrolldata_info[1];
+            var _scroll_y = scrollpos + (_y_offset + _scrolldata_info[2]);
+            var _scroll_xscale = _scrolldata_info[3];
+            var _scroll_yscale = _scrolldata_info[4];
+            
+            draw_sprite_ext(_scrollsprite, 0, _scroll_x, _scroll_y, _scroll_xscale, _scroll_yscale, image_angle, c_white, 1);
+        }
+    }
+    
+    // Ajuste o deslocamento vertical para o próximo conjunto
+    _y_offset += 200;
+}
+
+	draw_rectangle_color(0, 0, room_width, 571, C, p, cA, C, false); //back color
+
+#region Background  layer
+	var _back_ground = [
+	[Spr_config_panel,               32,  160, 1.6, 1.6],      // first panel 
+	[Spr_config_panel,               303, 254, 0.8, 0.8],     //second panel 
+	[scifi_inventory02_box_select01, 111, 254, 8,   8  ],    // shipBOX
+	//[Spr_scrllbar_area,              7,   571, 3.1, 1.7],   // scroll area 
+	[Spr_hUI_heart,                  334, 272, 6.9, 6.9],  // heart
+	[Spr_HUI_shield,                 334, 333, 6.9, 6.9], // shield
+	[Spr_speed,                      338, 387, 0.5, 0.5],//speed
+	  //scrollbar
+	];
+	
+	for (var _bg = 0; _bg <array_length(_back_ground); _bg++) 
+	{	
+	var _sprite_info = _back_ground[_bg];
+    var _sprite = _sprite_info[0];
+    var _x = _sprite_info[1];
+    var _y = _sprite_info[2];
+    var _xscale = _sprite_info[3];
+    var _yscale = _sprite_info[4];
+	
+	    draw_sprite_ext(_sprite,0,_x,_y,_xscale,_yscale,image_angle,c_white,1);
+		
+	}
+	#endregion
+	#region Upside buttons 
+	var _upsidebutton_data = [
+	[Spr_home,             608, 96,   0.3, 0.3],
+	[Spr_shop,             32,  96,   0.2, 0.2],
+	[Spr_tab02,            97,  190,  0.7, 0.7],
+	[Spr_tab02,            207, 190,  0.7, 0.7],
+	[Spr_backbutton,       104, 448,  1,   1  ],
+	[spr_nextbutton,       280, 448,  1,   1  ],
+	[Spr_select,           190, 448,  1,   1  ],
+	//[vertical_hover_thumb, 681, 595,  1,   1  ],
+	//[horizontal_idle_thumb,677, 598,  1.5, 1.5]
+	];
+	
+	for (var _up = 0; _up <array_length(_upsidebutton_data ); _up++) 
+	{	
+	var _data_info = _upsidebutton_data[_up];
+    var _sprite = _data_info[0];
+    var _x = _data_info[1];
+    var _y = _data_info[2];
+    var _xscale = _data_info[3];
+    var _yscale = _data_info[4];
+	
+	    draw_sprite_ext(_sprite,0,_x,_y,_xscale,_yscale,image_angle,image_blend,image_alpha);
+	}
+	
+	var _settings_button_data = [];
+
+	// Data of coords buttons
+	for (var _Bup = 0; _Bup < array_length(_upsidebutton_data); _Bup++) {
+	    var _btn_info = _upsidebutton_data[_Bup];
+	    var _btn_x = _btn_info[1];
+	    var _btn_y = _btn_info[2];
+	    var _btn_width = sprite_get_width(_btn_info[0]) * _btn_info[3];
+	    var _btn_height = sprite_get_height(_btn_info[0]) * _btn_info[4];
+
+	    _settings_button_data[_Bup] = [_btn_x, _btn_y, _btn_x + _btn_width, _btn_y + _btn_height];
+	}
+
+	// Check for button click
+	if (mouse_check_button_pressed(mb_left)) {
+	    var _clicked_button = -1; // Initialize clicked_button to -1 (no button clicked)
+
+	    // Loop through the button data to find which button was clicked
+	    for (var _i = 0; _i < array_length(_settings_button_data); _i++) {
+	        var _btn = _settings_button_data[_i];
+	        if (point_in_rectangle(mouse_x, mouse_y, _btn[0], _btn[1], _btn[2], _btn[3])) {
+	            _clicked_button = _i;
+	            break;
+	        }
+	    }
+	
+
+    if (_clicked_button != -1) {
+        // Do something with the clicked button
+        switch (_clicked_button)
+		{ 
+			case 0: room_goto(rm_Mapa); break;
+			case 1: show_message("shop"); break;
+			case 2: show_message("info ship"); break;
+			case 3: show_message("historia ship"); break;
+			case 4: show_message("back_ship"); break;
+			case 5: show_message("next_ship"); break;
+			case 6: show_message("select_ship") break;
+			//case 7: show_message("scroll bar") break;
+			//case 8: show_message("scrol point") break;
+		}
+	}
+	}
+	
+
+	#endregion 
+	// Upbox buttons 
+	
+/*
 	//window character creation
 	//background
     var _background_l = sprite_get_width(spr_back_menu) * 24;
@@ -138,7 +305,7 @@ if pick_ship and room == rm_game_1_1 or pick_ship and room == rm_game_1_2
 	var porttrait_posY = _display_y + 50;
 	
 
-    draw_rectangle_color(0, 0, 720, 1280, C, p, cA, C, false); //back color
+    
     draw_sprite_ext(spr_back_menu, 0, rm_w, rm_h, 24, 24, 0, c, 1); //background rectangle
     draw_sprite_ext(spr_display_ship, 0, _display_x, _display_y, _scale, _scale, 0, c, 1); // rectangle
 
@@ -239,6 +406,7 @@ if point_in_rectangle(_mx, _my, button_x - button_size/2, button_y - button_size
 
     }
 }
+*/
 }
 
 #endregion
