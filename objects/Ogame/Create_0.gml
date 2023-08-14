@@ -78,7 +78,7 @@ test = -1;
 
 scrollpos = 0;
 mouse_yprevious = 0;
-
+ number_of_ships = 8;
 
 
 

@@ -123,28 +123,31 @@ if instance_exists(_ship_pai){
 #region // Player selection screen
 if pick_ship and room == rm_game_1_1 or pick_ship and room == rm_game_1_2
 {
-	//[Spr_scrllbar_area,              7,   571, 3.1, 1.7],
+// Define a cor de fundo do retângulo que preenche toda a tela da sala
 draw_rectangle_color(0, 0, room_width, room_height, C, p, cA, C, false); //back color
-draw_sprite_ext(Spr_scrllbar_area, 0, 7, 571, 3.1, 1.7, image_angle,image_blend,image_alpha);	
-// Defina as informações dos elementos
-var _scroll_data = [	
-    [Spr_config_panel,                26,  608, 1.6, 0.7],
-    [scifi_inventory02_box_select01 , 126, 639, 5,   5  ],
-    [Spr_diamont,                     294, 639, 0.7, 0.7],
-    [spr_coin,                        294, 702, 0.2, 0.2],
-    [spr_buttonlock,                  512, 640, 0.2, 0.2]
+
+// Desenha a área da barra de rolagem usando um sprite
+draw_sprite_ext(Spr_scrllbar_area, 0, 7, 571, 3.1, 1.7, image_angle, image_blend, image_alpha);
+
+// Definindo as informações dos elementos a serem exibidos
+var _scroll_data = [
+    [Spr_config_panel, 26, 608, 1.6, 0.7], // [sprite, x, y, scaleX, scaleY]
+    [scifi_inventory02_box_select01, 126, 639, 5, 5],
+    [Spr_diamont, 294, 639, 0.7, 0.7],
+    [spr_coin, 294, 702, 0.2, 0.2],
+    [spr_buttonlock, 512, 640, 0.2, 0.2]
 ];
 
-// Defina a posição vertical do limite superior do Spr_config_panel
+// Define a posição vertical do limite superior do Spr_config_panel
 var config_panel_limit = 400;
 
-// Defina a posição vertical do limite inferior
+// Define a posição vertical do limite inferior
 var limit_bottom = 571 + sprite_get_height(Spr_scrllbar_area) * 1.7;
 
-// Defina o número de conjuntos
-var number_of_ships = 5;
+// Define o número de conjuntos a serem exibidos 
+//var number_of_ships = 8;
 
-// Defina o deslocamento vertical
+// Define o deslocamento vertical inicial
 var _y_offset = 0;
 
 // Loop através dos conjuntos
@@ -182,26 +185,27 @@ for (var _nDisplay = 0; _nDisplay < number_of_ships; _nDisplay++) {
             var _scroll_xscale = _scrolldata_info[3];
             var _scroll_yscale = _scrolldata_info[4];
             
+            // Desenha o sprite com as informações fornecidas
             draw_sprite_ext(_scrollsprite, 0, _scroll_x, _scroll_y, _scroll_xscale, _scroll_yscale, image_angle, c_white, 1);
         }
     }
     
-    // Ajuste o deslocamento vertical para o próximo conjunto
+    // Ajusta o deslocamento vertical para o próximo conjunto
     _y_offset += 200;
 }
 
 	draw_rectangle_color(0, 0, room_width, 571, C, p, cA, C, false); //back color
-
+draw_text(mouse_x + 50,mouse_y, scrollpos);
 #region Background  layer
 	var _back_ground = [
 	[Spr_config_panel,               32,  160, 1.6, 1.6],      // first panel 
 	[Spr_config_panel,               303, 254, 0.8, 0.8],     //second panel 
 	[scifi_inventory02_box_select01, 111, 254, 8,   8  ],    // shipBOX
-	//[Spr_scrllbar_area,              7,   571, 3.1, 1.7],   // scroll area 
+
 	[Spr_hUI_heart,                  334, 272, 6.9, 6.9],  // heart
 	[Spr_HUI_shield,                 334, 333, 6.9, 6.9], // shield
 	[Spr_speed,                      338, 387, 0.5, 0.5],//speed
-	  //scrollbar
+
 	];
 	
 	for (var _bg = 0; _bg <array_length(_back_ground); _bg++) 

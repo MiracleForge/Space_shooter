@@ -11,6 +11,7 @@
     {"name":"Controls","order":2,"path":"folders/Objetos/Controls.yy",},
     {"name":"Buttons","order":9,"path":"folders/Objetos/Controls/Buttons.yy",},
     {"name":"Buttons menu","order":7,"path":"folders/Objetos/Controls/Buttons/Buttons menu.yy",},
+    {"name":"Skill tree","order":8,"path":"folders/Objetos/Controls/Buttons/Buttons menu/Skill tree.yy",},
     {"name":"controles de texto","order":10,"path":"folders/Objetos/Controls/controles de texto.yy",},
     {"name":"Controls and joystick","order":6,"path":"folders/Objetos/Controls/Controls and joystick.yy",},
     {"name":"efeitos","order":8,"path":"folders/Objetos/Controls/efeitos.yy",},
@@ -51,7 +52,6 @@
     {"name":"sprites player ship","order":4,"path":"folders/Sprites/sprites player ship.yy",},
     {"name":"bullets","order":5,"path":"folders/Sprites/sprites player ship/bullets.yy",},
     {"name":"engines","order":6,"path":"folders/Sprites/sprites player ship/engines.yy",},
-    {"name":"Skill tree","order":8,"path":"folders/Objetos/Controls/Buttons/Buttons menu/Skill tree.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"Buttons_01","order":11,"path":"sprites/Buttons_01/Buttons_01.yy",},
