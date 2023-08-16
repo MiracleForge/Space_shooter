@@ -22,6 +22,8 @@ var _guiship02_A = _guia/2 - _ship02_A/2;
 
 if pick_ship and room == rm_game_1_1
 {	
+	
+	
 	targetAngle += rotationSpeed; // rotation of sprites
 
 }

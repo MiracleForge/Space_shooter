@@ -27,7 +27,7 @@ cameratarget = O_ship_parent;
 ship_dict = ds_map_create();
 ship_dict[1] = O_USS_Cerulean;
 ship_dict[2] = O_USS_Emberstrike;
-ship_dict[3] = O_USS_Emerald_Warhammer;
+ship_dict[3] = O_USS_Verdant_Shield;
 ship_dict[4] = O_USS_ShadowStrike;
 ship_dict[5] = O_USS_ThunderCore;
 
@@ -53,7 +53,7 @@ global.special = 0;
 // UI
 Pyframe_icon = 0;
 max_Pyframe_icon = 8;
-trakying_ship = 1;
+trakying_ship = 0;
 max_trakying_ship = 5;
 choose_ship = true;
 test = false;
@@ -78,7 +78,60 @@ test = -1;
 
 scrollpos = 0;
 mouse_yprevious = 0;
- number_of_ships = 8;
 
 
+enum ships {
+    USS_Cerulean,
+    USS_EmberStrike,
+    USS_Emerald_Warhammer,
+	USS_ShadowStrike,
+    USS_thunderCore,
+    ships_height
+}
+
+enum status {
+	sprite,
+    Block,
+    Money,
+    Diamonds,
+    Heart,
+    Shield,
+	Speed,
+	Description,
+    status_height
+}
+
+ number_of_ships = ships.ships_height;
+allships = ds_grid_create(ships.ships_height, status.status_height);
+
+shipdataBase = [
+    [spr_USS_Cerulean,false,0,0,4,25,3],
+    [spr_USS_Emberstrike, false,0,0,4,15,2],
+    [spr_USS_Verdant_Shield,false,0,0,5,15,1.5],
+    [spr_USS_Shadowstrike, true, 1000, 50,3,30,4],
+    [Spr_USS_Thundercore, true, 3000,70,3,25,2]
+];
+
+ship_description_dataBase = [
+	
+];
+for (var i = 0; i < array_length(shipdataBase); i++) {
+    var shipData = shipdataBase[i];
+    var shipIndex = i; // Use the loop index as the ship's enumeration value
+    var shipStatus = shipData[1];
+    var sprite = shipData[0];
+    var money = shipData[2];
+    var diamonds = shipData[3];
+    var heart = shipData[4];
+    var shield = shipData[5];
+	var _speed = shipData[6];
+
+    ds_grid_add(allships, shipIndex, status.sprite, sprite);
+    ds_grid_add(allships, shipIndex, status.Block, shipStatus);
+    ds_grid_add(allships, shipIndex, status.Money, money);
+    ds_grid_add(allships, shipIndex, status.Diamonds, diamonds);
+    ds_grid_add(allships, shipIndex, status.Heart, heart);
+    ds_grid_add(allships, shipIndex, status.Shield, shield);
+    ds_grid_add(allships, shipIndex, status.Speed, _speed);
+}
 

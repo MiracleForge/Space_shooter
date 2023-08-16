@@ -123,9 +123,10 @@ if instance_exists(_ship_pai){
 #region // Player selection screen
 if pick_ship and room == rm_game_1_1 or pick_ship and room == rm_game_1_2
 {
+	
 // Define a cor de fundo do retângulo que preenche toda a tela da sala
 draw_rectangle_color(0, 0, room_width, room_height, C, p, cA, C, false); //back color
-
+#region // arcaboso do background e do scroll
 // Desenha a área da barra de rolagem usando um sprite
 draw_sprite_ext(Spr_scrllbar_area, 0, 7, 571, 3.1, 1.7, image_angle, image_blend, image_alpha);
 
@@ -150,15 +151,15 @@ var limit_bottom = 571 + sprite_get_height(Spr_scrllbar_area) * 1.7;
 // Define o deslocamento vertical inicial
 var _y_offset = 0;
 
-// Loop através dos conjuntos
 for (var _nDisplay = 0; _nDisplay < number_of_ships; _nDisplay++) {
     var draw_set = true;
+    var _blockStatus = ds_grid_get(allships, _nDisplay, status.Block);
     
     // Loop através dos elementos do conjunto
     for (var _scl = 0; _scl < array_length(_scroll_data); _scl++) {
         var _scrolldata_info = _scroll_data[_scl];
         var _scroll_y = scrollpos + (_y_offset + _scrolldata_info[2]);
-        
+
         // Verifique se o elemento está dentro dos limites verticais
         if (_scroll_y + sprite_get_height(_scrolldata_info[0]) > config_panel_limit && _scroll_y < limit_bottom) {
             if (_scrolldata_info[0] == Spr_config_panel) {
@@ -185,66 +186,147 @@ for (var _nDisplay = 0; _nDisplay < number_of_ships; _nDisplay++) {
             var _scroll_xscale = _scrolldata_info[3];
             var _scroll_yscale = _scrolldata_info[4];
             
+            if (_scl == 4) {
+                switch (_blockStatus) {
+                    case 0:
+                        _scrollsprite = spr_unlocked;
+                        break;
+                    case 1:
+                        _scrollsprite = spr_buttonlock;
+                        break;
+                }
+            }
+           
             // Desenha o sprite com as informações fornecidas
             draw_sprite_ext(_scrollsprite, 0, _scroll_x, _scroll_y, _scroll_xscale, _scroll_yscale, image_angle, c_white, 1);
-        }
+        } 
+        
+        // Desenha a nave correspondente ao índice da interação
+        var _shipIndex = ds_grid_get(allships, _nDisplay, status.sprite);
+        var _moneyIndex = ds_grid_get(allships, _nDisplay, status.Money);
+        var _diamondIndex = ds_grid_get(allships, _nDisplay, status.Diamonds);
+        
+        draw_sprite_ext(_shipIndex, 0, 181, _scroll_y + 60, 3, 3, 0, c, 1);
+        draw_text_ext_color(352, _scroll_y + 70, _moneyIndex, 5, 300, cA, cA, cA, cA, 1);
+        draw_text_ext_color(352, _scroll_y + 10, _diamondIndex, 5, 300, cA, cA, cA, cA, 1);
     }
-    
+   
     // Ajusta o deslocamento vertical para o próximo conjunto
     _y_offset += 200;
 }
 
-	draw_rectangle_color(0, 0, room_width, 571, C, p, cA, C, false); //back color
-draw_text(mouse_x + 50,mouse_y, scrollpos);
+
+#endregion
+#region // parte superior , seleção de nave e jogador
+draw_rectangle_color(0, 0, room_width, 571, C, p, cA, C, false); //back color
+
 #region Background  layer
 	var _back_ground = [
 	[Spr_config_panel,               32,  160, 1.6, 1.6],      // first panel 
 	[Spr_config_panel,               303, 254, 0.8, 0.8],     //second panel 
 	[scifi_inventory02_box_select01, 111, 254, 8,   8  ],    // shipBOX
-
 	[Spr_hUI_heart,                  334, 272, 6.9, 6.9],  // heart
 	[Spr_HUI_shield,                 334, 333, 6.9, 6.9], // shield
 	[Spr_speed,                      338, 387, 0.5, 0.5],//speed
-
 	];
 	
 	for (var _bg = 0; _bg <array_length(_back_ground); _bg++) 
 	{	
-	var _sprite_info = _back_ground[_bg];
-    var _sprite = _sprite_info[0];
-    var _x = _sprite_info[1];
-    var _y = _sprite_info[2];
-    var _xscale = _sprite_info[3];
-    var _yscale = _sprite_info[4];
+		var _sprite_info = _back_ground[_bg];
+	    var _sprite = _sprite_info[0];
+	    var _x = _sprite_info[1];
+	    var _y = _sprite_info[2];
+	    var _xscale = _sprite_info[3];
+	    var _yscale = _sprite_info[4];
 	
 	    draw_sprite_ext(_sprite,0,_x,_y,_xscale,_yscale,image_angle,c_white,1);
-		
 	}
-	#endregion
-	#region Upside buttons 
-	var _upsidebutton_data = [
-	[Spr_home,             608, 96,   0.3, 0.3],
-	[Spr_shop,             32,  96,   0.2, 0.2],
-	[Spr_tab02,            97,  190,  0.7, 0.7],
-	[Spr_tab02,            207, 190,  0.7, 0.7],
-	[Spr_backbutton,       104, 448,  1,   1  ],
-	[spr_nextbutton,       280, 448,  1,   1  ],
-	[Spr_select,           190, 448,  1,   1  ],
-	//[vertical_hover_thumb, 681, 595,  1,   1  ],
-	//[horizontal_idle_thumb,677, 598,  1.5, 1.5]
-	];
 	
-	for (var _up = 0; _up <array_length(_upsidebutton_data ); _up++) 
-	{	
-	var _data_info = _upsidebutton_data[_up];
+	
+    var _blockStatus = ds_grid_get(allships, trakying_ship, status.Block);
+ // draw ships status if  they are unblocked
+   if (!_blockStatus) {
+		var _shipIndex = ds_grid_get(allships, trakying_ship, status.sprite);
+
+		
+		    var _spriteIndex = ds_grid_get(allships, trakying_ship, status.sprite);
+		    var _heartIndex =  ds_grid_get(allships, trakying_ship, status.Heart);
+		    var _shieldIndex = ds_grid_get(allships, trakying_ship, status.Shield);
+		    var _speedIndex =  ds_grid_get(allships, trakying_ship, status.Speed);
+
+		    draw_sprite_ext(_spriteIndex, 0, 186, 330, 6, 6, targetAngle, c_white, 1);
+
+		    draw_set_font(Fnt_Menu_description);
+    
+		    var textValues = [_heartIndex, _shieldIndex, _speedIndex];
+		    var textY = 276;
+		    var textSpacing = 57;
+    
+		    for (var i = 0; i < array_length(textValues); i++) {
+		        draw_text_ext_color(383, textY + textSpacing * i, textValues[i], 1, 300, cA, cA, cA, cA, 1);
+		    }
+		
+ }
+
+#endregion
+
+#region Upside buttons 
+// Definição dos dados dos botões na seguinte ordem:
+// [Sprite, Posição X, Posição Y, Escala X, Escala Y]
+var _upsidebutton_data = [
+    [Spr_home, 608, 96, 0.3, 0.3],
+    [Spr_shop, 32, 96, 0.2, 0.2],
+    [Spr_tab02, 97, 190, 0.7, 0.7],
+    [Spr_tab02, 207, 190, 0.7, 0.7],
+    [Spr_backbutton, 104, 448, 1, 1],
+    [spr_nextbutton, 280, 448, 1, 1],
+    [Spr_select, 190, 448, 1, 1]
+];
+
+// Loop através dos dados dos botões
+for (var _up = 0; _up < array_length(_upsidebutton_data); _up++) 
+{
+    // Extrai as informações do botão atual
+    var _data_info = _upsidebutton_data[_up];
     var _sprite = _data_info[0];
     var _x = _data_info[1];
     var _y = _data_info[2];
     var _xscale = _data_info[3];
     var _yscale = _data_info[4];
-	
-	    draw_sprite_ext(_sprite,0,_x,_y,_xscale,_yscale,image_angle,image_blend,image_alpha);
-	}
+    
+    // Desenha o sprite do botão com as informações fornecidas
+    draw_sprite_ext(_sprite, 0, _x, _y, _xscale, _yscale, image_angle, image_blend, image_alpha);
+    
+    // Determina o texto a ser exibido no botão com base no índice _up
+    var buttonText = "";
+    
+    switch (_up) {
+        case 2:
+            buttonText = "Ship";
+            break;
+        case 3:
+            buttonText = "Details";
+            break;
+    }
+    
+    // Calcula as coordenadas X e Y para centralizar o texto no botão
+    var spriteWidth = sprite_get_width(_sprite);
+    var spriteHeight = sprite_get_height(_sprite);
+    var textWidth = string_width(buttonText);
+    var textHeight = string_height(buttonText);
+    var textX = _x + (spriteWidth * _xscale - textWidth) / 2;
+    var textY = _y + (spriteHeight * _yscale - textHeight) / 2;
+
+    // Desenha o texto no botão com a posição calculada
+    draw_text_ext_color(textX, textY, buttonText, 1, 300, cA, cA, cA, cA, 1);
+	var _spriteIndex = ds_grid_get(allships, trakying_ship, status.sprite);
+	var _spriteName = sprite_get_name(_spriteIndex);
+	// Remove the "spr_" prefix
+	_spriteName = string_delete(_spriteName, 1, 4);
+			
+	draw_text_ext_color(400, 448, _spriteName,5,300,cA,cA,cA,cA,1);
+}
+
 	
 	var _settings_button_data = [];
 
@@ -281,17 +363,38 @@ draw_text(mouse_x + 50,mouse_y, scrollpos);
 			case 1: show_message("shop"); break;
 			case 2: show_message("info ship"); break;
 			case 3: show_message("historia ship"); break;
-			case 4: show_message("back_ship"); break;
-			case 5: show_message("next_ship"); break;
-			case 6: show_message("select_ship") break;
-			//case 7: show_message("scroll bar") break;
-			//case 8: show_message("scrol point") break;
+			case 4: show_message("back_ship"); trakying_ship = clamp(trakying_ship - 1, 0, number_of_ships - 1);  break;
+			case 5:
+				show_message("next_ship");
+				var blocked  = ds_grid_get(allships, trakying_ship +1, status.Block);
+				if blocked == 0
+				{
+				trakying_ship = clamp(trakying_ship + 1, 0, number_of_ships - 1);  
+				}
+			break;
+			case 6: show_message("select_ship")
+					 var _spriteIndex = ds_grid_get(allships, trakying_ship, status.sprite);
+					// Get the sprite name from the sprite index
+					var _spriteName = sprite_get_name(_spriteIndex);
+					// Remove the "spr_" prefix
+					_spriteName = string_delete(_spriteName, 1, 4);
+					// Prefix the sprite name with "O_"
+					var _instanceSpriteName = "O_" + _spriteName;
+					show_message(_instanceSpriteName);
+					// Get the object index based on the instanceSpriteName
+					var _instanceObjIndex = asset_get_index(_instanceSpriteName);
+					// Create the ship instance using the object index
+					var shipInstance = instance_create_layer(room_width/2, room_height/2 , "instances", _instanceObjIndex);
+					pick_ship = false;
+					
+			break;
+
 		}
 	}
 	}
 	
-
-	#endregion 
+#endregion
+#endregion 
 	// Upbox buttons 
 	
 /*

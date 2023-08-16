@@ -1,10 +1,10 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "spr_buttonlock",
-  "bbox_bottom": 422,
+  "name": "spr_unlocked",
+  "bbox_bottom": 385,
   "bbox_left": 0,
-  "bbox_right": 416,
+  "bbox_right": 385,
   "bbox_top": 0,
   "bboxMode": 0,
   "collisionKind": 1,
@@ -13,11 +13,11 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"73db7e2e-fe2c-4550-a161-6b3ab3e37898",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"44f491f7-11fb-4dfd-9ff6-3ec28ff23191",},
   ],
   "gridX": 0,
   "gridY": 0,
-  "height": 423,
+  "height": 386,
   "HTile": false,
   "layers": [
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"b0ba5039-01d0-418a-b963-a33bc52236fb","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
@@ -32,7 +32,7 @@
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "spr_buttonlock",
+    "name": "spr_unlocked",
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"73db7e2e-fe2c-4550-a161-6b3ab3e37898","path":"sprites/spr_buttonlock/spr_buttonlock.yy",},},},"Disabled":false,"id":"aad7e11c-18a8-41ed-a509-cf96ddce00bb","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"44f491f7-11fb-4dfd-9ff6-3ec28ff23191","path":"sprites/spr_unlocked/spr_unlocked.yy",},},},"Disabled":false,"id":"423efe53-9e79-417f-a1dd-361aee583d31","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
@@ -70,5 +70,5 @@
   },
   "type": 0,
   "VTile": false,
-  "width": 417,
+  "width": 386,
 }
