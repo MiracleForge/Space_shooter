@@ -22,15 +22,6 @@ ship_snd_select = false;
 rotationSpeed = 2;
 targetAngle = 90;
 cameratarget = O_ship_parent;
-//creation of player ship objects
-// Evento Create
-ship_dict = ds_map_create();
-ship_dict[1] = O_USS_Cerulean;
-ship_dict[2] = O_USS_Emberstrike;
-ship_dict[3] = O_USS_Verdant_Shield;
-ship_dict[4] = O_USS_ShadowStrike;
-ship_dict[5] = O_USS_ThunderCore;
-
 
 // effects
 shake = false;
@@ -42,7 +33,8 @@ global.level = 1;
 global.pause = false;
 global.dialog_down = false;
 score = 0;
-global.player_coin = 50000;
+global.player_coin = 1000;
+global.player_diamond = 10;
 global.speedo = 0;
 global.heat = 0;
 global.attack = 0;
@@ -107,7 +99,7 @@ allships = ds_grid_create(ships.ships_height, status.status_height);
 shipdataBase = [
     [spr_USS_Cerulean,false,0,0,4,25,3],
     [spr_USS_Emberstrike, false,0,0,4,15,2],
-    [spr_USS_Verdant_Shield,false,0,0,5,15,1.5],
+    [spr_USS_Verdant_Shield,true,500,10,5,15,1.5],
     [spr_USS_Shadowstrike, true, 1000, 50,3,30,4],
     [Spr_USS_Thundercore, true, 3000,70,3,25,2]
 ];
@@ -134,4 +126,7 @@ for (var i = 0; i < array_length(shipdataBase); i++) {
     ds_grid_add(allships, shipIndex, status.Shield, shield);
     ds_grid_add(allships, shipIndex, status.Speed, _speed);
 }
-
+number_of__ndisplay = noone;
+confirm_buy = false;
+denied_money = 0
+conj_clicked = 0;

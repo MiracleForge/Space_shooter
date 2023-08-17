@@ -151,6 +151,7 @@ var limit_bottom = 571 + sprite_get_height(Spr_scrllbar_area) * 1.7;
 // Define o deslocamento vertical inicial
 var _y_offset = 0;
 
+
 for (var _nDisplay = 0; _nDisplay < number_of_ships; _nDisplay++) {
     var draw_set = true;
     var _blockStatus = ds_grid_get(allships, _nDisplay, status.Block);
@@ -185,20 +186,30 @@ for (var _nDisplay = 0; _nDisplay < number_of_ships; _nDisplay++) {
             var _scroll_y = scrollpos + (_y_offset + _scrolldata_info[2]);
             var _scroll_xscale = _scrolldata_info[3];
             var _scroll_yscale = _scrolldata_info[4];
-            
-            if (_scl == 4) {
+			
+            if (_scl == 4)
+			{
                 switch (_blockStatus) {
-                    case 0:
-                        _scrollsprite = spr_unlocked;
-                        break;
-                    case 1:
-                        _scrollsprite = spr_buttonlock;
+                    case 0: _scrollsprite = spr_unlocked; break;
+                    case 1: _scrollsprite = spr_buttonlock;
+	
+					 if (mouse_check_button_pressed(mb_left) && point_in_rectangle(mouse_x, mouse_y, _scroll_x, _scroll_y, _scroll_x + sprite_get_width(_scrollsprite) * _scroll_xscale, _scroll_y + sprite_get_height(_scrollsprite) * _scroll_yscale))
+					 {	
+						 if !confirm_buy
+							{    //conj_clicked = _nDisplay;
+								 number_of__ndisplay = _nDisplay
+								 confirm_buy = true;
+								 
+							}
+					 }
                         break;
                 }
+			
             }
-           
+			
             // Desenha o sprite com as informações fornecidas
             draw_sprite_ext(_scrollsprite, 0, _scroll_x, _scroll_y, _scroll_xscale, _scroll_yscale, image_angle, c_white, 1);
+	
         } 
         
         // Desenha a nave correspondente ao índice da interação
@@ -210,10 +221,97 @@ for (var _nDisplay = 0; _nDisplay < number_of_ships; _nDisplay++) {
         draw_text_ext_color(352, _scroll_y + 70, _moneyIndex, 5, 300, cA, cA, cA, cA, 1);
         draw_text_ext_color(352, _scroll_y + 10, _diamondIndex, 5, 300, cA, cA, cA, cA, 1);
     }
-   
+
+if (confirm_buy)
+{
+    var _confirm = [
+        [Spr_config_panel, 160, 800, 1, 1],
+        [Spr_close, 486, 841, 0.6, 0.6],
+        [Spr_tab02, 192, 928, 1, 1],
+        [Spr_tab02, 384, 928, 1, 1],
+        [spr_coin, 253, 941, 0.2, 0.2],
+        [Spr_diamont, 443, 941, 0.7, 0.7]
+    ];
+    
+    draw_text(mouse_x, mouse_y, string(number_of__ndisplay));
+    
+    var moneycost = ds_grid_get(allships, number_of__ndisplay, status.Money);
+    var diamondcost = ds_grid_get(allships, number_of__ndisplay, status.Diamonds);
+    
+    var denied_money_text = ["Are you sure About that", "You don't have enough money", "You don't have enough diamonds"];
+    
+    var clickedItem = -1;
+    
+    for (var _conf = 0; _conf < array_length(_confirm); _conf++)
+    {
+        var _confData = _confirm[_conf];
+        var _confsprite = _confData[0];
+        var _confX = _confData[1];
+        var _confY = _confData[2];
+        var _conf_xscale = _confData[3];
+        var _conf_yscale = _confData[4];
+        
+        draw_sprite_ext(_confsprite, 0, _confX, _confY, _conf_xscale, _conf_yscale, image_angle, image_blend, image_alpha);
+        
+        var _confWidth = sprite_get_width(_confsprite) * _conf_xscale;
+        var _confHeight = sprite_get_height(_confsprite) * _conf_yscale;
+        
+        if (point_in_rectangle(mouse_x, mouse_y, _confX, _confY, _confX + _confWidth, _confY + _confHeight))
+        {
+            clickedItem = _conf;
+        }
+    }
+    
+    if (mouse_check_button_pressed(mb_left))
+    {
+        if (clickedItem == 1) // Check if Close button was clicked
+        {
+            confirm_buy = false;
+            denied_money = 0;
+        }
+        else if (clickedItem >= 4 && clickedItem <= 5) // Check if Money or Diamonds button was clicked
+        {
+            var moneyOrDiamond = (clickedItem == 4) ? "money" : "diamonds";
+            var affordability = (moneyOrDiamond == "money") ? global.player_coin : global.player_diamond;
+            var itemCost = (moneyOrDiamond == "money") ? moneycost : diamondcost;
+            
+            if (affordability >= itemCost)
+            {
+                allships[# number_of__ndisplay, status.Block] = false;
+                
+                if (moneyOrDiamond == "money")
+                {
+                    global.player_coin -= itemCost;
+                }
+                else if (moneyOrDiamond == "diamonds")
+                {
+                    global.player_diamond -= itemCost;
+                }
+                
+                show_message("Buyed " + moneyOrDiamond);
+                confirm_buy = false;
+                denied_money = 0;
+            }
+            else
+            {
+                denied_money = (moneyOrDiamond == "money") ? 1 : 2;
+            }
+        }
+    }
+    
+    if (denied_money >= 0 && denied_money < array_length(denied_money_text))
+    {
+        draw_text_ext_color(192, 864, denied_money_text[denied_money], string_height("M"), 300, cA, cA, cA, cA, 1);
+    }
+}
+
+
+	
+	  // draw_text(_scroll_x,_scroll_y,allships[# _nDisplay, status.Block]);
     // Ajusta o deslocamento vertical para o próximo conjunto
     _y_offset += 200;
 }
+
 
 
 #endregion
@@ -363,16 +461,55 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
 			case 1: show_message("shop"); break;
 			case 2: show_message("info ship"); break;
 			case 3: show_message("historia ship"); break;
-			case 4: show_message("back_ship"); trakying_ship = clamp(trakying_ship - 1, 0, number_of_ships - 1);  break;
+			case 4: show_message("back_ship");
+    
+		    // Start searching for the previous unlocked ship from the current position
+			    for (var prev_ship = trakying_ship - 1; prev_ship >= 0; prev_ship--) {
+			        var blocked = ds_grid_get(allships, prev_ship, status.Block);
+        
+			        if (blocked == 0) {
+			            trakying_ship = prev_ship;
+			            break; // Found the previous unlocked ship, exit the loop
+			        }
+			    }
+    
+			    // If no unlocked ship is found, wrap around to the end
+			    if (prev_ship < 0) {
+			        for (var prev_ship = number_of_ships - 1; prev_ship > trakying_ship; prev_ship--) {
+			            var blocked = ds_grid_get(allships, prev_ship, status.Block);
+            
+			            if (blocked == 0) {
+			                trakying_ship = prev_ship;
+			                break; // Found the previous unlocked ship, exit the loop
+			            }
+			        }
+			    }
+		    break;
 			case 5:
 				show_message("next_ship");
-				var blocked  = ds_grid_get(allships, trakying_ship +1, status.Block);
-				if blocked == 0
-				{
-				trakying_ship = clamp(trakying_ship + 1, 0, number_of_ships - 1);  
+				for (var next_ship = trakying_ship + 1; next_ship < number_of_ships; next_ship++) {
+				    var blocked = ds_grid_get(allships, next_ship, status.Block);
+    
+				    if (blocked == 0) {
+				        trakying_ship = next_ship;
+				        break; // Found the next unlocked ship, exit the loop
+				    }
 				}
+
+				// Handle wrapping around if no unlocked ship is found ahead
+				if (next_ship >= number_of_ships) {
+				    for (var next_ship = 0; next_ship < trakying_ship; next_ship++) {
+				        var blocked = ds_grid_get(allships, next_ship, status.Block);
+        
+				        if (blocked == 0) {
+				            trakying_ship = next_ship;
+				            break; // Found the next unlocked ship, exit the loop
+				        }
+				    }
+				}
+			
 			break;
-			case 6: show_message("select_ship")
+			case 6: show_message("select_ship") // use the sprite name to create the objeto choose by player
 					 var _spriteIndex = ds_grid_get(allships, trakying_ship, status.sprite);
 					// Get the sprite name from the sprite index
 					var _spriteName = sprite_get_name(_spriteIndex);
@@ -391,8 +528,10 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
 
 		}
 	}
+
 	}
-	
+		draw_text_ext_transformed(0,0,global.player_coin, 5,300,3,3,0)
+	draw_text_ext_transformed(0, 300, global.player_diamond,5,300,3,3,0);
 #endregion
 #endregion 
 	// Upbox buttons 

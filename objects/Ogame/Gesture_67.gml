@@ -7,7 +7,7 @@ if ( mouse_y > 571 and mouse_check_button_pressed(mb_left) ){
     mouse_yprevious = mouse_y;
 }
 
-if ( mouse_y > 571 and mouse_check_button(mb_left))  {
+if ( mouse_y > 571 and mouse_check_button(mb_left) and !confirm_buy)  {
     var mouse_y_change = mouse_y - mouse_yprevious;
     if (mouse_y_change > 0 and scrollpos <= 20) {
         // Arrastar para baixo
