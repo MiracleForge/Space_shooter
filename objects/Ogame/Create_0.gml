@@ -130,3 +130,4 @@ number_of__ndisplay = noone;
 confirm_buy = false;
 denied_money = 0
 conj_clicked = 0;
+is_show_ship_status = true;
