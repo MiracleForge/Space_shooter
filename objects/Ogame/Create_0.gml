@@ -71,61 +71,62 @@ test = -1;
 scrollpos = 0;
 mouse_yprevious = 0;
 
-
 enum ships {
     USS_Cerulean,
     USS_EmberStrike,
     USS_Emerald_Warhammer,
-	USS_ShadowStrike,
-    USS_thunderCore,
+    USS_ShadowStrike,
+    USS_ThunderCore,
+	oi,
+	oii,
+	
     ships_height
 }
 
 enum status {
-	sprite,
+    sprite,
     Block,
     Money,
     Diamonds,
     Heart,
     Shield,
-	Speed,
-	Description,
+    Speed,
     status_height
 }
 
- number_of_ships = ships.ships_height;
 allships = ds_grid_create(ships.ships_height, status.status_height);
+number_of_ships = ships.ships_height;
 
-shipdataBase = [
+var shipdataBase = [
     [spr_USS_Cerulean,false,0,0,4,25,3],
     [spr_USS_Emberstrike, false,0,0,4,15,2],
     [spr_USS_Verdant_Shield,true,500,10,5,15,1.5],
     [spr_USS_Shadowstrike, true, 1000, 50,3,30,4],
-    [Spr_USS_Thundercore, true, 3000,70,3,25,2]
+    [Spr_USS_Thundercore, true, 3000,70,3,25,2],
+    [Spr_USS_Thundercore, true, 3000,70,3,25,2],
+    [Spr_USS_Thundercore, true, 3000,70,3,25,2],
 ];
 
-ship_description_dataBase = [
-	
-];
 for (var i = 0; i < array_length(shipdataBase); i++) {
-    var shipData = shipdataBase[i];
-    var shipIndex = i; // Use the loop index as the ship's enumeration value
-    var shipStatus = shipData[1];
-    var sprite = shipData[0];
-    var money = shipData[2];
-    var diamonds = shipData[3];
-    var heart = shipData[4];
-    var shield = shipData[5];
-	var _speed = shipData[6];
+    var _shipData = shipdataBase[i];
+    var _shipIndex = i;
+    var _shipStatus = _shipData[1];
+    var _sprite = _shipData[0];
+    var _money = _shipData[2];
+    var _diamonds = _shipData[3];
+    var _heart = _shipData[4];
+    var _shield = _shipData[5];
+    var _speed = _shipData[6];
 
-    ds_grid_add(allships, shipIndex, status.sprite, sprite);
-    ds_grid_add(allships, shipIndex, status.Block, shipStatus);
-    ds_grid_add(allships, shipIndex, status.Money, money);
-    ds_grid_add(allships, shipIndex, status.Diamonds, diamonds);
-    ds_grid_add(allships, shipIndex, status.Heart, heart);
-    ds_grid_add(allships, shipIndex, status.Shield, shield);
-    ds_grid_add(allships, shipIndex, status.Speed, _speed);
+    ds_grid_add(allships, _shipIndex, status.sprite, _sprite);
+    ds_grid_add(allships, _shipIndex, status.Block, _shipStatus);
+    ds_grid_add(allships, _shipIndex, status.Money, _money);
+    ds_grid_add(allships, _shipIndex, status.Diamonds, _diamonds);
+    ds_grid_add(allships, _shipIndex, status.Heart, _heart);
+    ds_grid_add(allships, _shipIndex, status.Shield, _shield);
+    ds_grid_add(allships, _shipIndex, status.Speed, _speed);
 }
+
 number_of__ndisplay = noone;
 confirm_buy = false;
 denied_money = 0
