@@ -309,6 +309,7 @@
     {"id":{"name":"spr_HUI_porttrait","path":"sprites/spr_HUI_porttrait/spr_HUI_porttrait.yy",},},
     {"id":{"name":"O_eff_bombs","path":"objects/O_eff_bombs/O_eff_bombs.yy",},},
     {"id":{"name":"Sound_BTN","path":"sprites/Sound_BTN/Sound_BTN.yy",},},
+    {"id":{"name":"Ocharacter","path":"objects/Ocharacter/Ocharacter.yy",},},
     {"id":{"name":"EmmisaryBullets","path":"sprites/EmmisaryBullets/EmmisaryBullets.yy",},},
     {"id":{"name":"spr_USS_Emberstrike","path":"sprites/spr_USS_Emberstrike/spr_USS_Emberstrike.yy",},},
     {"id":{"name":"ObuttonblackHole","path":"objects/ObuttonblackHole/ObuttonblackHole.yy",},},

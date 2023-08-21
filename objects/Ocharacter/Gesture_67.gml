@@ -1,6 +1,5 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-/*
 var mouse_dragging = true;
 var drag_start_y = mouse_y;
 var max_scrollpos = is_showing_pilots ? ((number_of_pilots - 3) * -200) : ((number_of_ships - 3) * -200)

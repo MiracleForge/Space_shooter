@@ -1,78 +1,29 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-
-// aspect ratio and camera e room size
-/*global.res_width = 720;
-global.res_height = 2400;
-
-var _ratio = global.res_width / global.res_height;
-var _display_ratio = display_get_gui_width() / display_get_gui_height();
-
-if (_display_ratio < _ratio){
-    global.res_height = 2400; // Optional
-
-    global.res_width = global.res_height * _display_ratio;
-}
-*/
-randomize();
-//ship selection
-pick_ship = true;
-//ship_snd_select = false;
-// display ship
-//rotationSpeed = 2;
-//targetAngle = 90;
-cameratarget = O_ship_parent;
-
-// effects
-shake = false;
-shake_time = 0;
-shake_magnitude = 0;
-shake_fade = 0.25;
-//global variables
-global.level = 1;
-global.pause = false;
-global.dialog_down = false;
-score = 0;
-global.player_coin = 10000;
-global.player_diamond = 10;
-global.speedo = 0;
-global.heat = 0;
-global.attack = 0;
-global.shield = 0;
-global.armor = 0; 
-global.special = 0;
-
-// UI
-//Pyframe_icon = 0;
-//max_Pyframe_icon = 8;
-//trakying_ship = 0;
-//max_trakying_ship = 5;
-//choose_ship = true;
-
-
-pos_fase = false;
-
-// surface draw
-paused_surf = -1;
-light_mode_light = true // turn on light mode
-// size of the shield bars
-lenght_shieldBar = 0;
-betterlight = true;
-isoundOn = true;
-settings = false;
-posx_volume = 540;
-isAdjustingVolume = false;
-iskillTreeopen = false;
-pick_ship = true; // selection screen window open
-Pyframe_icon = 0;
-//chamadas
-boss_killed = false;
-
-test = -1;
-/*
+// Ships traking control variable
+trakying_ship = 0;
+// Scoll control variables
 scrollpos = 0;
 mouse_yprevious = 0;
+// Others
+// records the position of the iteration inside the loop that creates the sets
+number_of__ndisplay = noone; 
+ //Opens the ship or pilots purchase window
+confirm_buy = false;
+ // Controls whether the purchase was approved or denied by the system
+purchase_denied = 0;
+//Records which of the sets the player is currently interacting with
+conj_clicked = 0;
+// controls what is shown on the screen
+is_show_ship_status = true;
+is_showing_pilots = true;
 
+// Controls ship rotation on selection screen
+rotationSpeed = 2;
+targetAngle = 90;
+
+#region Grid all ships , conten all ships show in the selection character 
+// enumerator that contains all ships to traking the grid
 enum ships {
     USS_Cerulean,
     USS_EmberStrike,
@@ -81,7 +32,7 @@ enum ships {
     USS_ThunderCore,
     ships_height
 }
-
+//enumerator that contains all ships sub coluns in the grid allships
 enum status {
     sprite,
     Block,
@@ -94,8 +45,9 @@ enum status {
 }
 
 allships = ds_grid_create(ships.ships_height, status.status_height);
+// this variable controls the size of the loop for creating sets
 number_of_ships = ships.ships_height;
-
+// this array contains all the characteristics of each ship for character selection
 var shipdataBase = [
     [spr_USS_Cerulean,false,0,0,4,25,3],
     [spr_USS_Emberstrike, false,0,0,4,15,2],
@@ -104,7 +56,7 @@ var shipdataBase = [
     [Spr_USS_Thundercore, true, 3000,70,3,25,2],
 
 ];
-
+//this loop fills the entire allships grid
 for (var i = 0; i < array_length(shipdataBase); i++) {
     var _shipData = shipdataBase[i];
     var _shipIndex = i;
@@ -124,13 +76,11 @@ for (var i = 0; i < array_length(shipdataBase); i++) {
     ds_grid_add(allships, _shipIndex, status.Shield, _shield);
     ds_grid_add(allships, _shipIndex, status.Speed, _speed);
 }
+#endregion
 
-number_of__ndisplay = noone;
-confirm_buy = false;
-denied_money = 0
-conj_clicked = 0;
-is_show_ship_status = true;
-
+#region Grid allpilots, has all pilots options and grid loop to fills
+// This variable controls the height of grid allpilots, using the total numbers of frames
+number_of_pilots = sprite_get_number(spr_HUI_character);
 enum pilots
 {
 	Block,
@@ -139,7 +89,7 @@ enum pilots
 	Description,
 	pilots_height
 }
- 
+ // this array contains all the characteristics of each pilots for character selection
 var _pilots_dataBase = [
 	[false,0,0,"history of pilot 0"],
 	[true, 2000,100,"history of pilot 1"],
@@ -152,8 +102,6 @@ var _pilots_dataBase = [
 
 ]
 
-
-number_of_pilots = sprite_get_number(spr_HUI_character);
 allpilots = ds_grid_create(number_of_pilots , pilots.pilots_height);
 
 for (var j = 0; j < array_length(_pilots_dataBase); j++) {
@@ -169,5 +117,17 @@ for (var j = 0; j < array_length(_pilots_dataBase); j++) {
   ds_grid_add(allpilots, _pilotsIndex, pilots.Diamonds, _pilotsdiamonds);
   ds_grid_add(allpilots, _pilotsIndex, pilots.Description, _pilotdesc);
 }
+#endregion
 
-is_showing_pilots = true;
+
+
+
+
+
+
+
+
+
+
+
+
