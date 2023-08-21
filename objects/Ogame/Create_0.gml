@@ -33,7 +33,7 @@ global.level = 1;
 global.pause = false;
 global.dialog_down = false;
 score = 0;
-global.player_coin = 1000;
+global.player_coin = 10000;
 global.player_diamond = 10;
 global.speedo = 0;
 global.heat = 0;
@@ -77,9 +77,6 @@ enum ships {
     USS_Emerald_Warhammer,
     USS_ShadowStrike,
     USS_ThunderCore,
-	oi,
-	oii,
-	
     ships_height
 }
 
@@ -103,8 +100,7 @@ var shipdataBase = [
     [spr_USS_Verdant_Shield,true,500,10,5,15,1.5],
     [spr_USS_Shadowstrike, true, 1000, 50,3,30,4],
     [Spr_USS_Thundercore, true, 3000,70,3,25,2],
-    [Spr_USS_Thundercore, true, 3000,70,3,25,2],
-    [Spr_USS_Thundercore, true, 3000,70,3,25,2],
+
 ];
 
 for (var i = 0; i < array_length(shipdataBase); i++) {
@@ -132,3 +128,44 @@ confirm_buy = false;
 denied_money = 0
 conj_clicked = 0;
 is_show_ship_status = true;
+
+enum pilots
+{
+	Block,
+	Money,
+	Diamonds,
+	Description,
+	pilots_height
+}
+ 
+var _pilots_dataBase = [
+	[false,0,0,"history of pilot 0"],
+	[true, 2000,100,"history of pilot 1"],
+	[true, 3000,150,"history of pilot 2"],
+	[true, 4000,200,"history of pilot 3"],
+	[true, 5000,250,"history of pilot 4"],
+	[true, 6000,300,"history of pilot 5"],
+	[true, 7000,350,"history of pilot 6"],
+	[true, 8000,400,"history of pilot 7"],
+
+]
+
+
+number_of_pilots = sprite_get_number(spr_HUI_character);
+allpilots = ds_grid_create(number_of_pilots , pilots.pilots_height);
+
+for (var j = 0; j < array_length(_pilots_dataBase); j++) {
+    var _pilotsData = _pilots_dataBase[j];
+    var _pilotsIndex = j;
+    var _pilotsStatus = _pilotsData[0];
+    var _pilotsmoney = _pilotsData[1];
+    var _pilotsdiamonds = _pilotsData[2];
+	var _pilotdesc = _pilotsData[3];
+  
+  ds_grid_add(allpilots, _pilotsIndex, pilots.Block,    _pilotsStatus);
+  ds_grid_add(allpilots, _pilotsIndex, pilots.Money,    _pilotsmoney);
+  ds_grid_add(allpilots, _pilotsIndex, pilots.Diamonds, _pilotsdiamonds);
+  ds_grid_add(allpilots, _pilotsIndex, pilots.Description, _pilotdesc);
+}
+
+is_showing_pilots = true;

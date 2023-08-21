@@ -152,12 +152,19 @@ var limit_bottom = 571 + sprite_get_height(Spr_scrllbar_area) * 1.7;
 //var number_of_ships = 8;
 
 // Define o deslocamento vertical inicial
-var _y_offset = 0;
+	var _y_offset = 0;
 
-
-for (var _nDisplay = 0; _nDisplay < number_of_ships; _nDisplay++) {
+	var _size_switch = is_showing_pilots ? number_of_pilots : number_of_ships;
+	var _blockSwitch = is_showing_pilots ? pilots.Block : status.Block;
+	var _gridSwitch =is_showing_pilots ? allpilots : allships;
+	var _moneySwitch = is_showing_pilots ? pilots.Money : status.Money;
+	var _diamondsSwitch = is_showing_pilots ? pilots.Diamonds : status.Diamonds;
+	var _scaleSwitch = is_showing_pilots ? 9 :3
+for (var _nDisplay = 0; _nDisplay < _size_switch; _nDisplay++) {
     var draw_set = true;
-    var _blockStatus = ds_grid_get(allships, _nDisplay, status.Block);
+test = _size_switch;
+    var _blockStatus =  ds_grid_get(_gridSwitch, _nDisplay, _blockSwitch);
+	
     
     // Loop através dos elementos do conjunto
     for (var _scl = 0; _scl < array_length(_scroll_data); _scl++) {
@@ -216,11 +223,12 @@ for (var _nDisplay = 0; _nDisplay < number_of_ships; _nDisplay++) {
         } 
         
         // Desenha a nave correspondente ao índice da interação
-        var _shipIndex = ds_grid_get(allships, _nDisplay, status.sprite);
-        var _moneyIndex = ds_grid_get(allships, _nDisplay, status.Money);
-        var _diamondIndex = ds_grid_get(allships, _nDisplay, status.Diamonds);
-        
-        draw_sprite_ext(_shipIndex, 0, 181, _scroll_y + 55, 3, 3, 0, c, 1);
+        var _shipIndex = is_showing_pilots ? spr_HUI_character : ds_grid_get(allships, _nDisplay, status.sprite);
+        var _moneyIndex = ds_grid_get(_gridSwitch, _nDisplay, _moneySwitch);
+        var _diamondIndex = ds_grid_get(_gridSwitch, _nDisplay, _diamondsSwitch);
+        var _pilots = is_showing_pilots ? _nDisplay : 0;
+		
+        draw_sprite_ext(_shipIndex, _pilots, 181, _scroll_y + 55, _scaleSwitch, _scaleSwitch, 0, c, 1);
         draw_text_ext_color(352, _scroll_y + 70, _moneyIndex, 5, 300, cA, cA, cA, cA, 1);
         draw_text_ext_color(352, _scroll_y + 10, _diamondIndex, 5, 300, cA, cA, cA, cA, 1);
     }
@@ -237,8 +245,8 @@ if (confirm_buy)
 	    ];
     
     
-	    var moneycost = ds_grid_get(allships, number_of__ndisplay, status.Money);
-	    var diamondcost = ds_grid_get(allships, number_of__ndisplay, status.Diamonds);
+	    var moneycost = ds_grid_get(_gridSwitch, number_of__ndisplay, _moneySwitch);
+	    var diamondcost = ds_grid_get(_gridSwitch, number_of__ndisplay, _diamondsSwitch);
     
 	    var denied_money_text = ["Are you sure About that", "You don't have enough money", "You don't have enough diamonds"];
     
@@ -279,7 +287,7 @@ if (confirm_buy)
             
 	            if (affordability >= itemCost)
 	            {
-	                allships[# number_of__ndisplay, status.Block] = false;
+	                _gridSwitch[# number_of__ndisplay, _blockSwitch] = false;
                 
 	                if (moneyOrDiamond == "money")
 	                {
@@ -317,7 +325,7 @@ if (confirm_buy)
 draw_rectangle_color(0, 0, room_width, 571, C, p, cA, C, false); //back color
 
 #region Background  layer
-var _blockStatus = ds_grid_get(allships, trakying_ship, status.Block);
+var _blockStatus = ds_grid_get(_gridSwitch, trakying_ship, _blockSwitch);
 
 var _back_ground = [
     [Spr_config_panel,               32,  160, 1.6, 1.6],      // first panel 
@@ -338,7 +346,7 @@ for (var _bg = 0; _bg < array_length(_back_ground); _bg++)
     var _xscale = _sprite_info[3];
     var _yscale = _sprite_info[4];
 
-    if (is_show_ship_status || _bg <= 2) 
+    if (is_show_ship_status and !is_showing_pilots || _bg <= 2) 
     {
         draw_sprite_ext(_sprite, 0, _x, _y, _xscale, _yscale, image_angle, c_white, 1);
     }
@@ -354,34 +362,55 @@ if (!_blockStatus) {
         "A stealthy bomber, possesses remarkable bombardment power for high-impact strikes.",
         "The Thundercore, an eccentric vessel, wields weaponry to neutralize enemy shields and unleash long-range projectiles."
     ];
-
+	
+	var pilotInfo = [
+		" Pilot 0 is a formidable pilot",
+		" Pilot 1 is a formidable pilot",
+		" Pilot 2 is a formidable pilot",
+		" Pilot 3 is a formidable pilot",
+		" Pilot 4 is a formidable pilot",
+		" Pilot 5 is a formidable pilot",
+		" Pilot 6 is a formidable pilot",
+		" Pilot 7 is a formidable pilot"
+	];
     // Extract ship data from the grid
-    var _spriteIndex = allships[# trakying_ship, status.sprite];
+    var _spriteIndex = is_showing_pilots ? spr_HUI_character : allships[# trakying_ship, status.sprite];
     var _heartIndex = allships[# trakying_ship, status.Heart];
     var _shieldIndex = allships[# trakying_ship, status.Shield];
     var _speedIndex = allships[# trakying_ship, status.Speed];
+	// extract info from the array
+	var desc_info = is_showing_pilots ? pilotInfo : shipInfo
 
 // Define a universal scale factor for all sprites
-var universalScale = (sprite_get_width(_spriteIndex) > 16) ? 5 : 6;
-
+var universalScale = is_showing_pilots ? 16 : ((sprite_get_width(_spriteIndex) > 16) ? 5 : 6);
+var _angleSwitch = is_showing_pilots ? 0 : targetAngle
+var _pilotSwitch = is_showing_pilots ? trakying_ship : 0;
 // Draw the ship's sprite with the calculated scale
-draw_sprite_ext(_spriteIndex, 0, 200, 340, universalScale, universalScale, targetAngle, c_white, 1);
+draw_sprite_ext(_spriteIndex, _pilotSwitch, 200, 340, universalScale, universalScale, _angleSwitch, c_white, 1);
 
     // Set font and display ship status if enabled
     draw_set_font(Fnt_Menu_description);
-    if (is_show_ship_status) {
-        var textValues = [_heartIndex, _shieldIndex, _speedIndex];
-        var textY = 276;
-        var textSpacing = 57;
+    if (is_show_ship_status)
+	{
+		if is_showing_pilots
+		{
+			var _pilotdescriptions = ds_grid_get(allpilots, trakying_ship, pilots.Description);
+			draw_text_ext_color(320, 290, _pilotdescriptions, string_height("M"), 290, cA, cA, cA, cA, 1);
+		}else
+			{
+		        var textValues =  [_heartIndex, _shieldIndex, _speedIndex];
+		        var textY = 276;
+		        var textSpacing = 57;
 
-        // Display ship status values
-        for (var i = 0; i < array_length(textValues); i++) {
-            draw_text_ext_color(383, textY + textSpacing * i, textValues[i], 1, 300, cA, cA, cA, cA, 1);
+		        // Display ship status values
+		        for (var i = 0; i < array_length(textValues); i++) {
+		            draw_text_ext_color(383, textY + textSpacing * i, textValues[i], 1, 300, cA, cA, cA, cA, 1);
+			}
         }
     } else {
         // Display ship description
         draw_set_halign(fa_left);
-        draw_text_ext_color(320, 290, shipInfo[trakying_ship], string_height("M"), 290, cA, cA, cA, cA, 1);
+        draw_text_ext_color(320, 290, desc_info[trakying_ship], string_height("M"), 290, cA, cA, cA, cA, 1);
         draw_set_halign(-1);
     }
 }
@@ -436,12 +465,13 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
     var textX = _x + (spriteWidth * _xscale - textWidth) / 2;
     var textY = _y + (spriteHeight * _yscale - textHeight) / 2;
 
+	var _pilots_names = ["Capitan0", "Capitan1", "Capitan2", "Capitan3","Capitan4","Capitan5","Capitan6","Capitan7",]
     // Desenha o texto no botão com a posição calculada
     draw_text_ext_color(textX, textY, buttonText, 1, 300, cA, cA, cA, cA, 1);
-	var _spriteIndex = ds_grid_get(allships, trakying_ship, status.sprite);
+	var _spriteIndex = is_showing_pilots ? spr_HUI_character : ds_grid_get(allships, trakying_ship, status.sprite);
 	var _spriteName = sprite_get_name(_spriteIndex);
 	// Remove the "spr_" prefix
-	_spriteName = string_delete(_spriteName, 1, 4);
+	_spriteName = is_showing_pilots ? _pilots_names[trakying_ship] : string_delete(_spriteName, 1, 4);
 			
 	draw_text_ext_color(400, 448, _spriteName,5,300,cA,cA,cA,cA,1);
 }
@@ -486,7 +516,7 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
     
 		    // Start searching for the previous unlocked ship from the current position
 			    for (var prev_ship = trakying_ship - 1; prev_ship >= 0; prev_ship--) {
-			        var blocked = ds_grid_get(allships, prev_ship, status.Block);
+			        var blocked = ds_grid_get(_gridSwitch, prev_ship, _blockSwitch);
         
 			        if (blocked == 0) {
 			            trakying_ship = prev_ship;
@@ -496,8 +526,8 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
     
 			    // If no unlocked ship is found, wrap around to the end
 			    if (prev_ship < 0) {
-			        for (var prev_ship = number_of_ships - 1; prev_ship > trakying_ship; prev_ship--) {
-			            var blocked = ds_grid_get(allships, prev_ship, status.Block);
+			        for (var prev_ship = _size_switch - 1; prev_ship > trakying_ship; prev_ship--) {
+			            var blocked = ds_grid_get(_gridSwitch, prev_ship, _blockSwitch);
             
 			            if (blocked == 0) {
 			                trakying_ship = prev_ship;
@@ -508,8 +538,8 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
 		    break;
 			case 5:
 				show_message("next_ship");
-				for (var next_ship = trakying_ship + 1; next_ship < number_of_ships; next_ship++) {
-				    var blocked = ds_grid_get(allships, next_ship, status.Block);
+				for (var next_ship = trakying_ship + 1; next_ship < _size_switch; next_ship++) {
+				    var blocked = ds_grid_get(_gridSwitch, next_ship, _blockSwitch);
     
 				    if (blocked == 0) {
 				        trakying_ship = next_ship;
@@ -518,9 +548,9 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
 				}
 
 				// Handle wrapping around if no unlocked ship is found ahead
-				if (next_ship >= number_of_ships) {
+				if (next_ship >= _size_switch) {
 				    for (var next_ship = 0; next_ship < trakying_ship; next_ship++) {
-				        var blocked = ds_grid_get(allships, next_ship, status.Block);
+				        var blocked = ds_grid_get(_gridSwitch, next_ship, _blockSwitch);
         
 				        if (blocked == 0) {
 				            trakying_ship = next_ship;
@@ -531,30 +561,41 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
 			
 			break;
 			case 6: show_message("select_ship") // use the sprite name to create the objeto choose by player
-					 var _spriteIndex = ds_grid_get(allships, trakying_ship, status.sprite);
-					// Get the sprite name from the sprite index
-					var _spriteName = sprite_get_name(_spriteIndex);
-					// Remove the "spr_" prefix
-					_spriteName = string_delete(_spriteName, 1, 4);
-					// Prefix the sprite name with "O_"
-					var _instanceSpriteName = "O_" + _spriteName;
-					show_message(_instanceSpriteName);
-					// Get the object index based on the instanceSpriteName
-					var _instanceObjIndex = asset_get_index(_instanceSpriteName);
-					// Create the ship instance using the object index
-					var shipInstance = instance_create_layer(room_width/2, room_height/2 , "instances", _instanceObjIndex);
-					pick_ship = false;
-					
+					if is_showing_pilots 
+					{
+						is_showing_pilots = false;
+						is_show_ship_status = true;
+						Pyframe_icon = trakying_ship;
+						trakying_ship = 0;
+						scrollpos = 0;
+						
+						}else
+			            {
+						 var _spriteIndex = ds_grid_get(allships, trakying_ship, status.sprite);
+						// Get the sprite name from the sprite index
+						var _spriteName = sprite_get_name(_spriteIndex);
+						// Remove the "spr_" prefix
+						_spriteName = string_delete(_spriteName, 1, 4);
+						// Prefix the sprite name with "O_"
+						var _instanceSpriteName = "O_" + _spriteName;
+						show_message(_instanceSpriteName);
+						// Get the object index based on the instanceSpriteName
+						var _instanceObjIndex = asset_get_index(_instanceSpriteName);
+						// Create the ship instance using the object index
+						var shipInstance = instance_create_layer(room_width/2, room_height/2 , "instances", _instanceObjIndex);
+						pick_ship = false;
+						}	
 			break;
 
 		}
 	}
 
 	}
-	
-	
+	draw_set_font(-1);
+	draw_text(mouse_x,mouse_y, test);
 #endregion
 #endregion 
+
 	// Upbox buttons 
 	
 /*

@@ -2,7 +2,7 @@
 // Você pode escrever seu código neste editor
 var mouse_dragging = true;
 var drag_start_y = mouse_y;
-var max_scrollpos =(number_of_ships - 3) * -200;
+var max_scrollpos = is_showing_pilots ? ((number_of_pilots - 3) * -200) : ((number_of_ships - 3) * -200)
 if ( mouse_y > 571 and mouse_check_button_pressed(mb_left) ){
     mouse_yprevious = mouse_y;
 }
