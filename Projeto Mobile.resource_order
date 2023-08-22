@@ -100,6 +100,7 @@
     {"name":"O_enemy_01","order":1,"path":"objects/O_enemy_01/O_enemy_01.yy",},
     {"name":"snd_hit02","order":11,"path":"sounds/snd_hit02/snd_hit02.yy",},
     {"name":"Spr_skill_tree","order":18,"path":"sprites/Spr_skill_tree/Spr_skill_tree.yy",},
+    {"name":"Osave_system","order":12,"path":"objects/Osave_system/Osave_system.yy",},
     {"name":"credits","order":5,"path":"notes/credits/credits.yy",},
     {"name":"Beholder","order":6,"path":"sprites/Beholder/Beholder.yy",},
     {"name":"snd_button","order":16,"path":"sounds/snd_button/snd_button.yy",},

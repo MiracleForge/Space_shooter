@@ -251,14 +251,14 @@ if (!_blockStatus) {
     ];
 	
 	var pilotInfo = [
-		" Pilot 0 is a formidable pilot",
-		" Pilot 1 is a formidable pilot",
-		" Pilot 2 is a formidable pilot",
-		" Pilot 3 is a formidable pilot",
-		" Pilot 4 is a formidable pilot",
-		" Pilot 5 is a formidable pilot",
-		" Pilot 6 is a formidable pilot",
-		" Pilot 7 is a formidable pilot"
+		" The pilot from the colonies of Nova Prime, often considered a USS promise, still has much to learn.",
+		" An officer from the USS Academy, his explosive temper and lack of discipline blend well with his ship EmberStrike.",
+		" The leader of the USS. He led humans to triumph over the Vigalnitas.",
+		" The first Vigalnita pilot in the USS, representing his race after the end of the human-Vigalnita war.",
+		" Skilled green-skinned mercenary with tentacle-tipped eyes, emerged from the galactic underworld.",
+		" Skilled pilot with a single emerald eye, explored the cosmos, uncovering hidden truths own his path of discovery",
+		" A secretive mercenary known for never removing their helmet, navigates the galaxy with unmatched skill.",
+		" Crafted by Dr. Zara Epsilon, features intricate design, advanced algorithms, and incomprehensible beeps."
 	];
     // Extract ship data from the grid
     var _spriteIndex = is_showing_pilots ? spr_HUI_character : allships[# trakying_ship, status.sprite];
@@ -283,23 +283,23 @@ draw_sprite_ext(_spriteIndex, _pilotSwitch, 200, 340, universalScale, universalS
 		{
 			var _pilotdescriptions = ds_grid_get(allpilots, trakying_ship, pilots.Description);
 			draw_text_ext_color(320, 290, _pilotdescriptions, string_height("M"), 290, cA, cA, cA, cA, 1);
-		}else
-			{
-		        var textValues =  [_heartIndex, _shieldIndex, _speedIndex];
-		        var textY = 276;
-		        var textSpacing = 57;
+			}else
+				{
+			        var textValues =  [_heartIndex, _shieldIndex, _speedIndex];
+			        var textY = 276;
+			        var textSpacing = 57;
 
-		        // Display ship status values
-		        for (var i = 0; i < array_length(textValues); i++) {
-		            draw_text_ext_color(383, textY + textSpacing * i, textValues[i], 1, 300, cA, cA, cA, cA, 1);
-			}
+			        // Display ship status values
+			        for (var i = 0; i < array_length(textValues); i++) {
+			            draw_text_ext_color(383, textY + textSpacing * i, textValues[i], 1, 300, cA, cA, cA, cA, 1);
+				}
         }
-    } else {
-        // Display ship description
-        draw_set_halign(fa_left);
-        draw_text_ext_color(320, 290, desc_info[trakying_ship], string_height("M"), 290, cA, cA, cA, cA, 1);
-        draw_set_halign(-1);
-    }
+	    } else {
+	        // Display ship description
+	        draw_set_halign(fa_left);
+	        draw_text_ext_color(320, 290, desc_info[trakying_ship], string_height("M"), 290, cA, cA, cA, cA, 1);
+	        draw_set_halign(-1);
+	    }
 }
 
 
@@ -313,9 +313,9 @@ var _upsidebutton_data = [
     [Spr_shop, 32, 96, 0.2, 0.2],
     [Spr_tab02, 97, 190, 0.7, 0.7],
     [Spr_tab02, 207, 190, 0.7, 0.7],
-    [Spr_backbutton, 104, 448, 1, 1],
-    [spr_nextbutton, 280, 448, 1, 1],
-    [Spr_select, 190, 448, 1, 1]
+    [Spr_backbutton, 84, 440, 1, 1],
+    [spr_nextbutton, 260, 440, 1, 1],
+    [Spr_select, 170, 440, 1, 1]
 ];
 
 // Loop através dos dados dos botões
@@ -352,7 +352,15 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
     var textX = _x + (spriteWidth * _xscale - textWidth) / 2;
     var textY = _y + (spriteHeight * _yscale - textHeight) / 2;
 
-	var _pilots_names = ["Capitan0", "Capitan1", "Capitan2", "Capitan3","Capitan4","Capitan5","Capitan6","Capitan7",]
+	var _pilots_names = [
+	"Ethan Nova",
+	"Liam Garrison",
+	"Colonel Marcus Blackwood", 
+	"Kael Drakar",
+	"Zara Thorne",
+	"Kaelan Verdanteye",
+	"Ironshade",
+	"R3X-4",]
     // Desenha o texto no botão com a posição calculada
     draw_text_ext_color(textX, textY, buttonText, 1, 300, cA, cA, cA, cA, 1);
 	var _spriteIndex = is_showing_pilots ? spr_HUI_character : ds_grid_get(allships, trakying_ship, status.sprite);
@@ -360,7 +368,7 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
 	// Remove the "spr_" prefix
 	_spriteName = is_showing_pilots ? _pilots_names[trakying_ship] : string_delete(_spriteName, 1, 4);
 			
-	draw_text_ext_color(400, 448, _spriteName,5,300,cA,cA,cA,cA,1);
+	draw_text_ext_color(400, 448, _spriteName,string_height("M"),300,cA,cA,cA,cA,1);
 }
 
 	
@@ -458,6 +466,7 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
 						
 						}else
 			            {
+
 						 var _spriteIndex = ds_grid_get(allships, trakying_ship, status.sprite);
 						// Get the sprite name from the sprite index
 						var _spriteName = sprite_get_name(_spriteIndex);
@@ -470,6 +479,7 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
 						var _instanceObjIndex = asset_get_index(_instanceSpriteName);
 						// Create the ship instance using the object index
 						var shipInstance = instance_create_layer(room_width/2, room_height/2 , "instances", _instanceObjIndex);
+						var save_filename = "save_data.ini";
 						Ogame.pick_ship = false;
 						instance_destroy();
 						}	
@@ -479,6 +489,11 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
 	}
 
 	}
+	
+	draw_sprite_ext(spr_coin,0,128,96,0.2,0.2,image_angle,image_blend,image_alpha);
+	draw_sprite_ext(Spr_diamont,0,288,96,0.6,0.6,image_angle,image_blend,image_alpha);
+	draw_text_ext_color(180, 100,global.player_coin, 10,300,cA,cA,cA,cA,1);
+	draw_text_ext_color(340, 100,global.player_diamond, 10,300,cA,cA,cA,cA,1);
 	draw_set_font(-1);
 
 #endregion

@@ -124,6 +124,7 @@
     {"id":{"name":"O_enemy_01","path":"objects/O_enemy_01/O_enemy_01.yy",},},
     {"id":{"name":"snd_hit02","path":"sounds/snd_hit02/snd_hit02.yy",},},
     {"id":{"name":"Spr_skill_tree","path":"sprites/Spr_skill_tree/Spr_skill_tree.yy",},},
+    {"id":{"name":"Osave_system","path":"objects/Osave_system/Osave_system.yy",},},
     {"id":{"name":"credits","path":"notes/credits/credits.yy",},},
     {"id":{"name":"Beholder","path":"sprites/Beholder/Beholder.yy",},},
     {"id":{"name":"snd_button","path":"sounds/snd_button/snd_button.yy",},},

@@ -91,11 +91,11 @@ enum pilots
 }
  // this array contains all the characteristics of each pilots for character selection
 var _pilots_dataBase = [
-	[false,0,0,"history of pilot 0"],
-	[true, 2000,100,"history of pilot 1"],
-	[true, 3000,150,"history of pilot 2"],
-	[true, 4000,200,"history of pilot 3"],
-	[true, 5000,250,"history of pilot 4"],
+	[false,0,0,"Ethan Nova -- atributes,"],
+	[true, 2000,100,"name 1"],
+	[true, 3000,150,"name 2"],
+	[true, 4000,200,"namet 3"],
+	[true, 5000,250,"name 4"],
 	[true, 6000,300,"history of pilot 5"],
 	[true, 7000,350,"history of pilot 6"],
 	[true, 8000,400,"history of pilot 7"],
