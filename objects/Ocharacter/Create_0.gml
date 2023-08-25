@@ -117,6 +117,10 @@ for (var j = 0; j < array_length(_pilots_dataBase); j++) {
   ds_grid_add(allpilots, _pilotsIndex, pilots.Diamonds, _pilotsdiamonds);
   ds_grid_add(allpilots, _pilotsIndex, pilots.Description, _pilotdesc);
 }
+scr_load_system();
+
+
+
 #endregion
 
 

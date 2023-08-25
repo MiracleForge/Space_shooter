@@ -22,7 +22,7 @@ if !instance_exists(_ship)
     var max_length = distance_to_object(_ship) + 20;
 
     // Loop para verificar colisões do lazer com o escudo do jogador
-    for (i = 0; i < max_length; i++) {
+    for (var i = 0; i < max_length; i++) {
         xEnd = x + lengthdir_x(i, direction);
         yEnd = y + lengthdir_y(i, direction);
         lenght_lazer = i;

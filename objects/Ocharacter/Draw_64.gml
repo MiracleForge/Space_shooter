@@ -466,7 +466,7 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
 						
 						}else
 			            {
-
+						scr_selection_save_system();
 						 var _spriteIndex = ds_grid_get(allships, trakying_ship, status.sprite);
 						// Get the sprite name from the sprite index
 						var _spriteName = sprite_get_name(_spriteIndex);
@@ -479,7 +479,6 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
 						var _instanceObjIndex = asset_get_index(_instanceSpriteName);
 						// Create the ship instance using the object index
 						var shipInstance = instance_create_layer(room_width/2, room_height/2 , "instances", _instanceObjIndex);
-						var save_filename = "save_data.ini";
 						Ogame.pick_ship = false;
 						instance_destroy();
 						}	

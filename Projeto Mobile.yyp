@@ -117,6 +117,7 @@
     {"id":{"name":"spr_bigMeteors_sat","path":"sprites/spr_bigMeteors_sat/spr_bigMeteors_sat.yy",},},
     {"id":{"name":"Spr_shoot","path":"sprites/Spr_shoot/Spr_shoot.yy",},},
     {"id":{"name":"Fnt_Menu","path":"fonts/Fnt_Menu/Fnt_Menu.yy",},},
+    {"id":{"name":"save_load_scripts","path":"scripts/save_load_scripts/save_load_scripts.yy",},},
     {"id":{"name":"snd_galaxy_beat","path":"sounds/snd_galaxy_beat/snd_galaxy_beat.yy",},},
     {"id":{"name":"Spr_minio_bullet","path":"sprites/Spr_minio_bullet/Spr_minio_bullet.yy",},},
     {"id":{"name":"spr_light","path":"sprites/spr_light/spr_light.yy",},},

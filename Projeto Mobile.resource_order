@@ -94,6 +94,7 @@
     {"name":"spr_bigMeteors_sat","order":7,"path":"sprites/spr_bigMeteors_sat/spr_bigMeteors_sat.yy",},
     {"name":"Spr_shoot","order":2,"path":"sprites/Spr_shoot/Spr_shoot.yy",},
     {"name":"Fnt_Menu","order":1,"path":"fonts/Fnt_Menu/Fnt_Menu.yy",},
+    {"name":"save_load_scripts","order":6,"path":"scripts/save_load_scripts/save_load_scripts.yy",},
     {"name":"snd_galaxy_beat","order":23,"path":"sounds/snd_galaxy_beat/snd_galaxy_beat.yy",},
     {"name":"Spr_minio_bullet","order":7,"path":"sprites/Spr_minio_bullet/Spr_minio_bullet.yy",},
     {"name":"scifi_inventory02_box_select01","order":8,"path":"sprites/scifi_inventory02_box_select01/scifi_inventory02_box_select01.yy",},

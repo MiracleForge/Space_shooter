@@ -20,14 +20,6 @@ var _ship02_A = sprite_get_height(_ship02) * _scale;
 var _guiship02_L =  _guiL/1.2 - _ship02_L/2;  // dividir o tamanho da sprite 
 var _guiship02_A = _guia/2 - _ship02_A/2;
 
-//if pick_ship and room == rm_game_1_1
-//{	
-	
-	
-	//targetAngle += rotationSpeed; // rotation of sprites
-
-//}
-
 #region // shake effect
 if (shake) 
 { 

@@ -1,5 +1,9 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if !Ogame.pick_ship and alarm[0] == -1
+{
+alarm[0] = 18000;	
+}
 var timeSinceLastCheck = 0;
 var _max_inst = 20 + global.level;
 if (!Ogame.pick_ship) {
