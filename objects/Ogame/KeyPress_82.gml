@@ -4,9 +4,6 @@ room_goto(rm_game_1_1);
 //player selector
 pick_ship = true;
 Pyframe_icon = 0;
-trakying_ship = 1;
-choose_ship = true;
-ship_snd_select = false;
 //music
 Omusic_control.menu_music = true;
 Omusic_control.room_alarmBoss = false;

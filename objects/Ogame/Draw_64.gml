@@ -1,6 +1,9 @@
 /// @description DRAW_GUI_UI
 // Você pode escrever seu código neste editor
-draw_text_ext(0,0,global.player_diamond,10,300);
+if instance_exists(O_timer)
+{
+draw_text(0,0,O_timer.alarm[0])
+}
 #region //Variables from UI
 // Mouse tracking
 var _mx = device_mouse_x(0);
@@ -28,7 +31,7 @@ var rm_h = room_height/3;
 
 #endregion
 #region  game UI REGION
-if !pick_ship and room == rm_game_1_1 or pick_ship and room == rm_game_1_2 {
+if  !is_showing_posphase and!pick_ship and room == rm_game_1_1 or pick_ship and room == rm_game_1_2  {
     // HUI elements
 
 
@@ -323,8 +326,8 @@ if (mouse_check_button_pressed(mb_left)) {
             break;
         }
     }
-
-    if (_clicked_button != -1) {
+var _settings_bt = buttons_data_set(_settings_data,3);
+    if (_settings_bt != -1) {
         // Do something with the clicked button
         switch (_clicked_button + 3) { // Adding 4 to get the correct button index
 			case 3: 
@@ -379,45 +382,3 @@ draw_text_ext_transformed(0,100,fps,1,2,3,3,0);
 
 #endregion
 
-// go to pos fase 
-if pos_fase 
-{
-
-draw_set_alpha(0.6);
-
-// Evento de desenho
-// Define as coordenadas do retângulo a ser desenhado centralizado na tela
-var rect_x = (room_width - 450) / 2;
-var rect_y = (room_height - 450) / 2;
-
-// Desenha um retângulo colorido na tela usando a cor "C"
-draw_rectangle_color(rect_x, rect_y, rect_x + 450, rect_y + 450, C, C, C, C, false);
-
-// Define as coordenadas e o tamanho do botão
-var button_x = 330;
-var button_y = 780;
-var button_size = _scalahalf * sprite_get_width(spr_button_play);
-var button_x_next = button_x + 42;
-var button_y_next = button_y - 38;
-
-// Desenha o sprite do botão na tela com as coordenadas e escala definidas
-draw_sprite_ext(spr_button_play, 0, button_x, button_y, _scalahalf, _scalahalf, 0, c_white, 1);
-
-// Desenha um retângulo invisível na tela que servirá como área clicável do botão
-draw_rectangle(button_x_next - button_size/2, button_y_next - button_size/2, button_x_next + button_size/2, button_y_next + button_size/2, false);
-
-// Desativa a camada "control_layer" no jogo // para o player não atirar nem andar
-instance_deactivate_layer("control_layer");
-
-// Verifica se o mouse está sobre a área do botão e se o botão esquerdo do mouse foi pressionado
-if point_in_rectangle(_mx, _my, button_x_next - button_size/2, button_y_next - button_size/2, button_x_next + button_size/2, button_y_next + button_size/2) && mouse_check_button_pressed(mb_left)
-{
-    // o jogo vai para a sala "rm_Hightspeed", e a variável "pos_fase" é definida como false.
-    room_goto(rm_Hightspeed);
-    pos_fase = false;
-
-    draw_set_alpha(1);
-}
-
-
-}

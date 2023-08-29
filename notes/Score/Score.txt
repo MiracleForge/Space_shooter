@@ -1,0 +1,55 @@
+/*
+draw_set_alpha(0.6);
+
+// Evento de desenho
+// Define as coordenadas do retângulo a ser desenhado centralizado na tela
+var rect_x = (room_width - 450) / 2;
+var rect_y = (room_height - 450) / 2;
+
+// Desenha um retângulo colorido na tela usando a cor "C"
+draw_rectangle_color(rect_x, rect_y, rect_x + 450, rect_y + 450, C, C, C, C, false);
+
+// Define as coordenadas e o tamanho do botão
+var button_x = 330;
+var button_y = 780;
+var button_size = _scalahalf * sprite_get_width(spr_button_play);
+var button_x_next = button_x + 42;
+var button_y_next = button_y - 38;
+
+// Desenha o sprite do botão na tela com as coordenadas e escala definidas
+draw_sprite_ext(spr_button_play, 0, button_x, button_y, _scalahalf, _scalahalf, 0, c_white, 1);
+
+// Desenha um retângulo invisível na tela que servirá como área clicável do botão
+draw_rectangle(button_x_next - button_size/2, button_y_next - button_size/2, button_x_next + button_size/2, button_y_next + button_size/2, false);
+
+// Desativa a camada "control_layer" no jogo // para o player não atirar nem andar
+instance_deactivate_layer("control_layer");
+
+#region
+// No evento onde você deseja converter os pontos em moedas:
+var pointsToCoinsRatio = 0.1; // Relação entre pontos e moedas (1 ponto = 0.1 moedas)
+var maxCoins = 100; // Limite máximo de moedas para evitar abusos
+
+var coinsToAdd = score * pointsToCoinsRatio;
+
+if (coinsToAdd > maxCoins) {
+    coinsToAdd = maxCoins;
+}
+
+global.player_coin += coinsToAdd;
+
+// Reduz a pontuação de acordo com as moedas convertidas
+score -= coinsToAdd / pointsToCoinsRatio;
+draw_text(0,100,global.player_coin)
+draw_text_ext_color(rect_x +30, rect_y + 50, global.player_coin,10,300,cA,cA,cA,cA,1);
+#endregion
+// Verifica se o mouse está sobre a área do botão e se o botão esquerdo do mouse foi pressionado
+if point_in_rectangle(_mx, _my, button_x_next - button_size/2, button_y_next - button_size/2, button_x_next + button_size/2, button_y_next + button_size/2) && mouse_check_button_pressed(mb_left)
+{
+    // o jogo vai para a sala "rm_Hightspeed", e a variável "pos_fase" é definida como false.
+    room_goto(rm_Hightspeed);
+    pos_fase = false;
+
+    draw_set_alpha(1);
+}
+*/

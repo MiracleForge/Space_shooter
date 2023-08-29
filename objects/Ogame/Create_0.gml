@@ -28,11 +28,11 @@ shake_fade = 0.25;
 global.level = 1;
 global.pause = false;
 global.dialog_down = false;
-score = 0;
+score = 5847;
 global.player_coin = 0;
 global.player_diamond = 0;
 scr_load_system();
-    
+
 
 
 
@@ -66,3 +66,4 @@ boss_killed = false;
 test = -1
 
 scr_load_system();
+is_showing_posphase = false;

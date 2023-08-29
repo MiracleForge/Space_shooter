@@ -370,34 +370,8 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
 			
 	draw_text_ext_color(400, 448, _spriteName,string_height("M"),300,cA,cA,cA,cA,1);
 }
-
-	
-	var _settings_button_data = [];
-
-	// Data of coords buttons
-	for (var _Bup = 0; _Bup < array_length(_upsidebutton_data); _Bup++) {
-	    var _btn_info = _upsidebutton_data[_Bup];
-	    var _btn_x = _btn_info[1];
-	    var _btn_y = _btn_info[2];
-	    var _btn_width = sprite_get_width(_btn_info[0]) * _btn_info[3];
-	    var _btn_height = sprite_get_height(_btn_info[0]) * _btn_info[4];
-
-	    _settings_button_data[_Bup] = [_btn_x, _btn_y, _btn_x + _btn_width, _btn_y + _btn_height];
-	}
-
-	// Check for button click
-	if (mouse_check_button_pressed(mb_left)) {
-	    var _clicked_button = -1; // Initialize clicked_button to -1 (no button clicked)
-
-	    // Loop through the button data to find which button was clicked
-	    for (var _i = 0; _i < array_length(_settings_button_data); _i++) {
-	        var _btn = _settings_button_data[_i];
-	        if (point_in_rectangle(mouse_x, mouse_y, _btn[0], _btn[1], _btn[2], _btn[3])) {
-	            _clicked_button = _i;
-	            break;
-	        }
-	    }
-	
+// creating buttons 
+var _clicked_button = buttons_data_set(_upsidebutton_data);
 
     if (_clicked_button != -1) {
         // Do something with the clicked button
@@ -487,7 +461,7 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
 		}
 	}
 
-	}
+	
 	
 	draw_sprite_ext(spr_coin,0,128,96,0.2,0.2,image_angle,image_blend,image_alpha);
 	draw_sprite_ext(Spr_diamont,0,288,96,0.6,0.6,image_angle,image_blend,image_alpha);
@@ -499,7 +473,138 @@ for (var _up = 0; _up < array_length(_upsidebutton_data); _up++)
 #endregion 
 }
 
+// go to pos fase 
+if Ogame.is_showing_posphase
+{
+// Creating the  area 
+draw_set_alpha(0.8);
+	draw_rectangle_color(0,0,room_width,room_height,C,C,C,C,false);
+draw_set_alpha(1);
+//draw background of pos phase
+var _pos_fase_elements = [
+	[spr_vertical_panel,    57,  75,  1.04972,1.04972],
+	[Spr_tab02,             160, 297, 1.72,   1.15],
+	[Spr_tab02,             178, 384, 1.42,   1.33],
+	[spr_coin ,             173, 309, 0.25,   0.25],
+	[Spr_close,             345, 405, 0.5,    0.5 ],
+	
+	
+];
+var _array_bg_size = array_length(_pos_fase_elements);
+	for (var i = 0; i < _array_bg_size; i ++) {
+		var _arrayindex = _pos_fase_elements[i];
+		var _sprite = _arrayindex[0];
+		var _x = _arrayindex[1];
+		var _y = _arrayindex[2];
+		var _xscale = _arrayindex[3];
+		var _yscale = _arrayindex[4];
+		
+	    draw_sprite_ext(_sprite,0,_x,_y,_xscale,_yscale,image_angle,image_blend,image_alpha);
+			
+	}
 
+
+//ALL TEXTS
+draw_set_font(Fnt_Menu_description);
+var _text_height = string_height("M");
+draw_text_ext_transformed_color(257,239, score,   _text_height,300,1.5,1.5,0,cA,cA,cA,cA,1);
+	draw_text_ext_transformed_color(230,315, global.player_coin,   _text_height,300,1.5,1.5,0,cA,cA,cA,cA,1);
+		draw_text_ext_transformed_color(305,398, 2 ,   _text_height,300,3,3,0,cA,cA,cA,cA,1);
+			draw_text_ext_transformed_color(150,805, "STATISTICS" ,   _text_height,300,3,3,0,c_yellow,cA,c_purple,cA,1);
+#region // points convection into money 
+// Desativa a camada "control_layer" no jogo // para o player não atirar nem andar
+instance_deactivate_layer("control_layer");
+
+#endregion
+// buttons drawn
+var _pos_phase_buttonsData = [	
+	[spr_return,     165, 614, 1.5, 1.5],
+	[Spr_home,       272, 630, 0.6, 0.6],
+	[spr_nextbutton, 394, 614, 1.5, 1.5],
+	[spr_video,      190, 392, 0.49,0.49],
+];
+var _array_bt_size = array_length(_pos_phase_buttonsData);
+	for (var j = 0; j < _array_bt_size; j++) {
+	    var _btindex = _pos_phase_buttonsData[j];
+		var _bt_sprite = _btindex[0]
+		var _bt_x = _btindex[1];
+		var _bt_y = _btindex[2];
+		var _bt_yscale = _btindex[3];
+		var _bt_xscale = _btindex[4];
+		
+		draw_sprite_ext(_bt_sprite,0,_bt_x,_bt_y,_bt_xscale,_bt_yscale,image_angle,image_blend,image_alpha);
+	}
+	
+	var clicked_button = buttons_data_set(_pos_phase_buttonsData);
+	
+	if clicked_button != -1
+	{
+		switch(clicked_button)
+		{
+			case 0 : Ogame.is_showing_posphase = false; break;
+			case 1 : show_message("home") room_goto(rm_Mapa); break;
+			case 2 : show_message("next") room_goto(rm_Hightspeed); break;
+			case 3 : show_message("video") score_multiplier +=2; break;
+		
+		}
+	}
+	
+	// Variáveis para configuração
+	var conversion_rate = 0.1215; // Taxa de conversão: 0.1215 moedas por ponto
+	var conversion_speed = 0.1;   // Ajuste a velocidade da conversão conforme necessário
+	// Variável para armazenar o som de moedas
+
+	// Variáveis de controle
+	var is_converting = false;    // Flag para indicar se a conversão está ocorrendo
+
+	// No evento Step do mesmo objeto
+	if (score > 0) {
+	    var score_to_convert = min(score, ceil(score * conversion_speed));
+	    var coin_to_add = score_to_convert * conversion_rate;
+    
+	    if (!audio_is_playing(_snd_coin) && !is_converting) {
+	        audio_play_sound(_snd_coin, 1, true);
+	    }
+    
+	    if (coin_to_add > score * conversion_rate) {
+	        coin_to_add = score * conversion_rate;
+	    }
+    
+	    total_converted += ceil(coin_to_add); // Adicionar ao valor total convertido
+	    global.player_coin += ceil(coin_to_add);
+	    score -= score_to_convert;
+	    is_converting = true;
+	} else {
+	    audio_pause_sound(_snd_coin);
+	    is_converting = false;
+	}
+
+	// Após a conversão ser concluída
+	if (score == 0 && score_multiplier > 0 && total_converted > 0) {
+	    audio_resume_sound(_snd_coin);
+    
+	    var multiplied_total = (total_converted * score_multiplier) - total_converted; // Valor total multiplicado
+    
+	    // Verificar quanto pode ser adicionado com base na taxa de conversão
+	    var total_to_add = min(multiplied_total, ceil(multiplied_total * conversion_speed));
+    
+	    // Adicionar o valor gradualmente
+	    global.player_coin += total_to_add;
+    
+	    // Atualizar o valor total multiplicado
+	    multiplied_total -= total_to_add;
+    
+	    // Se ainda houver valor para adicionar, manter o total_converted e score_multiplier para a próxima iteração
+	    if (multiplied_total > 0) {
+	        total_converted = multiplied_total;
+	    } else {
+	        audio_stop_sound(_snd_coin);
+	        total_converted = 0;
+	        score_multiplier = 0; // Resetar o multiplicador após a adição completa
+	    }
+	}
+
+}
 
 
 

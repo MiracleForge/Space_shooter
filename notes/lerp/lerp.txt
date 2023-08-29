@@ -1,0 +1,12 @@
+if(key_charge) {
+
+    if charge_timer < charge_timerMax{
+
+        charge_timer++;
+
+    }
+
+    hsp = lerp(hsp, 0, charge_timer/charge_timerMax);
+
+
+}

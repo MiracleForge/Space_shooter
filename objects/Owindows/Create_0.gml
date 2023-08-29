@@ -22,6 +22,10 @@ is_showing_pilots = true;
 rotationSpeed = 2;
 targetAngle = 90;
 
+// pos phase screens
+total_converted = 0;
+score_multiplier = 0;
+
 #region Grid all ships , conten all ships show in the selection character 
 // enumerator that contains all ships to traking the grid
 enum ships {

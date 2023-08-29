@@ -7,7 +7,7 @@ function scr_selection_save_system()
     
     // Open the INI file for writing
  ini_open("save_ini_file");
-  if object_index == Ocharacter
+  if object_index == Owindows
   {
         // Loop through allpilots and save the pilots.block values
         for (var j = 0; j < number_of_pilots; j++) {
@@ -38,7 +38,7 @@ function scr_load_system()
         // Open the INI file for reading
         ini_open("save_ini_file");
         // numbers of pilots and ships blocked and unbloked , loop true grid and setting in 
-        if object_index == Ocharacter
+        if object_index == Owindows
         {
             // Loop through all pilots and update the pilots.block values
             for (var j = 0; j < number_of_pilots; j++) {

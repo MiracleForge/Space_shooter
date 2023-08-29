@@ -21,7 +21,12 @@ if !(t_sec = 0 and t_min = 0 and t_mil = 0)
 	alarm[0]  = 6;	
 }else 
 {
-	// here where the things happens	
+	
+	if room = rm_game_1_1 and !instance_exists(O_boss_beholder) 
+	{
+		
+		instance_create_layer(380, -180,"instances",O_boss_beholder);
+	}
 }
 
 

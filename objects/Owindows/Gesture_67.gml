@@ -12,7 +12,7 @@ var scroll_area_up = 20;
 // Calculate the maximum scroll position based on whether pilots or ships are being shown
 var _max_scrollpos = is_showing_pilots ? ((number_of_pilots - 3) * -200) : ((number_of_ships - 3) * -200);
 // veloc or size area scroll down or up at time; 
-var _scroll_veloc = 5;
+var _scroll_veloc = 8;
 
 // Check if the mouse is being pressed and update the previous mouse Y position
 if (mouse_y > scroll_area_up and mouse_check_button_pressed(mb_left)) {

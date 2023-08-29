@@ -25,8 +25,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Controls",
-    "path": "folders/Objetos/Controls.yy",
+    "name": "Entities",
+    "path": "folders/Objetos/Controls/Entities.yy",
   },
   "parentObjectId": null,
   "persistent": true,
