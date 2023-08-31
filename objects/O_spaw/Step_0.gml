@@ -91,7 +91,7 @@ if (!instance_exists(O_boss_beholder) && alarm[0] != -1)
                 {
                     var randomX = irandom_range(spawnCoordinates[0], spawnCoordinates[1]);
                     var randomY = irandom_range(spawnCoordinates[2], spawnCoordinates[3]);
-
+			
                     instance_create_layer(randomX, randomY, layer, enemyType);
                     maxAvailable--; // Reduz o número máximo disponível após criar uma instância
                 }

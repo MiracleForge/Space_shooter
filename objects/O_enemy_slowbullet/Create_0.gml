@@ -2,6 +2,7 @@
 // Você pode escrever seu código neste editor
 image_xscale = 4;
 image_yscale = 4;
+chasing = false;
 
 if (surface_format_is_supported(surface_rgba16float))
 {

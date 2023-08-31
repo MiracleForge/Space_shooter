@@ -45,8 +45,6 @@ global.special = 0;
 
 
 
-pos_fase = false;
-
 // surface draw
 paused_surf = -1;
 light_mode_light = true // turn on light mode

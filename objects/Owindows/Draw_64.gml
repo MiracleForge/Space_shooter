@@ -242,6 +242,7 @@ for (var _bg = 0; _bg < array_length(_back_ground); _bg++)
  // draw ships status if  they are unblocked
 if (!_blockStatus) {
     // Descriptions of different ship types
+	#region /// texts pilots and ships descriptions
     var shipInfo = [
         "A common fighter of the United Space Forces.\nWith high-speed engines and focus on kinetic projectiles.",
         "Adeptly excels in delivering calculated missile devastation, despite its moderate speed, ensuring tactical precision.",
@@ -260,6 +261,7 @@ if (!_blockStatus) {
 		" A secretive mercenary known for never removing their helmet, navigates the galaxy with unmatched skill.",
 		" Crafted by Dr. Zara Epsilon, features intricate design, advanced algorithms, and incomprehensible beeps."
 	];
+	#endregion
     // Extract ship data from the grid
     var _spriteIndex = is_showing_pilots ? spr_HUI_character : allships[# trakying_ship, status.sprite];
     var _heartIndex = allships[# trakying_ship, status.Heart];

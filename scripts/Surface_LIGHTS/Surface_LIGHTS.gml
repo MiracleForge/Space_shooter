@@ -50,14 +50,15 @@ function //scr_create_light(_x, _y, _colour, _intensity, _xscale, _yscale, _targ
 function scr_blend_light(_area,_particles,_lengdir,_xscale,_yscale,_angle,_colour,_alpha,_glow)
 {
 	
-
-   
    ///@description  this script is responsible for drawing an area around the object
    ///            responsible for the light load glow
-  var _glow_max = 0.5 + (1 + sin(2 + pi * current_time / 1000 * 0.10)) * 0.8; // 0.5 - 1.3
-// first number controls intensite and 1000 * number control velocit
-    if Ogame.light_mode_light == true
+     if Ogame.light_mode_light == false
     {
+		return
+	}
+ var _glow_max = 0.5 + (1 + sin(2 + pi * current_time / 1000 * 0.10)) * 0.8; // 0.5 - 1.3
+// first number controls intensite and 1000 * number control velocit
+
         gpu_set_blendmode(bm_add);
         for (B = 0; B < _area; B += _particles)
         {
@@ -67,5 +68,5 @@ function scr_blend_light(_area,_particles,_lengdir,_xscale,_yscale,_angle,_colou
                 _xscale, _yscale, _angle, _colour, draw_alpha);
         }
         gpu_set_blendmode(bm_normal);
-    }
+    
 }

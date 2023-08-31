@@ -1,18 +1,21 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "O_particle_setup",
+  "name": "Oshield_enemy",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"O_parent_projetil","path":"objects/O_parent_projetil/O_parent_projetil.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "efeitos",
-    "path": "folders/Objetos/Controls/efeitos.yy",
+    "name": "Engines",
+    "path": "folders/Objetos/Engines.yy",
   },
   "parentObjectId": null,
-  "persistent": false,
+  "persistent": true,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
@@ -27,7 +30,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "Spr_shield_enemy",
+    "path": "sprites/Spr_shield_enemy/Spr_shield_enemy.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

@@ -326,8 +326,8 @@ if (mouse_check_button_pressed(mb_left)) {
             break;
         }
     }
-var _settings_bt = buttons_data_set(_settings_data,3);
-    if (_settings_bt != -1) {
+
+    if (_clicked_button != -1) {
         // Do something with the clicked button
         switch (_clicked_button + 3) { // Adding 4 to get the correct button index
 			case 3: 
@@ -341,10 +341,10 @@ var _settings_bt = buttons_data_set(_settings_data,3);
 			// close settings window
             case 4: settings = false; break;
 		    // Tab 01 desactivate all grafics
-			case 5: show_message("low graphics"); break;
+			case 5: light_mode_light = false; break;
 
 			// activate mid grafics
-            case 6: show_message("mid graphics"); break;
+            case 6: light_mode_light = true; break;
             // Tab 02
             case 7: show_message("height graphics"); break;
 			
@@ -367,16 +367,16 @@ draw_set_font(-1);
 #region //debuging area
 
 #region // contador de instancias
-/*
+
 // Variável para armazenar o número de instâncias do objeto OaideShip
 var Contador = 0;
 
 // No evento Step ou Draw
-Contador = instance_number(ObigMeteor);
+Contador = instance_number(O_enemy_stalker);
 draw_text(x, y, "Quantidade de OaideShip: " + string(Contador));
 draw_text_ext_transformed(0,0,fps_real,1,2,3,3,0);
 draw_text_ext_transformed(0,100,fps,1,2,3,3,0);
-*/
+
 #endregion
 
 

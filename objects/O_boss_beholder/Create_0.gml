@@ -7,9 +7,7 @@ instance_destroy(OaideShip);
 image_xscale = 6;
 image_yscale = 6;
 //moviment
-//h_speed = 0;
-//v_speed = 0;
-//veloc = 2;
+
 
 //intro
 positionY = 300;
