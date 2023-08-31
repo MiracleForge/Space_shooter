@@ -4,7 +4,7 @@ image_xscale = 5;
 image_yscale = 5;
 image_alpha = 0;
 damage_alpha = -1;
-parent_enemy = undefined
+target = -4;
 //target_shield = undefined
 	
 

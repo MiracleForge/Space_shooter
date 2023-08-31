@@ -83,7 +83,8 @@ switch(movState)
 			    }	
 			if _dist_to_target < 100 {
 
-				var _stateshield = instance_create_layer(x,y,"Enemy_layer",Oshield_enemy); 
+				var _stateshield = instance_create_layer(x,y,"Enemy_layer",Oshield_enemy);
+					_stateshield.target = id;
 			   // Adjust the destination point to make the dash longer
 			   	attkState = stalker_attk.waiting;
 				position.next._x = O_ship_parent.x;
@@ -99,28 +100,33 @@ switch(movState)
 			var shake_amount = irandom_range(-6,6);
 			
 		    image_angle = _dir_to_player + shake_amount
-		    if Oshield_enemy.image_alpha >= 1{
-			var color = 355;
-			color --;
-			image_alpha -= 0.1
-			    var _inst = instance_create_layer(x, y, "Instances", Ofate);
-					_inst.sprite_index = sprite_index;
-					_inst.image_xscale = image_xscale;
-					_inst.image_yscale = image_yscale;
-					_inst.image_angle = image_angle;
-					_inst.image_blend = color ;
+		    if (instance_exists(Oshield_enemy)) {
+			    if (Oshield_enemy.target == id) {
+			        if (Oshield_enemy.image_alpha >= 1) {
+			    
+						var color = 355;
+						color --;
+						image_alpha -= 0.1
+						    var _inst = instance_create_layer(x, y, "Instances", Ofate);
+								_inst.sprite_index = sprite_index;
+								_inst.image_xscale = image_xscale;
+								_inst.image_yscale = image_yscale;
+								_inst.image_angle = image_angle;
+								_inst.image_blend = color ;
 
-			  x = lerp(x, position.next._x, 0.2);
-			  y = lerp(y, position.next._y, 0.2);
-			  if (ceil(x) == ceil(position.next._x)) and (ceil(y) == ceil(position.next._y))// Verifica se a posição atual é igual à próxima posição
-				 {
-					 audio_play_sound(snd_dash,1,false);
-					image_alpha = 1;
-					 movState = stalker_mov.leaving;
-					instance_destroy(Oshield_enemy);
-					alarm[0] = 120;
-				 }
-			}
+						  x = lerp(x, position.next._x, 0.2);
+						  y = lerp(y, position.next._y, 0.2);
+						  if (ceil(x) == ceil(position.next._x)) and (ceil(y) == ceil(position.next._y))// Verifica se a posição atual é igual à próxima posição
+							 {
+								 audio_play_sound(snd_dash,1,false);
+								image_alpha = 1;
+								 movState = stalker_mov.leaving;
+								instance_destroy(Oshield_enemy);
+								alarm[0] = 120;
+							 }
+						}
+				}
+		}
 	break;
 	case stalker_mov.leaving:
 	    image_angle = _dir_to_player;
@@ -142,7 +148,8 @@ switch(movState)
 	        }
 	    } else {
 	        if (alarm[0] <= 0) {
-				var _stateshield = instance_create_layer(x,y,"Enemy_layer",Oshield_enemy); 
+				var _stateshield = instance_create_layer(x,y,"Enemy_layer",Oshield_enemy);
+					_stateshield.target = id;
 				vspeed = 0;
 				position.next._x = O_ship_parent.x;
 			    position.next._y = O_ship_parent.y;

@@ -1,14 +1,14 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-if (!instance_exists(O_enemy_stalker)) {	
+if (!instance_exists(target)) {	
     instance_destroy();
 } else {
 
-  
-    x = O_enemy_stalker.x + lengthdir_x(30, O_enemy_stalker.image_angle);
-    y = O_enemy_stalker.y + lengthdir_y(30, O_enemy_stalker.image_angle);
+  var enemy_parent = target;
+    x = enemy_parent.x + lengthdir_x(30, enemy_parent.image_angle);
+    y = enemy_parent.y + lengthdir_y(30, enemy_parent.image_angle);
 
     
-    direction = O_enemy_stalker.direction; // Mantém a direção original da nave
-    image_angle = O_enemy_stalker.image_angle;
+    direction = enemy_parent.direction; // Mantém a direção original da nave
+    image_angle = enemy_parent.image_angle;
 }
