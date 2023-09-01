@@ -44,7 +44,7 @@ if (!instance_exists(O_boss_beholder) && alarm[0] != -1)
     //[1][2]: Quantidade de inimigos a serem spawnados (varia entre 1 e global.level);
     //[1][3]: Coordenadas de spawn [0, 720, 0, -20]
     var spawnIntervals = [
-        [40 - global.level, O_enemy_01, irandom_range(1, 1), [0, 720, 0, -20]],
+        [40 - global.level, O_enemy_drone, irandom_range(1, 1), [0, 720, 0, -20]],
         [380 - global.level, O_enemy_stalker, irandom_range(1, global.level), [0, 720, 0, -20]],
         [3000, O_enemy_sniper, 1, [0, 720, 0, -20]],
         [1000, O_enemy_assault, irandom_range(3, 3 + global.level), [choose(0, -20), choose(720, 740), 176, 776]],

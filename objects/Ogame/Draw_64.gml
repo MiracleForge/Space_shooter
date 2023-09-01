@@ -372,10 +372,10 @@ draw_set_font(-1);
 var Contador = 0;
 
 // No evento Step ou Draw
-Contador = instance_number(O_enemy_stalker);
-draw_text(x, y, "Quantidade de OaideShip: " + string(Contador));
-draw_text_ext_transformed(0,0,fps_real,1,2,3,3,0);
-draw_text_ext_transformed(0,100,fps,1,2,3,3,0);
+//Contador = instance_number(O_enemy_stalker);
+//draw_text(x, y, "Quantidade de OaideShip: " + string(Contador));
+//draw_text_ext_transformed(0,0,fps_real,1,2,3,3,0);
+//draw_text_ext_transformed(0,100,fps,1,2,3,3,0);
 
 #endregion
 

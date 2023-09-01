@@ -98,6 +98,7 @@ for (var _nDisplay = 0; _nDisplay < _size_switch; _nDisplay++) {
 								 confirm_buy = true;
 								 
 							}
+							audio_play_sound(snd_button,1,false);
 					 }
                         break;
                 }
@@ -175,16 +176,16 @@ if (confirm_buy)
 	            if (affordability >= itemCost)
 	            {
 	                _gridSwitch[# number_of__ndisplay, _blockSwitch] = false;
-                
+						
 	                if (moneyOrDiamond == "money")
 	                {
-	                    global.player_coin -= itemCost;
+	                    global.player_coin -= itemCost; 
 	                }
 	                else if (moneyOrDiamond == "diamonds")
 	                {
 	                    global.player_diamond -= itemCost;
 	                }
-                
+					
 	                show_message("Buyed " + moneyOrDiamond);
 	                confirm_buy = false;
 	                purchase_denied = 0;
@@ -194,6 +195,7 @@ if (confirm_buy)
 	                purchase_denied = (moneyOrDiamond == "money") ? 1 : 2;
 	            }
 	        }
+			audio_play_sound(snd_button,1,false);
 	    }
     
 	    if (purchase_denied >= 0 && purchase_denied < array_length(denied_money_text))
@@ -408,7 +410,7 @@ var _clicked_button = buttons_data_set(_upsidebutton_data);
 			    }
 		    break;
 			case 5:
-				show_message("next_ship");
+				//show_message("next_ship");
 				for (var next_ship = trakying_ship + 1; next_ship < _size_switch; next_ship++) {
 				    var blocked = ds_grid_get(_gridSwitch, next_ship, _blockSwitch);
     
@@ -450,7 +452,7 @@ var _clicked_button = buttons_data_set(_upsidebutton_data);
 						_spriteName = string_delete(_spriteName, 1, 4);
 						// Prefix the sprite name with "O_"
 						var _instanceSpriteName = "O_" + _spriteName;
-						show_message(_instanceSpriteName);
+						//show_message(_instanceSpriteName);
 						// Get the object index based on the instanceSpriteName
 						var _instanceObjIndex = asset_get_index(_instanceSpriteName);
 						// Create the ship instance using the object index
@@ -461,6 +463,7 @@ var _clicked_button = buttons_data_set(_upsidebutton_data);
 			break;
 
 		}
+		audio_play_sound(snd_button,1,false);
 	}
 
 	
@@ -549,6 +552,7 @@ var _array_bt_size = array_length(_pos_phase_buttonsData);
 			case 3 : show_message("video") score_multiplier +=2; break;
 		
 		}
+		audio_play_sound(snd_button,1,false);
 	}
 	
 	// Variáveis para configuração

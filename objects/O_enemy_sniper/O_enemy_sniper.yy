@@ -12,14 +12,15 @@
   "managed": true,
   "overriddenProperties": [
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"O_enemy_parent","path":"objects/O_enemy_parent/O_enemy_parent.yy",},"propertyId":{"name":"enemy_type","path":"objects/O_enemy_parent/O_enemy_parent.yy",},"value":"3",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"Oenemy_parent","path":"objects/Oenemy_parent/Oenemy_parent.yy",},"propertyId":{"name":"enemy_class","path":"objects/Oenemy_parent/Oenemy_parent.yy",},"value":"3",},
   ],
   "parent": {
     "name": "Enemys",
     "path": "folders/Objetos/Enemys.yy",
   },
   "parentObjectId": {
-    "name": "O_enemy_parent",
-    "path": "objects/O_enemy_parent/O_enemy_parent.yy",
+    "name": "Oenemy_parent",
+    "path": "objects/Oenemy_parent/Oenemy_parent.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,
@@ -37,8 +38,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "ShipOrig_0003_Package_________________",
-    "path": "sprites/ShipOrig_0003_Package_________________/ShipOrig_0003_Package_________________.yy",
+    "name": "spr_enemy_sniper",
+    "path": "sprites/spr_enemy_sniper/spr_enemy_sniper.yy",
   },
   "spriteMaskId": null,
   "visible": true,

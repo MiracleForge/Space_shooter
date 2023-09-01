@@ -1,5 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+
 switch (minestates) {
     case STATES_MINE.UNARMED:
         if (speed >= 0) {
@@ -17,9 +18,9 @@ switch (minestates) {
         var _scale = 6; // Tamanho original da sprite
 		var _detonation_distance = 5; //distancia para detonar
         var _close_distance = 70; // distancia para avisar o player
-		var dist_to_ship = distance_to_object(O_ship_parent);
+		var _dist_to_ship = distance_to_object(O_ship_parent);
         // na distancia a mina avisa o jogador do perigo
-        if (dist_to_ship <= _close_distance) {
+        if (_dist_to_ship <= _close_distance) {
             mineEff = true; // Define a variável mineaAprox como verdadeira para indicar que a mina está próxima e ativa um efeito brilhante (shiny effect)
             
             if (is_incrementing) {
@@ -31,9 +32,9 @@ switch (minestates) {
             }
             
             // Aplica o incremento ou decremento à escala da sprite usando uma variável separada
-            var new_scale = _scale + increment;
-            image_xscale = new_scale;
-			image_yscale = new_scale; // Atualiza a escala da sprite
+            var _new_scale = _scale + increment;
+            image_xscale = _new_scale;
+			image_yscale = _new_scale; // Atualiza a escala da sprite
             
             if (increment == 0 || increment == _maxincrement) {
                 is_incrementing = !is_incrementing; // Alterna entre inflação e deflação da sprite
@@ -44,15 +45,17 @@ switch (minestates) {
 			image_yscale = _scale;
             mineEff = false; // Define a variável mineaAprox como falsa para indicar que o player não está próxima e desativa o efeito brilhante
         }
-        if (dist_to_ship <= _detonation_distance) {
+        if (_dist_to_ship <= _detonation_distance) {
             // Ativa a colisão com a nave quando a mina está dentro da distância de detonação
                if O_ship_parent.take_damage
 			   {
-			   explosion_range = true;
-			   }else 
-			   {
-				   effect_create_above(ef_explosion,x,y, 1, c_red);
-                   instance_destroy(); 
+				explosion_range = true;
+				 }else 
+					 {
+				  	effect_create_above(ef_ellipse,x,y,4,c_red);
+					effect_create_above(ef_flare,x,y,1,c_red);
+					audio_play_sound(snd_impact,1,false, 0.4);
+					instance_destroy();
 			   }
 		
         }

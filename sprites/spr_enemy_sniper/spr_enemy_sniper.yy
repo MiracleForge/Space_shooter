@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "ShipOrig_0003_Package_________________",
+  "name": "spr_enemy_sniper",
   "bbox_bottom": 170,
   "bbox_left": 0,
   "bbox_right": 165,
@@ -32,7 +32,7 @@
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "ShipOrig_0003_Package_________________",
+    "name": "spr_enemy_sniper",
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"d78ab60e-e675-4e53-9154-4bba8e30cee2","path":"sprites/ShipOrig_0003_Package_________________/ShipOrig_0003_Package_________________.yy",},},},"Disabled":false,"id":"15ba91df-523b-4dd3-8c3e-8888bf0bfa37","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"d78ab60e-e675-4e53-9154-4bba8e30cee2","path":"sprites/spr_enemy_sniper/spr_enemy_sniper.yy",},},},"Disabled":false,"id":"15ba91df-523b-4dd3-8c3e-8888bf0bfa37","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

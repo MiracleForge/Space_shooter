@@ -167,10 +167,10 @@ function scr_player_height_speed()
             
 
             
-            var distance_to_target = point_distance(x, y, x, -50);
+            var _distance_to_point = point_distance(x, y, x, -50);
 
             // If the player is very close to the target position (-50)
-            if (distance_to_target < 20)
+            if (_distance_to_point < 20)
             {
                 // Set the audio_is_playing flag to true and check the audio for the new sound
                 global.audio_is_playing = true;

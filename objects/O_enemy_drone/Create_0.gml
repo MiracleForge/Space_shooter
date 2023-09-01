@@ -1,14 +1,20 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
-image_angle = 270;
+event_inherited();
+// struct for hp 
 hitpoints = 
 {
-	_max : 15,
-	_current : 15,
+	_max : 4,
+	_current : 4,
 	
 }
-event_inherited();
+
+
+
+
+
+
 
 
 

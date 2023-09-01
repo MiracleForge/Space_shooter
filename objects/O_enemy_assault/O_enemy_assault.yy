@@ -5,17 +5,18 @@
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,},
   ],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"Oenemy_parent","path":"objects/Oenemy_parent/Oenemy_parent.yy",},"propertyId":{"name":"enemy_class","path":"objects/Oenemy_parent/Oenemy_parent.yy",},"value":"2",},
+  ],
   "parent": {
     "name": "Enemys",
     "path": "folders/Objetos/Enemys.yy",
   },
   "parentObjectId": {
-    "name": "O_enemy_parent",
-    "path": "objects/O_enemy_parent/O_enemy_parent.yy",
+    "name": "Oenemy_parent",
+    "path": "objects/Oenemy_parent/Oenemy_parent.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

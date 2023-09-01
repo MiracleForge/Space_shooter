@@ -3,96 +3,106 @@
 
 // Inherit the parent event
 event_inherited();
-/*
-    if (alarm[0] == -1) // time to shoot
+// Define macros for constant values
+#macro TARGET_ALPHA 1
+#macro ALPHA_SPEED 0.01
+#macro CHARGE_ALARM_DURATION 150
+#macro SHOOT_ALARM_DURATION 160
+#macro MIN_TARGET_ALPHA 0.3
+
+// Inherit the parent event
+event_inherited();
+
+// Define a flag to indicate if the enemy is charged and ready to fire
+var charged = false;
+
+if (!instance_exists(O_ship_parent)) {
+    return;
+}
+if movState == enemy_mov.leaving
 {
-	    alarm[0] = 480;
+	x = lerp(x, position.next._x, 0.01);
+    y = lerp(y, position.next._y, 0.01);
+    vspeed = 2;
+	image_angle = 270;
 }
-if Pyexist
+if alarm[1] <=0 
 {
-	var _ship = O_ship_parent;
-	var _dest_x = _ship.x;
-	var _dest_y = _ship.y;
-if (x <= 100) {
-    direction = 1; // Muda a direção para a direita
-} else if (x >= 700) {
-    direction = -1; // Muda a direção para a esquerda
+	 if (image_alpha >= MIN_TARGET_ALPHA) {
+        image_alpha -= ALPHA_SPEED;
+          if (image_alpha <= MIN_TARGET_ALPHA ) {
+    
+              	movState = enemy_mov.leaving;	
+				position.next._x = irandom_range(0, room_width);
+			    position.next._y = room_height + 30;
+           }
+       }
+
 }
-if direction == 1{	
-	hspeed = 1
-	}else {	
-		hspeed = -1;
-		}
-	
-		var _dir_to_player = point_direction(x, y, _dest_x, _dest_y);
-		image_angle = _dir_to_player;
-}
-	*/
+var _ship = O_ship_parent;
+var _dir_to_target = point_direction(x, y, _ship.x, _ship.y);
+image_angle = _dir_to_target;
 
+switch (movState) {
 
+    case SNIPER.WALK:
 
-if !instance_exists(O_ship_parent)
-{
-	return;	
-}
-	var _dir_to_pos = point_direction(x, y, O_ship_parent.x, O_ship_parent.y);
-	image_angle = _dir_to_pos;
+        attkState = enemy_attk.waiting;
+        x = lerp(x, position.next._x, 0.01);
+        y = lerp(y, position.next._y, 0.01);
+        if (alarm[0] == -1) {
 
-	switch (stateSniper)
-	{
-
-		case SNIPER.WALK:
-		stateSniper = SNIPER.WALK
-		image_alpha = 0.3;
-		x = lerp(x,position.next._x,0.01);
-		y = lerp(y,position.next._y,0.01);
-	
-		if alarm[1] == -1
-				//mudar starte.
-				{
-					alarm[0] = 480; // alarm to shoot lazer
-					stateSniper = SNIPER.SHOOTING;
-				
-				}
+            movState = SNIPER.CHARGING;
+            alarm[0] = CHARGE_ALARM_DURATION;
+            charged = false; // Reset the charged flag when entering CHARGING state
+        }
+        break;
+    case SNIPER.CHARGING:
+ 
+        if (image_alpha < TARGET_ALPHA) {
+            image_alpha += ALPHA_SPEED;
+        } else {
+            image_alpha = TARGET_ALPHA;
+            if (alarm[0] == -1 && !charged) { // Check if not already charged
+                charged = true; // Set the charged flag
+				attkState = enemy_attk.especial;
+				movState = enemy_mov.intro;
+            }
+        }
+        break;
+    case SNIPER.STEALTH:
+        if (image_alpha >= MIN_TARGET_ALPHA) {
+            image_alpha -= ALPHA_SPEED;
+            if (image_alpha <= MIN_TARGET_ALPHA ) {
+    
+                movState = SNIPER.WALK;
+            }
+        }
+        break;
+		case enemy_mov.dying:
+			effect_create_above(ef_ellipse,x,y,4,c_orange);
+			effect_create_above(ef_flare,x,y,1,c_orange);
+			audio_play_sound(snd_impact,1,false, 0.4);
+			instance_destroy();
 		break;
-		case SNIPER.SHOOTING:
-		stateSniper = SNIPER.SHOOTING
-		// Declaração e inicialização da variável
-		var target_alpha = 1; // Valor final que você deseja alcançar (1 no caso, para que a imagem seja completamente visível)
-		var alpha_speed = 0.01; // Velocidade de aumento, ajuste conforme necessário (quanto menor, mais lento)
+}
 
-		// Atualização do valor intermediário (interpolação)
-		if (image_alpha < target_alpha) {
-		    image_alpha += alpha_speed;
-		    if (image_alpha >= target_alpha) {
-		        image_alpha = target_alpha; // Garante que o valor não ultrapasse o valor final desejado
+switch (attkState) {
+    case enemy_attk.especial:
+        if (charged && instance_exists(_ship) && !instance_exists(O_enemy_lazer)) {
+			
+            instance_create_layer(_ship.x, _ship.y, "Enemy_layer", O_enemy_lazer);
+            charged = false; // Reset the charged flag
+            alarm[0] = SHOOT_ALARM_DURATION;
+            var _room_posX = room_width - 30;
+            position.next._x = irandom_range(96, _room_posX);
+            position.next._y = irandom_range(96, room_height);
 		
-		    }
-		}
-		if (alarm[0] == -1) // time to shoot
-			{
-		    var _ship = O_ship_parent;
+     
+        }
+        break;
 
-			if instance_exists(_ship) and !instance_exists(O_enemy_lazer)
-			{
-			   instance_create_layer(_ship.x, _ship.y, "Enemy_layer", O_enemy_lazer);
-			}
-
-			// restart states and position of sniper
-			var _room_posX = room_width - 30;
-
-			position.next._x = irandom_range(96, _room_posX);
-			position.next._y = irandom_range(96, room_height);
-			alarm[1] = enemy_movement_time;
-
-			// Change state to WALK only if the current state is not SHOOTING
-
-			    stateSniper = SNIPER.WALK;
-			}
-		break;
-	}
-
-
+}
 
 
 

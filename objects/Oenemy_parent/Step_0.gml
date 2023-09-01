@@ -1,14 +1,15 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if hitpoints._current <=0{
+	movState = enemy_mov.dying
+	}
 
-image_angle = 270;
-hitpoints = 
-{
-	_max : 15,
-	_current : 15,
-	
-}
-event_inherited();
+
+
+
+
+
+
 
 
 

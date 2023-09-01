@@ -57,6 +57,7 @@ if !instance_exists(_ship)
                     life_ship -= 1; // Reduz a vida da nave do jogador em 1 ponto
                 }
             }
+			O_enemy_sniper.movState = SNIPER.STEALTH;
             instance_destroy(O_enemy_lazer); // Destroi o lazer após a colisão com a nave do jogador
             break; // Sai do loop após a colisão com a nave do jogador
         }
@@ -88,4 +89,5 @@ if instance_exists(O_enemy_parent) {
 // Verifica se não existe mais o objeto do inimigo sniper ou se o alarme 0 está configurado como -1 (quando a nave do jogador está destruída)
 if (!instance_exists(_sniper) or alarm[0] == -1) {
     instance_destroy(); // Destroi o objeto atual (O_enemy_lazer)
+	O_enemy_sniper.movState = SNIPER.STEALTH;
 }

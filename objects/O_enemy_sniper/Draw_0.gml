@@ -2,7 +2,7 @@
 // Você pode escrever seu código neste editor
 
 draw_self();
-if stateSniper == SNIPER.SHOOTING and !instance_exists(O_enemy_lazer) 
+if movState == SNIPER.CHARGING and !instance_exists(O_enemy_lazer) 
 {
     var _scale_range =  1.8;
     var _angle = image_angle; // Obtém o ângulo do objeto atual
@@ -16,9 +16,18 @@ if stateSniper == SNIPER.SHOOTING and !instance_exists(O_enemy_lazer)
     draw_sprite_ext(spr_particle_sprite, image_index ++, _draw_x, _draw_y, _scale_range, _scale_range, _angle, c_white,image_alpha++);
 }
 
-
-
-
+switch (movState)
+{
+	case SNIPER.WALK:
+	  draw_text(x - 40, y, "State: walk");
+	  break;
+	case SNIPER.CHARGING:
+	  draw_text(x - 40, y, "State: chargin");
+	  break;
+	case SNIPER.STEALTH:
+	  draw_text(x - 40, y, "State: steath");
+	  break;
+}
 
 
 
