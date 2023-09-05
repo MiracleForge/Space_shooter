@@ -57,7 +57,7 @@ switch(movState)
         speed = 0;
         hspeed = 2;
         direction = _dir_to_player;
-        image_angle = _dir_to_player; // Atualiza o ângulo da imagem
+        image_angle = _dir_to_player; // update image angle
 	
     } else {
         movState = enemy_mov.medium_range; // Transition to medium range state

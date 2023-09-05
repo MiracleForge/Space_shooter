@@ -2,7 +2,8 @@
 // Você pode escrever seu código neste editor
 draw_self();
 scr_blend_light(360 ,15,3,image_xscale,image_yscale,image_angle,image_blend,0.01,false);
-
+draw_text(x - 40 ,y, target_enemy);
+/*
 switch(missil_lockON){
 	case missil_state.off_line:
 		draw_text(x -50, y, "off_line")

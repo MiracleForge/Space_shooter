@@ -1,6 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 draw_self();
+
 draw_text(x -40 , y, alarm[1]);
 //draw alpha after hit
 if alarm[1] >0 {	

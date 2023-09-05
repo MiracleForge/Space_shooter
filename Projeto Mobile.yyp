@@ -127,6 +127,7 @@
     {"id":{"name":"Beholder","path":"sprites/Beholder/Beholder.yy",},},
     {"id":{"name":"snd_button","path":"sounds/snd_button/snd_button.yy",},},
     {"id":{"name":"OphaseSelection","path":"objects/OphaseSelection/OphaseSelection.yy",},},
+    {"id":{"name":"coli","path":"notes/coli/coli.yy",},},
     {"id":{"name":"Miscelanios","path":"scripts/Miscelanios/Miscelanios.yy",},},
     {"id":{"name":"icons_blue_01","path":"sprites/icons_blue_01/icons_blue_01.yy",},},
     {"id":{"name":"Elements_01","path":"sprites/Elements_01/Elements_01.yy",},},

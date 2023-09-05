@@ -54,7 +54,7 @@ enemy_direction = false;
 damage_alpha = -1;
 flash_t = 0;
 
-
+is_targeted = false;
 
 
 

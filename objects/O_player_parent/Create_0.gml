@@ -24,8 +24,8 @@ time_to_cooling = 0.6;
 ammo = 2;
 
 // Shield Capacity
-shield = 15;
 max_shield = 15 + global.shield;
+shield = max_shield;
 shield_recover_max = 0.03; // total time to reach full shield after broken
 
 // Damage Control
@@ -59,6 +59,7 @@ player_shield_state = undefined;
 
 instance_create_layer(x,y,"layer_under", Oengine);
 
+global.possible_targets = undefined;
 
 
 

@@ -11,6 +11,7 @@ if (movState != enemy_mov.intro or movState != enemy_mov.dying or movState != SN
 		break;
 		case 2: 
 			hitpoints._current = 0;
+
 		break;
 	}
     // Se o contador de flash for zero, defina-o para 1

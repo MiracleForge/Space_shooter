@@ -100,6 +100,7 @@
     {"name":"Beholder","order":6,"path":"sprites/Beholder/Beholder.yy",},
     {"name":"snd_button","order":16,"path":"sounds/snd_button/snd_button.yy",},
     {"name":"OphaseSelection","order":1,"path":"objects/OphaseSelection/OphaseSelection.yy",},
+    {"name":"coli","order":11,"path":"notes/coli/coli.yy",},
     {"name":"Miscelanios","order":5,"path":"scripts/Miscelanios/Miscelanios.yy",},
     {"name":"icons_blue_01","order":10,"path":"sprites/icons_blue_01/icons_blue_01.yy",},
     {"name":"Elements_01","order":6,"path":"sprites/Elements_01/Elements_01.yy",},

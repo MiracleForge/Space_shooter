@@ -1,13 +1,13 @@
 //Descrição: Este script contém as ações relacionadas aos ataques normais do jogador.
 // secondary function
-function createProjectile(offset_x, offset_y, angle_offset,proj_blend)
+function createProjectile(offset_x, offset_y, angle_offset,proj_blend,veloc)
 {
     var angle = direction + angle_offset;
     var proj_x = x + offset_x * cos(degtorad(angle));
     var proj_y = y + offset_y * sin(degtorad(angle));
     var proj = instance_create_layer(proj_x, proj_y, "Instances", Omachinegun);
     
-    proj.speed = -8;
+    proj.speed = veloc;
     proj.direction = direction;
     proj.image_angle = direction;
 	proj.image_blend = proj_blend;
@@ -61,11 +61,12 @@ function scr_normal_cinetic_default()
     var projectile_offset_x = 15; // Ajuste conforme necessário
     var projectile_offset_y = -10; // Ajuste conforme necessário
     var angle_offset = 60; // Ajuste conforme necessário
-
+	var heatcolor = overheat ? c_red : image_blend
+	var veloc = overheat ? -6 : -8
     for (var i = 0; i < num_projectiles; i++)
     {
         var offset_angle = i % 2 == 0 ? angle_offset : -angle_offset;
-        createProjectile(projectile_offset_x, projectile_offset_y, offset_angle,image_blend);
+        createProjectile(projectile_offset_x, projectile_offset_y, offset_angle,heatcolor,veloc);
     }
 
     // Gere um tom aleatório para o efeito sonoro de tiro

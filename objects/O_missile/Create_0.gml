@@ -14,5 +14,5 @@ enum missil_state
 	explod
 }
 target_enemy = noone;
-is_targeting_enemy = false;
+lock_missil = false;
 missil_lockON = missil_state.off_line;

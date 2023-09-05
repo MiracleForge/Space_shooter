@@ -51,6 +51,9 @@
     "Width": 720,
   },
   "sequenceId": null,
+  "tags": [
+    "Gameplayer_rooms",
+  ],
   "views": [
     {"hborder":32,"hport":1280,"hspeed":-1,"hview":1500,"inherit":false,"objectId":{"name":"O_ship_parent","path":"objects/O_ship_parent/O_ship_parent.yy",},"vborder":32,"visible":true,"vspeed":-1,"wport":720,"wview":720,"xport":0,"xview":0,"yport":0,"yview":-210,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},

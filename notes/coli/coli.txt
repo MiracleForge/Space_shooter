@@ -1,32 +1,3 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
-//player's End Step
-
-if room == rm_game_1_1 or room == rm_game_1_2 {
-	if allow_damage and alarm[1] == -1 {
-
-	    var _inst_collid_with = instance_place(x, y, O_parent_colition_with_player);
-	    if (_inst_collid_with != noone) {
-
-	                switch (_inst_collid_with.collision_type) {
-	                    case 1:
-	                        current_life = 0; // kill player
-	                        Ogame.alarm[0] = 120; // restart room
-	                        break;
-	                    case 2:
-	                        alarm[1] = 300;
-	                        current_life -= 1;
-	                        break;
-	                    case 3:
-	                        instance_destroy(_inst_collid_with);
-	                        alarm[1] = 300;
-	                        current_life -= 1;
-	                        break;
-	                }
-	            }
-	        }  
-}
-
 /*
 if allow_damage and alarm[1] == -1{
 	show_debug_message("place_meeting")
@@ -65,10 +36,3 @@ if allow_damage and alarm[1] == -1{
       ds_list_destroy(_list);	   
 	}
 }
-
-
-
-
-
-
-

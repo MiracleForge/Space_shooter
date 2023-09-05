@@ -9,7 +9,7 @@ var angle_offset = 60; // Ajuste conforme necessário
 for (var i = 0; i < num_projectiles; i++)
 {
     var offset_angle = i % 2 == 0 ? angle_offset : -angle_offset;
-    createProjectile(projectile_offset_x, projectile_offset_y, offset_angle,c_red);
+    createProjectile(projectile_offset_x, projectile_offset_y, offset_angle,c_red,-8);
 }
 
 
@@ -19,7 +19,7 @@ for (var i = 0; i < num_projectiles; i++)
 	 for (var i = 0; i < num_projectiles; i++)
 	{
 	    var offset_angle = i % 2 == 0 ? angle_offset : -angle_offset;
-	    createProjectile(projectile_offset_x, projectile_offset_y, offset_angle,c_red);
+	    createProjectile(projectile_offset_x, projectile_offset_y, offset_angle,c_red,-8);
 	
 	
 }
@@ -37,17 +37,23 @@ for (var i = 0; i < num_projectiles; i++)
 
 function scr_overheat_missile_default()
 {
-	scr_normal_cinetic_default();
-	if alarm[2] ==-1{
-	   var  _inst = instance_create_layer(x , y , "Instances", O_missile);
-        _inst.speed = -6;
-        _inst.direction = direction;
-        _inst.image_angle = direction;
+	// creates a normal machine gun attack
+	
+	if (alarm[2] == -1) {
+		scr_normal_cinetic_default();
+	    alarm[2] = 30;  // Set the alarm to 30 steps (or any other desired value)
+	   
+		
+	        var _inst = instance_create_layer(x, y, "Instances", O_missile);
+	        _inst.speed = -6;
+	        _inst.direction = direction;
+	        _inst.image_angle = direction;
 
-        alarm[1] = 30;
-        var _random_pitch = random_range(0.8, 10);
-        audio_sound_pitch(snd_missile_launcher, _random_pitch);
-    audio_play_sound(snd_missile_launcher, 0, false);
+	        var _random_pitch = random_range(0.8, 1.0);  // Adjust the pitch range as needed
+	        audio_sound_pitch(snd_missile_launcher, _random_pitch);
+	        audio_play_sound(snd_missile_launcher, 0, false);
 	}
     shoot_on = false;
 }
+
+  

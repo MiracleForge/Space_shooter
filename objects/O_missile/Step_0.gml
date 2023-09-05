@@ -1,59 +1,74 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-event_inherited();
-var some_threshold_value = 10;
-
-switch (missil_lockON) {
+switch (missil_lockON)
+{
     case missil_state.off_line:
-        // Verifica se o míssil já está perseguindo um inimigo
-        if (target_enemy == noone) {
-            if (instance_exists(O_player_parent) && O_player_parent.overheat == true) {
-                if (target_enemy == noone) {
-                    var _enemy = Oenemy_parent;
-                    // Encontra um inimigo disponível para perseguir
-                    if (instance_count > 0) {
-                        // Escolhe aleatoriamente uma instância de inimigo
-                        var random_index = irandom(instance_count - 1);
-                        target_enemy = instance_find(_enemy, random_index);
-                        is_targeting_enemy = true;
+        if (!lock_missil && !is_undefined(global.possible_targets))
+        {
+            var _allenemy = Oenemy_parent;
+
+            if (target_enemy == noone)
+            {
+                var player_direction = O_player_parent.direction;
+                var angle_limit_upper = player_direction + 80;
+                var angle_limit_lower = player_direction - 80;
+
+                for (var i = 0; i < instance_number(_allenemy); i++)
+                {
+                    var _target_enemy = instance_find(_allenemy, i);
+
+                    var angle_to_enemy = point_direction(x, y, _target_enemy.x, _target_enemy.y);
+                    var _angle_difference = angle_difference(player_direction, angle_to_enemy);
+
+                    if (abs(_angle_difference) <= 80)
+                    {
+                        if (!_target_enemy.is_targeted)
+                        {
+                            ds_list_add(global.possible_targets, _target_enemy);
+                            _target_enemy.is_targeted = true;
+                        }
                     }
                 }
-                missil_lockON = missil_state.following;
+
+                if (ds_list_size(global.possible_targets) > 0)
+                {
+                    var random_target_index = irandom(ds_list_size(global.possible_targets) - 1);
+                    target_enemy = ds_list_find_value(global.possible_targets, random_target_index);
+                    missil_lockON = missil_state.following;
+                    lock_missil = true;
+                    ds_list_delete(global.possible_targets, random_target_index);
+                }
             }
         }
         break;
 
     case missil_state.following:
-        // Verifica se o míssil está perseguindo um inimigo
-        if (instance_exists(target_enemy)) {
-			var dest_x = target_enemy.x;
-			var dest_y = target_enemy.y
-            var _dir = point_direction(x, y, dest_x, dest_y);
+        if (instance_exists(target_enemy) && target_enemy != noone)
+        {
+			if instance_exists(O_player_parent)
+			{
+            var _target_direc = point_direction(x, y, target_enemy.x, target_enemy.y);
+            direction = _target_direc;
 
-            if (distance_to_object(target_enemy) > some_threshold_value) {
+            // Verifica se o alvo ainda está dentro do ângulo de visão do jogador
+          
+			var player_direction = O_player_parent.x;
 
-                hspeed = lengthdir_x(speed, _dir);
-                vspeed = lengthdir_y(speed, _dir);
-                direction = _dir;
-                image_angle = -_dir;
-                speed = -7;
-            } else {
-                // O inimigo foi alcançado, redefine o alvo para liberar o míssil
-                target_enemy = noone;
-                is_targeting_enemy = false;
-                missil_lockON = missil_state.explod;
+            var _angle_diff = angle_difference(player_direction, point_direction(O_player_parent.x, O_player_parent.y, target_enemy.x, target_enemy.y));
+
+            if (abs(_angle_diff) > 80)
+            {
+                // Se o alvo estiver fora do ângulo de visão, continue perseguindo-o
+                var move_speed = 6; // Defina a velocidade de perseguição adequada
+                move_towards_point(target_enemy.x, target_enemy.y, move_speed);
             }
-        } else {
-            missil_lockON = missil_state.no_target;
+			image_angle = direction;
         }
-        break;
-
-    case missil_state.no_target:
-        direction = direction;
-        image_angle = direction;
-    
+		}
         break;
 }
+
+
 
 
 
