@@ -18,7 +18,7 @@ switch (minestates) {
         var _scale = 6; // Tamanho original da sprite
 		var _detonation_distance = 5; //distancia para detonar
         var _close_distance = 70; // distancia para avisar o player
-		var _dist_to_ship = distance_to_object(O_ship_parent);
+		var _dist_to_ship = distance_to_object(O_player_parent);
         // na distancia a mina avisa o jogador do perigo
         if (_dist_to_ship <= _close_distance) {
             mineEff = true; // Define a variável mineaAprox como verdadeira para indicar que a mina está próxima e ativa um efeito brilhante (shiny effect)
@@ -47,7 +47,7 @@ switch (minestates) {
         }
         if (_dist_to_ship <= _detonation_distance) {
             // Ativa a colisão com a nave quando a mina está dentro da distância de detonação
-               if O_ship_parent.take_damage
+               if O_player_parent.allow_damage
 			   {
 				explosion_range = true;
 				 }else 

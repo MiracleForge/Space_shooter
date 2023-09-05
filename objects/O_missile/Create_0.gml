@@ -3,8 +3,16 @@
 
 // Inherit the parent event
 event_inherited();
-image_xscale = 5;
-image_yscale = 5;
+image_xscale = 3;
+image_yscale = 3;
 
+enum missil_state 
+{
+	off_line,
+	following,
+	no_target,
+	explod
+}
 target_enemy = noone;
 is_targeting_enemy = false;
+missil_lockON = missil_state.off_line;

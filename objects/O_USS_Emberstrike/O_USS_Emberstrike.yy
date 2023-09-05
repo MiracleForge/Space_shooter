@@ -9,14 +9,15 @@
   "managed": true,
   "overriddenProperties": [
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"O_ship_parent","path":"objects/O_ship_parent/O_ship_parent.yy",},"propertyId":{"name":"current_ship","path":"objects/O_ship_parent/O_ship_parent.yy",},"value":"2",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"O_player_parent","path":"objects/O_player_parent/O_player_parent.yy",},"propertyId":{"name":"player_name","path":"objects/O_player_parent/O_player_parent.yy",},"value":"2",},
   ],
   "parent": {
     "name": "Players",
     "path": "folders/Objetos/Players.yy",
   },
   "parentObjectId": {
-    "name": "O_ship_parent",
-    "path": "objects/O_ship_parent/O_ship_parent.yy",
+    "name": "O_player_parent",
+    "path": "objects/O_player_parent/O_player_parent.yy",
   },
   "persistent": true,
   "physicsAngularDamping": 0.1,

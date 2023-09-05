@@ -49,7 +49,8 @@ function scr_normal_state()
 
     //move_wrap(true, false, 0);
     #endregion	
-
+	
+	
     if room == rm_Hightspeed {
         currentState = scr_player_height_speed;
     }

@@ -1,0 +1,8 @@
+Sistema de ataques e item do player. 
+
+O player coleta o power up no mapa, 
+
+Vai haver dois states de ataque, o principal que muda o sistema geral de armas
+{Tipo de munição, explosivas , dano , misseis, }
+e vai haver o state secundário, que adiciona um ataque adicional
+{ Naves drones, mercenários , esferas de proteção , escudo etc}

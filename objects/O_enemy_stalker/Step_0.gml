@@ -13,9 +13,8 @@ event_inherited()
 #macro TIME_TO_LEAVE 600 // COUNTDOWN TO LEAVE ROOM
 #macro TIME_TO_DASH 120 // TIME TO DASH IN TO PLAYER AGAIN
 
-
-if instance_exists(O_ship_parent) {
-var _ship = O_ship_parent;
+var _ship = O_player_parent;
+if instance_exists(_ship) {
 
 var _dest_x = _ship.x;
 var _dest_y = _ship.y;
@@ -96,8 +95,8 @@ switch(movState)
 					_stateshield.target = id;
 			   // Adjust the destination point to make the dash longer
 			   	attkState = enemy_attk.waiting;
-				position.next._x = O_ship_parent.x;
-			    position.next._y = O_ship_parent.y;
+				position.next._x = _ship.x;
+			    position.next._y = _ship.y;
 			    movState = enemy_mov.dash;
 			}
 			if alarm[0] <= -1 {
@@ -160,18 +159,12 @@ switch(movState)
 				var _stateshield = instance_create_layer(x,y,"Enemy_layer",Oshield_enemy);
 					_stateshield.target = id;
 				vspeed = 0;
-				position.next._x = O_ship_parent.x;
-			    position.next._y = O_ship_parent.y;
+				position.next._x = _ship.x;
+			    position.next._y = _ship.y;
 	            movState = enemy_mov.dash;
 	        }
 	    }
 	    break;
-		case enemy_mov.dying:
-			effect_create_above(ef_ellipse,x,y,4,c_orange);
-			effect_create_above(ef_flare,x,y,1,c_orange);
-			audio_play_sound(snd_impact,1,false, 0.4);
-			instance_destroy();
-		break;
 		case enemy_mov.retreate:
 		 attkState = enemy_attk.waiting;
 		 	var color = 355;
@@ -205,7 +198,7 @@ switch(attkState)
 			    {
 					var _centralMissile = instance_create_layer(x, y, "Enemy_layer", O_enemy_slowbullet);
 			        var _angle = image_angle + _angleOffset * (i - 1); // Calcula o ângulo para cada projétil
-			        _centralMissile.speed = 7;
+			        _centralMissile.speed = 5;
 			        _centralMissile.direction = _angle;
 			        _centralMissile.image_angle = _angle;
 				}	

@@ -1,6 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-var _ship = O_ship_parent;
+var _ship = O_player_parent;
 
 if chasing and distance_to_object(_ship) <= 80 {
 	var _dir_to_player = point_direction(x, y, _ship.x,_ship.y);

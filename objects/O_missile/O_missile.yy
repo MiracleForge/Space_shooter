@@ -9,7 +9,9 @@
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
   ],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"O_parent_projetil","path":"objects/O_parent_projetil/O_parent_projetil.yy",},"propertyId":{"name":"bullet_name","path":"objects/O_parent_projetil/O_parent_projetil.yy",},"value":"2",},
+  ],
   "parent": {
     "name": "Bullets",
     "path": "folders/Objetos/Players/Bullets.yy",

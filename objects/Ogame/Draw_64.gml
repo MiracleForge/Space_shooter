@@ -18,11 +18,7 @@ var c = c_white;
 var C = c_black;
 var cA = c_aqua;
 var p = c_purple;
-//Player Ships sprits
-var _ship01 = spr_USS_Cerulean;
-var _ship02 = spr_USS_Emberstrike;
-var _ship03 = spr_USS_Verdant_Shield
-var _ship_pai =O_ship_parent;
+var _ship_pai =O_player_parent;
 
 //room coords 
 var rm_w = room_width/4;
@@ -38,11 +34,11 @@ if  !is_showing_posphase and!pick_ship and room == rm_game_1_1 or pick_ship and 
     // Draw Heat Capacity
     draw_sprite_ext(spr_GunHeat, 0, 50, 260, _scale, _scale, 0, c, 1);
     var currentHeat, maxHeat;
-    if instance_exists(O_ship_parent) {
-         maxHeat = O_ship_parent.maxHeat;
-         currentHeat = O_ship_parent.heat;
-        var max_shield = O_ship_parent.max_shield;
-        var current_shield = O_ship_parent.shield;
+    if instance_exists(_ship_pai) {
+         maxHeat = _ship_pai.maxHeat;
+         currentHeat = _ship_pai.heat;
+        var max_shield = _ship_pai.max_shield;
+        var current_shield = _ship_pai.shield;
 
         draw_sprite_ext(spr_GunHeatBar, 0, 50, 260, _scale, (currentHeat / maxHeat) * _scale, 0, c, 1);
         draw_sprite_ext(spr_HUI_lifebar, 1, 150, 80, _scale, (current_shield / max_shield) * _scale, 0, c, 1);
@@ -90,13 +86,13 @@ draw_sprite_ext(spr_HUI_lifebar, 0, 150, 80, _scale, _scale, 0, c, 1);
 
 if instance_exists(_ship_pai){
 	var pos_x = 160;
-	for (var i = 0; i < _ship_pai.life_ship ; i++) {
+	for (var i = 0; i < _ship_pai.current_life ; i++) {
 	    draw_sprite_ext(Spr_hUI_heart, 0, pos_x, 25, _scale, _scale, 0, c, 1);
 		pos_x += 35;
 	}
 		//SHIELD BARS 
-	var max_shield = O_ship_parent.max_shield;
-	var current_shield = O_ship_parent.shield;
+	var max_shield = _ship_pai.max_shield;
+	var current_shield = _ship_pai.shield;
 	var barHeight = (currentHeat / maxHeat) * _scale ;
 	var barShield = (current_shield / max_shield) * _scale
 
@@ -369,10 +365,10 @@ draw_set_font(-1);
 #region // contador de instancias
 
 // Variável para armazenar o número de instâncias do objeto OaideShip
-var Contador = 0;
+//var Contador = 0;
 
 // No evento Step ou Draw
-//Contador = instance_number(O_enemy_stalker);
+//Contador = instance_number(O_enemy_machine_gun);
 //draw_text(x, y, "Quantidade de OaideShip: " + string(Contador));
 //draw_text_ext_transformed(0,0,fps_real,1,2,3,3,0);
 //draw_text_ext_transformed(0,100,fps,1,2,3,3,0);

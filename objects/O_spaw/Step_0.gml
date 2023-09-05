@@ -55,7 +55,7 @@ if (!instance_exists(O_boss_beholder) && alarm[0] != -1)
     var alarmValue = alarm[0];
 
     // Verifica a quantidade atual de inimigos
-    var currentEnemies = instance_number(O_enemy_parent);
+    var currentEnemies = instance_number(Oenemy_parent);
     // Calcula o número máximo de inimigos que podem ser criados
     var maxAvailable = _max_inst - currentEnemies;
 

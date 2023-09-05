@@ -15,12 +15,6 @@ switch(movState)
 				 timers.shooting._current -= 0.1;
 			    }	
 	break;
-	case enemy_mov.dying:
-		effect_create_above(ef_ellipse,x,y,4,c_orange);
-		effect_create_above(ef_flare,x,y,1,c_orange);
-		audio_play_sound(snd_impact,1,false, 0.4);
-		instance_destroy();
-	break;
 }
 
 switch(attkState)

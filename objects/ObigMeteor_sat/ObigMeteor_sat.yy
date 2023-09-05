@@ -13,8 +13,8 @@
     "path": "folders/Objetos/objects.yy",
   },
   "parentObjectId": {
-    "name": "Ometeor_parents",
-    "path": "objects/Ometeor_parents/Ometeor_parents.yy",
+    "name": "O_parent_colition_with_player",
+    "path": "objects/O_parent_colition_with_player/O_parent_colition_with_player.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

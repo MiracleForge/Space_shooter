@@ -11,7 +11,7 @@
   ],
   "managed": true,
   "overriddenProperties": [
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"O_enemy_parent","path":"objects/O_enemy_parent/O_enemy_parent.yy",},"propertyId":{"name":"enemy_type","path":"objects/O_enemy_parent/O_enemy_parent.yy",},"value":"3",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":null,"propertyId":null,"value":"3",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"Oenemy_parent","path":"objects/Oenemy_parent/Oenemy_parent.yy",},"propertyId":{"name":"enemy_class","path":"objects/Oenemy_parent/Oenemy_parent.yy",},"value":"3",},
   ],
   "parent": {

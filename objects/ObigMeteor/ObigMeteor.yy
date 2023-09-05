@@ -9,14 +9,16 @@
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"O_eff_bombs","path":"objects/O_eff_bombs/O_eff_bombs.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
   ],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"O_parent_colition_with_player","path":"objects/O_parent_colition_with_player/O_parent_colition_with_player.yy",},"propertyId":{"name":"collision_type","path":"objects/O_parent_colition_with_player/O_parent_colition_with_player.yy",},"value":"1",},
+  ],
   "parent": {
     "name": "objects",
     "path": "folders/Objetos/objects.yy",
   },
   "parentObjectId": {
-    "name": "Ometeor_parents",
-    "path": "objects/Ometeor_parents/Ometeor_parents.yy",
+    "name": "O_parent_colition_with_player",
+    "path": "objects/O_parent_colition_with_player/O_parent_colition_with_player.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

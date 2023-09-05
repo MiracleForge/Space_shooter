@@ -14,12 +14,17 @@
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":4,"eventType":2,"isDnD":false,},
   ],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"O_parent_colition_with_player","path":"objects/O_parent_colition_with_player/O_parent_colition_with_player.yy",},"propertyId":{"name":"collision_type","path":"objects/O_parent_colition_with_player/O_parent_colition_with_player.yy",},"value":"1",},
+  ],
   "parent": {
     "name": "Beholder",
     "path": "folders/Objetos/Enemys/Boss/Beholder.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "O_parent_colition_with_player",
+    "path": "objects/O_parent_colition_with_player/O_parent_colition_with_player.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,

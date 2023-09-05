@@ -36,8 +36,13 @@ enum Py_speed
 	height_speed_dialog,
 	height_speed_end
 }
+current_attk = undefined;
+current_overheat = undefined;
+current_special = undefined;
 room_Py_speed = Py_speed.height_speed_pos;
-
+normal_attk = current_attk;
+overheat_attk = current_overheat;
+special_attk = current_special;
 instance_create_layer(x,y,"layer_under", Oshield);
 if current_ship == 1{	
 

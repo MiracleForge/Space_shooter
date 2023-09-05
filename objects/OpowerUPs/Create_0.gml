@@ -4,3 +4,4 @@ image_xscale = 3.6;
 image_yscale = 3.6;
 vspeed = 0.3;
 spark = false;
+glow_blend = c_red;

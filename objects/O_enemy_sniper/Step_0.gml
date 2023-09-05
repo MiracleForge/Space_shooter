@@ -16,7 +16,7 @@ event_inherited();
 // Define a flag to indicate if the enemy is charged and ready to fire
 var charged = false;
 
-if (!instance_exists(O_ship_parent)) {
+if (!instance_exists(O_player_parent)) {
     return;
 }
 if movState == enemy_mov.leaving
@@ -39,7 +39,7 @@ if alarm[1] <=0
        }
 
 }
-var _ship = O_ship_parent;
+var _ship = O_player_parent;
 var _dir_to_target = point_direction(x, y, _ship.x, _ship.y);
 image_angle = _dir_to_target;
 
@@ -79,12 +79,6 @@ switch (movState) {
             }
         }
         break;
-		case enemy_mov.dying:
-			effect_create_above(ef_ellipse,x,y,4,c_orange);
-			effect_create_above(ef_flare,x,y,1,c_orange);
-			audio_play_sound(snd_impact,1,false, 0.4);
-			instance_destroy();
-		break;
 }
 
 switch (attkState) {

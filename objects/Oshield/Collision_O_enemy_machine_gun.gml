@@ -1,8 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
-var _ship = O_ship_parent;
-if _ship.shield >0
+var _ship = O_player_parent;
+if _ship.shield >0 and _ship.shield_active
 {
 	_ship.shield -=1;
 	visible = true;

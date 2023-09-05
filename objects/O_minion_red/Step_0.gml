@@ -1,8 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 // Calculate the player's position
-var _player_x = instance_exists(O_ship_parent) ? O_ship_parent.x : x;
-var _player_y = instance_exists(O_ship_parent) ? O_ship_parent.y : y;
+var _player_x = instance_exists(O_player_parent) ? O_player_parent.x : x;
+var _player_y = instance_exists(O_player_parent) ? O_player_parent.y : y;
 
 
 // Calculate the gravitational center position

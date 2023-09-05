@@ -7,16 +7,19 @@
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":7,"isDnD":false,},
   ],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"O_parent_colition_with_player","path":"objects/O_parent_colition_with_player/O_parent_colition_with_player.yy",},"propertyId":{"name":"collision_type","path":"objects/O_parent_colition_with_player/O_parent_colition_with_player.yy",},"value":"3",},
+  ],
   "parent": {
     "name": "enemy bullets",
     "path": "folders/Objetos/Enemys/enemy bullets.yy",
   },
   "parentObjectId": {
-    "name": "O_enemy_bullets",
-    "path": "objects/O_enemy_bullets/O_enemy_bullets.yy",
+    "name": "O_parent_colition_with_player",
+    "path": "objects/O_parent_colition_with_player/O_parent_colition_with_player.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,
@@ -31,9 +34,7 @@
   "physicsShape": 1,
   "physicsShapePoints": [],
   "physicsStartAwake": true,
-  "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"variable_name","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0","varType":0,},
-  ],
+  "properties": [],
   "solid": false,
   "spriteId": {
     "name": "Spr_enemy_bullet",

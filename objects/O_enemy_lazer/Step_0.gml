@@ -1,12 +1,12 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 // Variáveis para guardar referências a objetos do jogo
-var _ship = O_ship_parent;      
+var _ship = O_player_parent;      
 var _sniper = O_enemy_sniper;     
     
 
 // Verifica se o objeto da nave do jogador (_ship) existe antes de continuar
-if !instance_exists(_ship) 
+if !instance_exists(_ship)
 {
 	return;
 }
@@ -48,15 +48,15 @@ if !instance_exists(_ship)
         }
         
         // Verifica se houve colisão do lazer com o objeto da nave do jogador (O_ship_parent)
-        if collision_point(xEnd, yEnd, O_ship_parent, 1, 0) {
+        if collision_point(xEnd, yEnd, _ship, 1, 0) {
             // Caso a colisão seja confirmada:
-            with(O_ship_parent) {
-                if (take_damage == true) {
-                    alarm[2] = 100;   // Configura um alarme para a nave piscar (levou dano)
-                    take_damage = false; // Define a variável de dano como false para que o dano não seja reaplicado imediatamente
-                    life_ship -= 1; // Reduz a vida da nave do jogador em 1 ponto
-                }
-            }
+          //  with(_ship) {
+              //  if (allow_damage == true) {
+                  //  alarm[2] = 100;   // Configura um alarme para a nave piscar (levou dano)
+                  //  allow_damage = false; // Define a variável de dano como false para que o dano não seja reaplicado imediatamente
+                   // current_life -= 1; // Reduz a vida da nave do jogador em 1 ponto
+              //  }
+         //   }
 			O_enemy_sniper.movState = SNIPER.STEALTH;
             instance_destroy(O_enemy_lazer); // Destroi o lazer após a colisão com a nave do jogador
             break; // Sai do loop após a colisão com a nave do jogador
@@ -64,9 +64,9 @@ if !instance_exists(_ship)
     }
 
     // Verifica se existe pelo menos um objeto do tipo O_enemy_parent no jogo
-if instance_exists(O_enemy_parent) {
+if instance_exists(Oenemy_parent) {
     var _list = ds_list_create(); // Cria uma lista temporária para guardar os objetos inimigos atingidos
-    var _hits = collision_line_list(x, y, xEnd, yEnd, O_enemy_parent, 0, 0, _list, 0); // Lista objetos inimigos atingidos
+    var _hits = collision_line_list(x, y, xEnd, yEnd, Oenemy_parent, 0, 0, _list, 0); // Lista objetos inimigos atingidos
 
     if (_hits > 0) {
        

@@ -10,7 +10,7 @@ event_inherited();
 #macro MINES_SPREAD choose(10, 20, 30, 40, 50)
 
 // Get reference to the parent ship
-var _ship = O_ship_parent;
+var _ship = O_player_parent;
 
 // If ship instance doesn't exist, return
 if (!instance_exists(_ship)) 
@@ -57,14 +57,6 @@ switch (movState)
             timers.shooting._current -= 0.1;
         }
         
-    break;
-    
-    case enemy_mov.dying:
-        // Visual effects and audio
-        effect_create_above(ef_ellipse, x, y, 4, c_orange);
-        effect_create_above(ef_flare, x, y, 1, c_orange);
-        audio_play_sound(snd_impact, 1, false, 0.4);
-        instance_destroy();
     break;
 }
 

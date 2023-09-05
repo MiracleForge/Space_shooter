@@ -13,7 +13,10 @@
     "name": "Beholder",
     "path": "folders/Objetos/Enemys/Boss/Beholder.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "OEnemy_bullet_parent",
+    "path": "objects/OEnemy_bullet_parent/OEnemy_bullet_parent.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,

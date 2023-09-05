@@ -457,6 +457,7 @@ var _clicked_button = buttons_data_set(_upsidebutton_data);
 						var _instanceObjIndex = asset_get_index(_instanceSpriteName);
 						// Create the ship instance using the object index
 						var shipInstance = instance_create_layer(room_width/2, room_height/2 , "instances", _instanceObjIndex);
+						instance_create_layer(room_width,room_height,"instances",O_timer);
 						Ogame.pick_ship = false;
 						instance_destroy();
 						}	

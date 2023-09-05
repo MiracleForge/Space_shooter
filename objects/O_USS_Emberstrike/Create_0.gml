@@ -1,13 +1,18 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 event_inherited();
-image_xscale = 3;
-image_yscale = 3;
 
-move_speed = 2;
-max_movespeed = 2;
+max_movespeed = 4;
+move_speed = max_movespeed;
+
 heat = 0;
-maxHeat = 100;
+maxHeat = 120;
 
+shield = 15;
+max_shield = 15;
+shoot_on = false;
 
-shoot_on = false
+player_special_attack = scr_special_default;
+player_normal_attack = scr_normal_missile_default;
+player_overheat_attack = scr_overheat_missile_default;
+player_shield_state = scr_shield_default;
