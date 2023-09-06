@@ -56,4 +56,26 @@ function scr_overheat_missile_default()
     shoot_on = false;
 }
 
-  
+function scr_overheat_fragmented_default()
+{
+	if alarm[2] = -1
+	{
+		alarm[2] = 30;
+	repeat(2){
+		var _inst = instance_create_layer(x,y,"Instances",O_fragmented_Shoot);
+			_inst.speed = -6;
+			_inst.direction = direction + random_range(-25,25);
+			_inst.image_angle = direction;
+			_inst.image_blend = c_purple;
+			}
+			  // Gere um tom aleatório para o efeito sonoro de tiro
+	    var _random_pitch = random_range(0.8, 1.2);
+	    // Toque o efeito sonoro de tiro com o tom aleatório
+	    audio_play_sound(snd_bullet01, 0, false);
+	    audio_sound_pitch(snd_bullet01, _random_pitch);
+
+		
+	}
+	// Defina shoot_on como falso, presumivelmente para evitar tiros rápidos
+	shoot_on = false;
+}

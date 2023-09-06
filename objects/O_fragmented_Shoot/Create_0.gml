@@ -3,5 +3,6 @@
 
 // Inherit the parent event
 event_inherited();
-heat_capacity = 900; // total capacity of keep shooting at heat shooting
-max_heat = 150 + global.heat;
+
+isfragmented = false;
+tiny_frag_canfragment = false;

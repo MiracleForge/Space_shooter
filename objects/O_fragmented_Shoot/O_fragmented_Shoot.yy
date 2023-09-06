@@ -1,0 +1,43 @@
+{
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "O_fragmented_Shoot",
+  "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
+  ],
+  "managed": true,
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"O_parent_projetil","path":"objects/O_parent_projetil/O_parent_projetil.yy",},"propertyId":{"name":"bullet_name","path":"objects/O_parent_projetil/O_parent_projetil.yy",},"value":"3",},
+  ],
+  "parent": {
+    "name": "Bullets",
+    "path": "folders/Objetos/Players/Bullets.yy",
+  },
+  "parentObjectId": {
+    "name": "O_parent_projetil",
+    "path": "objects/O_parent_projetil/O_parent_projetil.yy",
+  },
+  "persistent": false,
+  "physicsAngularDamping": 0.1,
+  "physicsDensity": 0.5,
+  "physicsFriction": 0.2,
+  "physicsGroup": 1,
+  "physicsKinematic": false,
+  "physicsLinearDamping": 0.1,
+  "physicsObject": false,
+  "physicsRestitution": 0.1,
+  "physicsSensor": false,
+  "physicsShape": 1,
+  "physicsShapePoints": [],
+  "physicsStartAwake": true,
+  "properties": [],
+  "solid": false,
+  "spriteId": {
+    "name": "spr_fragmented_shoot",
+    "path": "sprites/spr_fragmented_shoot/spr_fragmented_shoot.yy",
+  },
+  "spriteMaskId": null,
+  "visible": true,
+}

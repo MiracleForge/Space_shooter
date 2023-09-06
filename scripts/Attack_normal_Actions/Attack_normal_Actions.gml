@@ -15,8 +15,9 @@ function createProjectile(offset_x, offset_y, angle_offset,proj_blend,veloc)
 #region//default functions
 function scr_normal_missile_default()
 {	
-if alarm[2] == -1 {
+
   if alarm[2] == -1 {
+	 
     // Configuração comum para todas as instâncias
     var _speed = -5;
     var angle = direction;
@@ -49,11 +50,12 @@ if alarm[2] == -1 {
     audio_play_sound(snd_bullet01, 0, false);
     audio_sound_pitch(snd_bullet01, _random_pitch);
 }
-
+   // Defina shoot_on como falso, presumivelmente para evitar tiros rápidos
+    shoot_on = false;
 alarm[2] = 45;
 	}
 	
-}
+
 function scr_normal_cinetic_default()
 {
 		
@@ -77,6 +79,24 @@ function scr_normal_cinetic_default()
 
     // Defina shoot_on como falso, presumivelmente para evitar tiros rápidos
     shoot_on = false;
+}
+
+function scr_normal_fragmented_default()
+{
+
+	alarm[2] = 45;
+		var _inst = instance_create_layer(x,y,"Instances",O_fragmented_Shoot);
+			_inst.speed = -4;
+			_inst.direction = direction;
+			_inst.image_angle = direction;
+		
+			  // Gere um tom aleatório para o efeito sonoro de tiro
+	    var _random_pitch = random_range(0.8, 1.2);
+	    // Toque o efeito sonoro de tiro com o tom aleatório
+	    audio_play_sound(snd_bullet01, 0, false);
+	    audio_sound_pitch(snd_bullet01, _random_pitch);	
+	// Defina shoot_on como falso, presumivelmente para evitar tiros rápidos
+	shoot_on = false;
 }
 #endregion
 

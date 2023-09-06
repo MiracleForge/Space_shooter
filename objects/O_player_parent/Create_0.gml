@@ -15,7 +15,7 @@ move_speed = 3 + global.speedo;
 max_movespeed = move_speed;
 
 // Heat Capacity
-heat = 0;
+heat  =0;
 max_heat = 120 + global.heat;
 overheat = false;
 heat_capacity = 600; // total capacity of keep shooting at heat shooting

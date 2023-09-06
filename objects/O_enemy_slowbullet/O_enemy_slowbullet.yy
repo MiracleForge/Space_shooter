@@ -18,8 +18,8 @@
     "path": "folders/Objetos/Enemys/enemy bullets.yy",
   },
   "parentObjectId": {
-    "name": "O_parent_colition_with_player",
-    "path": "objects/O_parent_colition_with_player/O_parent_colition_with_player.yy",
+    "name": "OEnemy_bullet_parent",
+    "path": "objects/OEnemy_bullet_parent/OEnemy_bullet_parent.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

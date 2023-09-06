@@ -2,7 +2,7 @@
 // Você pode escrever seu código neste editor
 event_inherited();
 
-max_movespeed = 4;
+max_movespeed = 5;
 move_speed = max_movespeed;
 
 heat = 0;
