@@ -1,8 +1,9 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "OpowerUPs",
+  "name": "OSpecial",
   "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
   ],
   "managed": true,
@@ -31,8 +32,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_powerUPs",
-    "path": "sprites/spr_powerUPs/spr_powerUPs.yy",
+    "name": "spr_special_powerup",
+    "path": "sprites/spr_special_powerup/spr_special_powerup.yy",
   },
   "spriteMaskId": null,
   "visible": true,

@@ -38,6 +38,10 @@ shoot_enabled = false;
 
 // Dialog System
 dialog_enabled = false;
+
+//special System
+special_attk = false;
+special_timer = 0;
 #endregion
 
 #region // Default Character Configuration
@@ -52,7 +56,7 @@ player_overheat_attack = undefined;
 
 // Special Attack State
 player_special_attack = undefined;
-
+special_timer = 0;
 // Shield state
 player_shield_state = undefined;
 #endregion
@@ -60,8 +64,11 @@ player_shield_state = undefined;
 instance_create_layer(x,y,"layer_under", Oengine);
 
 global.possible_targets = undefined;
-
-
-
+// special powers
+// Inicialização: Crie uma ds_list com três elementos, cada um iniciando com -1
+powers_list = ds_list_create();
+ds_list_add(powers_list, -1);
+ds_list_add(powers_list, -1);
+ds_list_add(powers_list, -1);
 
 

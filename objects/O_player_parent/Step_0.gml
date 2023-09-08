@@ -5,14 +5,23 @@ script_execute(player_shield_state); // start shield
 // Se não estiver definido, defina-o como o resultado da função scr_normal_player_moviment()
 player_movement_state = scr_normal_player_moviment();
 ////
+if special_attk 
+{
+	
+ script_execute(player_special_attack);	
+}
 ////
+if keyboard_check_pressed(ord("S"))
+{
+	special_attk = !special_attk;	
+}
 // Verifique se a tecla de espaço foi pressionada e o alarm[0] não está ativo, ou se shoot_on está ativado
 if (keyboard_check_pressed(vk_space) && Shooting_button.alarm[0] == -1 || shoot_on) {
  
     // Verifique se a variável overheat é falsa (não sobreaquecida)
     if (!overheat && (heat <= max_heat)) { // alarm 2 CAN SHOOT? YES SHOOT , NO DON'T HEAT UP PS : alarm 2(set in attk scripts) can't never be greater than alarm 1
 		{
-			if alarm[2] = -1
+			if (alarm[2] = -1)
 			{
 				heat += 1;
 				alarm[0] = 120; // Sistema de resfriamento mantendo alarm[0] desligado até que o jogador pare de atirar
@@ -56,6 +65,7 @@ if current_life <= 0 {
 	instance_destroy();
 	instance_destroy(Oengine);
     instance_destroy(Oshield);
+	ds_list_destroy(powers_list);
 	Ogame.alarm[0] =	120;// restart game
 	}
 #endregion

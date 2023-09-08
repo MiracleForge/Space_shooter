@@ -1,5 +1,19 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 draw_self();
-image_alpha = 0;
-draw_sprite(spr_joystick_stick, 0, x + joy_x, y + joy_y);
+scr_blend_light(360,20,6,image_xscale,image_yscale,image_angle,c_purple,0.25,true)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

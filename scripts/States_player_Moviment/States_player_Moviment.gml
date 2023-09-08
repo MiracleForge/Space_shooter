@@ -8,6 +8,7 @@ function scr_normal_player_moviment()
     with(Ojoystick) {	
         _move_x = joy_x / radius;
         _move_y = joy_y / radius;
+		
     }
     // Predict the next position based on the joystick input
     var next_x = x + _move_x * move_speed;
@@ -25,7 +26,12 @@ function scr_normal_player_moviment()
     if (_move_x != 0 or _move_y != 0) {
         direction = point_direction(0, 0, -Ojoystick.joy_x, -Ojoystick.joy_y);
         image_angle = direction;
+
+		if !instance_exists(Oparticles_eff)
+		{
+			instance_create_depth(x,y,100, Oparticles_eff);
+		}
+	
     }	
-   
 
 }

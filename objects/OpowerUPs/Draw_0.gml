@@ -9,7 +9,7 @@ if powerUpIndex == 0 {
 }else if powerUpIndex == 2{
 	glow_blend = c_yellow;	
 }
-scr_blend_light(360,20,6,image_xscale,image_yscale,image_angle,glow_blend,0.1,true)
+scr_blend_light(360,20,6,image_xscale,image_yscale,image_angle,glow_blend,0.1,true);
 
 draw_self();
 

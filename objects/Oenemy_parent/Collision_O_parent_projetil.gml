@@ -30,7 +30,7 @@ if (movState != enemy_mov.intro or movState != enemy_mov.dying or movState != SN
     // Se o contador de flash for zero, defina-o para 1
     if (flash_t <= 0)
     {
-        flash_t = 1;
+        flash_t = 2;
     }
     
     // Reproduza o som de impacto

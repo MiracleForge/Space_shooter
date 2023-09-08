@@ -27,7 +27,8 @@ var rm_h = room_height/3;
 
 #endregion
 #region  game UI REGION
-if  !is_showing_posphase and!pick_ship and room == rm_game_1_1 or pick_ship and room == rm_game_1_2  {
+if  !is_showing_posphase and!pick_ship and room == rm_game_1_1 or pick_ship and room == rm_game_1_2 
+{
     // HUI elements
 
 
@@ -44,12 +45,20 @@ if  !is_showing_posphase and!pick_ship and room == rm_game_1_1 or pick_ship and 
         draw_sprite_ext(spr_HUI_lifebar, 1, 150, 80, _scale, (current_shield / max_shield) * _scale, 0, c, 1);
     }
 
-	// Draw Item Slots
-	var itemPositions = [80, 140, 200];
-	for (var i = 0; i < array_length(itemPositions); i++)
-	{
-	    draw_sprite_ext(spr_HUI_rectangle, 0, itemPositions[i], 140, _scale / 1.8, _scale / 1.8, 0, c, 1);
-	}
+// special attack area
+var _spc_offsetX = 0;
+
+if instance_exists(O_player_parent) {
+    for (var spl = 0; spl < 3; spl++) {
+        draw_sprite_ext(spr_HUI_special, 0, 80 + _spc_offsetX, 140, _scale / 1.5, _scale / 1.5, 0, c, 1);
+        var power_sprite_index = ds_list_find_value(O_player_parent.powers_list, spl);
+        if (power_sprite_index != -1) {
+            draw_sprite_ext(power_sprite_index, 0, 110 + _spc_offsetX, 168, _scale / 1.5, _scale / 1.5, image_angle, image_blend, image_alpha);
+        }
+        _spc_offsetX += 65;
+    }
+}
+
 
 	// Draw Player Portrait
 	draw_sprite_ext(spr_HUI_character, Pyframe_icon, 74, 74, _scale * 1.7, _scale * 1.7, 0, c, 1);
@@ -106,6 +115,7 @@ if instance_exists(_ship_pai){
 	}
 
   }
+ 
 }
 #endregion
 
@@ -364,11 +374,11 @@ draw_set_font(-1);
 
 #region // contador de instancias
 
-// Variável para armazenar o número de instâncias do objeto OaideShip
+//// Variável para armazenar o número de instâncias do objeto OaideShip
 //var Contador = 0;
 
 // No evento Step ou Draw
-//Contador = instance_number(O_enemy_machine_gun);
+//Contador = instance_number(Oparticles_eff);
 //draw_text(x, y, "Quantidade de OaideShip: " + string(Contador));
 //draw_text_ext_transformed(0,0,fps_real,1,2,3,3,0);
 //draw_text_ext_transformed(0,100,fps,1,2,3,3,0);

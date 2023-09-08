@@ -3,6 +3,7 @@
 room_restart();
 instance_destroy(O_timer);
 pick_ship = true;
+
 Omusic_control.menu_music = true;
 Omusic_control.room_alarmBoss = false;
 audio_stop_all();
