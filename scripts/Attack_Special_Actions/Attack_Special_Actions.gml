@@ -4,6 +4,37 @@ function scr_special_default()
 		// do nothing 	
 }
 
+function scr_miscelanios_distribuition_special()
+{
+	var _slot1 = Ogame.special_slot1;
+	var _slot2 = Ogame.special_slot2;
+	var _slot3 = Ogame.special_slot3;
+		if _slot1
+	{
+		var _find_special = ds_list_find_value(powers_list,0);
+		if  _find_special == spr_Missile
+		{
+			player_special_attack = scr_special_missil;
+		}
+		powers_list[|0] = -1;
+	}else if _slot2
+	{
+		var _find_special = ds_list_find_value(powers_list,1);
+		if  _find_special == spr_Missile
+		{
+			player_special_attack = scr_special_missil;
+		}
+		powers_list[|1] = -1;
+	}else if _slot3
+	{
+		var _find_special = ds_list_find_value(powers_list,2);
+		if  _find_special == spr_Missile
+		{
+			player_special_attack = scr_special_missil;
+		}
+		powers_list[|2] = -1;
+	}
+}
 function scr_special_missil()
 {	 
 	
@@ -32,6 +63,8 @@ function scr_special_missil()
 	{
 		player_special_attack = scr_special_default;
 		special_timer = 0;
+		Ogame.special_slot1 = false;
+		Ogame.special_slot2 = false;
 	}
 		       
 

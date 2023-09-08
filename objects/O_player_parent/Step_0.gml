@@ -1,20 +1,26 @@
 /// @description Inserir descrição aqui
 // start definitions to move player ship
 #region// start all players scripts and functions;
+
+	
 script_execute(player_shield_state); // start shield 
 // Se não estiver definido, defina-o como o resultado da função scr_normal_player_moviment()
 player_movement_state = scr_normal_player_moviment();
 ////
-if special_attk 
+
+#region // spcecial powers control system
+var special_attk_slot1 = Ogame.special_slot1;
+var special_attk_slot2 = Ogame.special_slot2;
+var special_attk_slot3 = Ogame.special_slot3;
+
+scr_miscelanios_distribuition_special(); // keep seaching for players clicks for special attk
+
+if special_attk_slot1 || special_attk_slot2 
 {
-	
- script_execute(player_special_attack);	
+	script_execute(player_special_attack);
 }
-////
-if keyboard_check_pressed(ord("S"))
-{
-	special_attk = !special_attk;	
-}
+#endregion
+
 // Verifique se a tecla de espaço foi pressionada e o alarm[0] não está ativo, ou se shoot_on está ativado
 if (keyboard_check_pressed(vk_space) && Shooting_button.alarm[0] == -1 || shoot_on) {
  

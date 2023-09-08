@@ -13,7 +13,7 @@ if alarm[1] >0 {
 	}else{	
 		image_alpha = 1;
 		}
-
+draw_text(mouse_x,mouse_y,player_special_attack )
 
 
 

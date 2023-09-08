@@ -65,3 +65,7 @@ test = -1
 
 scr_load_system();
 is_showing_posphase = false;
+
+special_slot1 = false;
+special_slot2 = false;
+special_slot3 = false;

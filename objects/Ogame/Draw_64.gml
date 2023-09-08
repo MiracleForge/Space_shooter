@@ -46,18 +46,54 @@ if  !is_showing_posphase and!pick_ship and room == rm_game_1_1 or pick_ship and 
     }
 
 // special attack area
-var _spc_offsetX = 0;
-
-if instance_exists(O_player_parent) {
-    for (var spl = 0; spl < 3; spl++) {
-        draw_sprite_ext(spr_HUI_special, 0, 80 + _spc_offsetX, 140, _scale / 1.5, _scale / 1.5, 0, c, 1);
+var _spc_offsety = 0;
+var _btn_scale = _scale / 1.5;
+if instance_exists(O_player_parent) 
+{
+    for (var spl = 0; spl < 3; spl++) 
+    {
         var power_sprite_index = ds_list_find_value(O_player_parent.powers_list, spl);
-        if (power_sprite_index != -1) {
-            draw_sprite_ext(power_sprite_index, 0, 110 + _spc_offsetX, 168, _scale / 1.5, _scale / 1.5, image_angle, image_blend, image_alpha);
+        var btn_x = 95;
+        var btn_y = 947 + _spc_offsety;
+        var btn_width = _btn_scale;
+        var btn_height = _btn_scale;
+        
+        draw_sprite_ext(spr_HUI_special, 0, 68, btn_y, _btn_scale, _btn_scale, 0, c, 1);
+        if (power_sprite_index != -1) 
+        {
+            draw_sprite_ext(power_sprite_index, 0, btn_x , btn_y + 27, _btn_scale, _btn_scale, image_angle, image_blend, image_alpha);
+            
+            // Verifique se o mouse está dentro da área do botão e o botão esquerdo foi pressionado
+		if !special_slot1 and !special_slot2 
+		{
+			 if (point_in_rectangle(_mx, _my, 70, 947 + _spc_offsety, 130, 995 + _spc_offsety ) && mouse_check_button_pressed(mb_left))
+            {
+			
+	                switch(spl)
+					{
+						case 0:
+							special_slot1 = true;
+						break;
+						case 1 : 
+							special_slot2 = true;
+						break;
+						case 2 : 
+							special_slot3 = true;
+						break;
+					}
+				}
+				//show_message("Botão " + string(spl + 1) + " clicado!");
+                // Coloque aqui a ação que deseja executar quando o botão é clicado
+            }else {
+				power_sprite_index = -1;
+			}
+           
         }
-        _spc_offsetX += 65;
+		
+        _spc_offsety += 75;
     }
 }
+
 
 
 	// Draw Player Portrait
