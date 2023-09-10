@@ -1,22 +1,18 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "OSpecial",
+  "name": "Owhite_scoult",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"O_player_parent","path":"objects/O_player_parent/O_player_parent.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Poweer UP",
-    "path": "folders/Objetos/objects/Poweer UP.yy",
+    "name": "Minions",
+    "path": "folders/Objetos/Players/Minions.yy",
   },
-  "parentObjectId": {
-    "name": "Ospecial_parent",
-    "path": "objects/Ospecial_parent/Ospecial_parent.yy",
-  },
+  "parentObjectId": null,
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -33,8 +29,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_special_powerup",
-    "path": "sprites/spr_special_powerup/spr_special_powerup.yy",
+    "name": "Spr_white_scolt",
+    "path": "sprites/Spr_white_scolt/Spr_white_scolt.yy",
   },
   "spriteMaskId": null,
   "visible": true,

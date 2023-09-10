@@ -15,7 +15,7 @@ var special_attk_slot3 = Ogame.special_slot3;
 
 scr_miscelanios_distribuition_special(); // keep seaching for players clicks for special attk
 
-if special_attk_slot1 || special_attk_slot2 
+if special_attk_slot1 || special_attk_slot2 || special_attk_slot3
 {
 	script_execute(player_special_attack);
 }

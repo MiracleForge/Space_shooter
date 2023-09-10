@@ -45,7 +45,7 @@ if  !is_showing_posphase and!pick_ship and room == rm_game_1_1 or pick_ship and 
         draw_sprite_ext(spr_HUI_lifebar, 1, 150, 80, _scale, (current_shield / max_shield) * _scale, 0, c, 1);
     }
 
-// special attack area
+#region// special attack area
 var _spc_offsety = 0;
 var _btn_scale = _scale / 1.5;
 if instance_exists(O_player_parent) 
@@ -64,7 +64,7 @@ if instance_exists(O_player_parent)
             draw_sprite_ext(power_sprite_index, 0, btn_x , btn_y + 27, _btn_scale, _btn_scale, image_angle, image_blend, image_alpha);
             
             // Verifique se o mouse está dentro da área do botão e o botão esquerdo foi pressionado
-		if !special_slot1 and !special_slot2 
+		if !special_slot1 and !special_slot2 and !special_slot3
 		{
 			 if (point_in_rectangle(_mx, _my, 70, 947 + _spc_offsety, 130, 995 + _spc_offsety ) && mouse_check_button_pressed(mb_left))
             {
@@ -94,7 +94,7 @@ if instance_exists(O_player_parent)
     }
 }
 
-
+#endregion
 
 	// Draw Player Portrait
 	draw_sprite_ext(spr_HUI_character, Pyframe_icon, 74, 74, _scale * 1.7, _scale * 1.7, 0, c, 1);

@@ -16,6 +16,10 @@ function scr_miscelanios_distribuition_special()
 		{
 			player_special_attack = scr_special_missil;
 		}
+		if  _find_special == Spr_white_scolt
+		{
+			player_special_attack = scr_special_scoult;
+		}
 		powers_list[|0] = -1;
 	}else if _slot2
 	{
@@ -24,6 +28,10 @@ function scr_miscelanios_distribuition_special()
 		{
 			player_special_attack = scr_special_missil;
 		}
+		if  _find_special == Spr_white_scolt
+		{
+			player_special_attack = scr_special_scoult;
+		}
 		powers_list[|1] = -1;
 	}else if _slot3
 	{
@@ -31,6 +39,10 @@ function scr_miscelanios_distribuition_special()
 		if  _find_special == spr_Missile
 		{
 			player_special_attack = scr_special_missil;
+		}
+		if  _find_special == Spr_white_scolt
+		{
+			player_special_attack = scr_special_scoult;
 		}
 		powers_list[|2] = -1;
 	}
@@ -65,9 +77,50 @@ function scr_special_missil()
 		special_timer = 0;
 		Ogame.special_slot1 = false;
 		Ogame.special_slot2 = false;
+		Ogame.special_slot3 = false;
 	}
 		       
 
 }
 
-	
+// Defina uma variável de controle para rastrear o estado do alarme
+var alarmActive = true;
+
+function scr_special_scoult()
+{
+    if !instance_exists(Owhite_scoult)
+    {
+        instance_create_layer(O_player_parent.x - 30, O_player_parent.y, "Instances", Owhite_scoult);
+        alarmActive = true; // Ative a variável de controle quando a instância for criada
+        alarm[3] = 260; // Inicie o alarme
+    }
+    else
+    {
+        if (alarmActive)
+        {
+            // Contar regressivamente o alarme
+            alarm[3] -= 1;
+
+            // Verificar se o alarme disparou
+            if (alarm[3] <= -1)
+            {
+                show_message("oi");
+                player_special_attack = scr_special_default;
+                special_timer = 0;
+                Ogame.special_slot1 = false;
+                Ogame.special_slot2 = false;
+                Ogame.special_slot3 = false;
+                instance_destroy(Owhite_scoult);
+                alarm[3] = -1;
+                // Desative a variável de controle para sair do script
+                alarmActive = false;
+            }
+        }
+
+        // Se você quiser continuar com alguma outra lógica enquanto o alarme está contando
+        // Coloque-a aqui dentro deste bloco condicional.
+    }
+}
+
+
+
