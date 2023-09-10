@@ -15,6 +15,7 @@ if alarm[1] >0 {
 		}
 draw_text(mouse_x,mouse_y, alarm[3])
 
+draw_text(x, y, special_active);
 
 
 

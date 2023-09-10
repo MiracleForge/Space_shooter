@@ -70,5 +70,5 @@ powers_list = ds_list_create();
 ds_list_add(powers_list, -1);
 ds_list_add(powers_list, -1);
 ds_list_add(powers_list, -1);
-
+special_active = false;
 

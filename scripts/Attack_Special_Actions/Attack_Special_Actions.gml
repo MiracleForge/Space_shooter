@@ -9,7 +9,7 @@ function scr_miscelanios_distribuition_special()
 	var _slot1 = Ogame.special_slot1;
 	var _slot2 = Ogame.special_slot2;
 	var _slot3 = Ogame.special_slot3;
-		if _slot1
+		if _slot1 and !special_active
 	{
 		var _find_special = ds_list_find_value(powers_list,0);
 		if  _find_special == spr_Missile
@@ -21,7 +21,9 @@ function scr_miscelanios_distribuition_special()
 			player_special_attack = scr_special_scoult;
 		}
 		powers_list[|0] = -1;
-	}else if _slot2
+		
+		special_active = true;
+	}else if _slot2 and !special_active
 	{
 		var _find_special = ds_list_find_value(powers_list,1);
 		if  _find_special == spr_Missile
@@ -33,7 +35,9 @@ function scr_miscelanios_distribuition_special()
 			player_special_attack = scr_special_scoult;
 		}
 		powers_list[|1] = -1;
-	}else if _slot3
+		
+		special_active = true;
+	}else if _slot3 and !special_active
 	{
 		var _find_special = ds_list_find_value(powers_list,2);
 		if  _find_special == spr_Missile
@@ -45,6 +49,8 @@ function scr_miscelanios_distribuition_special()
 			player_special_attack = scr_special_scoult;
 		}
 		powers_list[|2] = -1;
+		
+		special_active = true;
 	}
 }
 function scr_special_missil()
@@ -78,6 +84,7 @@ function scr_special_missil()
 		Ogame.special_slot1 = false;
 		Ogame.special_slot2 = false;
 		Ogame.special_slot3 = false;
+		special_active = false;
 	}
 		       
 
@@ -104,7 +111,7 @@ function scr_special_scoult()
             // Verificar se o alarme disparou
             if (alarm[3] <= -1)
             {
-                show_message("oi");
+               
                 player_special_attack = scr_special_default;
                 special_timer = 0;
                 Ogame.special_slot1 = false;
@@ -114,6 +121,7 @@ function scr_special_scoult()
                 alarm[3] = -1;
                 // Desative a variável de controle para sair do script
                 alarmActive = false;
+				special_active = false;
             }
         }
 

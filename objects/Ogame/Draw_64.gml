@@ -64,7 +64,7 @@ if instance_exists(O_player_parent)
             draw_sprite_ext(power_sprite_index, 0, btn_x , btn_y + 27, _btn_scale, _btn_scale, image_angle, image_blend, image_alpha);
             
             // Verifique se o mouse está dentro da área do botão e o botão esquerdo foi pressionado
-		if !special_slot1 and !special_slot2 and !special_slot3
+		if !special_slot1 and !special_slot2 and !special_slot3 and !O_player_parent.special_active 
 		{
 			 if (point_in_rectangle(_mx, _my, 70, 947 + _spc_offsety, 130, 995 + _spc_offsety ) && mouse_check_button_pressed(mb_left))
             {
@@ -93,7 +93,9 @@ if instance_exists(O_player_parent)
         _spc_offsety += 75;
     }
 }
-
+draw_text(mouse_x, mouse_y, special_slot1);
+draw_text(mouse_x, mouse_y - 40, special_slot2);
+draw_text(mouse_x, mouse_y - 80, special_slot3);
 #endregion
 
 	// Draw Player Portrait
