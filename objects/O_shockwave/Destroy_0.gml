@@ -1,6 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-instance_destroy();
+part_system_destroy(bullets_particle_system);
 
 
 

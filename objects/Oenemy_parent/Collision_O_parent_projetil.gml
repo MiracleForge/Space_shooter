@@ -26,6 +26,9 @@ if (movState != enemy_mov.intro or movState != enemy_mov.dying or movState != SN
 			hitpoints._current = 0;
 			other.isfragmented = true;
 		break;
+		case 4: // O_fragmented_shoot
+			hitpoints._current -= 5;
+		break;
 	}
     // Se o contador de flash for zero, defina-o para 1
     if (flash_t <= 0)

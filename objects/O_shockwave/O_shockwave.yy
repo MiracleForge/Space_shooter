@@ -1,14 +1,18 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "Omachinegun",
+  "name": "O_shockwave",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":1,"eventType":2,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"O_parent_projetil","path":"objects/O_parent_projetil/O_parent_projetil.yy",},"propertyId":{"name":"bullet_name","path":"objects/O_parent_projetil/O_parent_projetil.yy",},"value":"1",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"O_parent_projetil","path":"objects/O_parent_projetil/O_parent_projetil.yy",},"propertyId":{"name":"bullet_name","path":"objects/O_parent_projetil/O_parent_projetil.yy",},"value":"4",},
   ],
   "parent": {
     "name": "Bullets",
@@ -34,8 +38,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_machine_gun",
-    "path": "sprites/spr_machine_gun/spr_machine_gun.yy",
+    "name": "spr_shock_wave",
+    "path": "sprites/spr_shock_wave/spr_shock_wave.yy",
   },
   "spriteMaskId": null,
   "visible": true,
