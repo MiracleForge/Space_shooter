@@ -1,31 +1,42 @@
-# Space_shooter
-space shooter game
-Space Shooter Game
-Space Shooter
+# Space Shooter
 
-Introduction
-Welcome to the Space Shooter game! This is my very first game project, and I've developed it while learning to program using the GameMaker language (GML). This project was primarily aimed at the mobile platform, specifically Android. It's been an exciting journey as I've never programmed before, and I've poured my passion and enthusiasm into creating this game.
+**Space Shooter** is a space shooter game developed using the GameMaker Language (GML), where you defend your spaceship against waves of menacing alien invaders. This is my first game project, and it has been an exciting journey while learning to program. The main goal was to create a version optimized for mobile devices, especially Android.
 
-Gameplay
-In Space Shooter, you'll embark on an intergalactic adventure, defending your spaceship against waves of menacing alien invaders. Engage in thrilling space battles, upgrade your ship, and collect power-ups to enhance your chances of survival.
+## 🚀 Introduction
 
-Features
-Intuitive Controls: Designed with mobile gaming in mind, the controls are user-friendly and easy to pick up.
-Exciting Gameplay: Face off against increasingly challenging waves of enemies as you progress through the game.
-Upgrades and Power-Ups: Enhance your spaceship's abilities with various upgrades and collect power-ups for an edge in combat.
-Immersive Graphics: Enjoy stunning visuals and captivating space environments that immerse you in the game world.
-Mobile-Optimized: Space Shooter is optimized for Android devices, ensuring a smooth gaming experience on the go.
-How to Play
-Download and Install: Get the game on your Android device by downloading it from Google Play (link will be added once the game is available).
-Launch the Game: Open Space Shooter from your device's home screen.
-Start Playing: Tap to start the game, and use intuitive touch controls to navigate and shoot.
-Upgrade Your Ship: Collect power-ups and currency to upgrade your spaceship's weapons and abilities.
-Survive and Conquer: Face off against waves of alien enemies and see how far you can go!
-Feedback and Support
-I'm continually working to improve Space Shooter and provide the best gaming experience possible. If you encounter any issues, have suggestions, or want to provide feedback, please don't hesitate to reach out to me via email or through the GitHub Issues.
+This project aims to provide an exciting and challenging gaming experience where players embark on an intergalactic adventure, facing increasingly difficult enemies. While the primary focus is on Android, there is still a lot of room for improvements and optimizations, especially to enhance performance on mobile devices.
 
-Credits
-I would like to thank the GameMaker community, online tutorials, and all the resources that have helped me on my journey to create this game. Your support and feedback are greatly appreciated!
+**Note:**  
+It is possible to compile for Android, but I haven’t included a version here because I lost the entire configuration I made to run it on my phone before uploading the build, and I’m currently short on time. The game still requires a lot of optimization to ensure good performance on mobile devices. However, it is playable using GameMaker (just avoid using the Linux version).
 
+## 🎮 Gameplay
 
-Thank you for playing Space Shooter, and I hope you have a fantastic time exploring the vastness of space while defending against alien threats. Your support means the world to me, and I look forward to bringing you more exciting games in the future.
+In *Space Shooter*, you defend your spaceship from waves of alien invaders. As you progress, the game becomes more challenging, with stronger enemies and many opportunities to upgrade your ship with power-ups and upgrades.
+
+### **Key Features**
+- **Intuitive Controls:** Designed with mobile gaming in mind, the controls are easy to understand and use.
+- **Exciting Gameplay:** Face waves of enemies and prepare for increasingly difficult challenges.
+- **Upgrades and Power-Ups:** Collect upgrades for your spaceship and power-ups during the battle.
+- **Immersive Graphics:** Enjoy stunning visuals and captivating space environments that make the game engaging.
+- **Mobile Optimization:** Although the game was designed for Android, it can be played on GameMaker, with some tweaks needed to optimize performance.
+
+## 📱 How to Play
+
+1. **Download and Install:** The game can be installed on your Android device (link will be added when the game is available).
+2. **Launch the Game:** Open *Space Shooter* from your device’s home screen.
+3. **Start Playing:** Tap to start the game and use the intuitive touch controls to navigate and shoot.
+4. **Upgrade Your Ship:** Collect power-ups and coins to upgrade your ship’s weapons and abilities.
+5. **Survive and Conquer:** Face off against alien enemies and see how far you can go!
+
+## 🛠️ Feedback and Support
+
+I am constantly working to improve *Space Shooter* and provide the best gaming experience possible. If you encounter any issues, have suggestions, or want to provide feedback, feel free to reach out to me via email or open an issue on GitHub.
+
+## 👾 Credits
+
+I would like to thank the GameMaker community, online tutorials, and all the resources that have helped me in creating this game. Your support and feedback are greatly appreciated!
+
+---
+
+Thank you for playing *Space Shooter*! I hope you have an amazing experience exploring the vastness of space while defending against alien threats. Your support means the world to me, and I look forward to bringing more exciting games in the future.
+
