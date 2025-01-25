@@ -22,15 +22,17 @@ In *Space Shooter*, you defend your spaceship from waves of alien invaders. As y
 
 ## 📱 How to Play
 
-1. **Download and Install:** The game can be installed on your Android device (link will be added when the game is available).
-2. **Launch the Game:** Open *Space Shooter* from your device’s home screen.
-3. **Start Playing:** Tap to start the game and use the intuitive touch controls to navigate and shoot.
-4. **Upgrade Your Ship:** Collect power-ups and coins to upgrade your ship’s weapons and abilities.
-5. **Survive and Conquer:** Face off against alien enemies and see how far you can go!
+1. **Download the Game:** Download the project files from GitHub (link to be added).
+2. **Compile for Android:** Open the project in GameMaker and compile it for Android (ensure you have the necessary Android SDK setup).
+3. **Launch the Game:** After compiling, you can run the game on your Android device.
+4. **Start Playing:** Use the intuitive touch controls to navigate and shoot, and try to survive as long as you can!
+5. **Upgrade Your Ship:** Collect power-ups and coins to upgrade your ship’s weapons and abilities.
+6. **Survive and Conquer:** Face off against alien enemies and see how far you can go!
+
 
 ## 🛠️ Feedback and Support
 
-I am constantly working to improve *Space Shooter* and provide the best gaming experience possible. If you encounter any issues, have suggestions, or want to provide feedback, feel free to reach out to me via email or open an issue on GitHub.
+I am not working to improve *Space Shooter*.But If you encounter any issues, have suggestions, or want to provide feedback, feel free to reach out to me via email or open an issue on GitHub.
 
 ## 👾 Credits
 
@@ -39,4 +41,5 @@ I would like to thank the GameMaker community, online tutorials, and all the res
 ---
 
 Thank you for playing *Space Shooter*! I hope you have an amazing experience exploring the vastness of space while defending against alien threats. Your support means the world to me, and I look forward to bringing more exciting games in the future.
+
 
